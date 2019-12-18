@@ -1,0 +1,4 @@
+@charset "UTF-8";
+
+li:first-child{display:block; width: 50px;height: 50px; background-color: #f00;}
+li:last-child{display:none; width: 50px; height: 50px; background-color: #00f;}

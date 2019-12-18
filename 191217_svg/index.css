@@ -1,0 +1,70 @@
+ :root {
+    --l : 0;
+    --deg : 0;
+    --result : 0;
+} 
+
+.s_donut {position:absolute; left:50%; top:50%; text-align:center;
+    transform:translate(-50%, -50%);}
+.donut1 {stroke-dasharray:var(--l);
+    stroke-dashoffset:var(--l);
+    /*opacity: 0;*/
+     animation:drawDonut 3s infinite; }
+.donut1.action{stroke-dashoffset:0}
+
+@keyframes drawDonut {
+    0% {opacity:0;}
+    100% {opacity:1;
+        stroke-dashoffset:var(--result);}}
+    
+/*.txt {animation:twinkle 3s infinite;}*/
+
+
+@keyframes twinkle {
+    0% {opacity:0;}
+    50% {opacity:1;}}
+
+
+/* 
+
+:root {
+    --l : 0;
+    --deg : 0;
+    --result : 0;
+}
+
+.s_donut {
+    position:absolute;
+    left:50%;
+    top:50%;
+    text-align:center;
+    transform:translate(-50%, -50%);
+
+    .donut1 {
+        stroke-dasharray:var(--l);
+        stroke-dashoffset:var(--l);
+        animation:drawDonut 3s infinite;
+        @keyframes drawDonut {
+            0% {
+                opacity:0;
+            }
+            100% {
+                opacity:1;
+                stroke-dashoffset:var(--result);
+            }
+        }
+    }
+    .txt {
+        animation:twinkle 3s infinite;
+        @keyframes twinkle {
+            0% {
+                opacity:0;
+            }
+            50% {
+                opacity:1;
+            }
+        }
+    }
+}
+
+ */
