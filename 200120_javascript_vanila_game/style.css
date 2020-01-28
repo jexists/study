@@ -1,0 +1,72 @@
+
+body{
+	background-color: #f6f9fc;
+	display: flex; 
+	flex-direction: column;
+	align-items: center;
+	padding-top: 50px;
+}
+
+.canvas{
+	width: 600px; 
+	height: 400px;
+	border-radius: 15px;
+	box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+	background-color: #fff;}
+
+.controls{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.controls .controls_range{
+	margin-bottom: 20px;
+}
+.controls .controls_btns{
+	margin-bottom: 30px;
+}
+
+.controls_btns button{
+	all:unset;
+	background-color: #fff;
+	padding: 5px 0px;
+	width: 80px;
+	text-align: center;
+	border-radius: 5px;
+	cursor: pointer;
+	border: 1px solid rgba(0,0,0,0.2);
+	text-transform: uppercase;
+	font-weight: bold;
+	box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.controls_btns button:focus,
+.controls_btns button:hover {
+	background-color: #0579ff;
+	color: #fff;
+}
+.controls_btns button:active{
+	transform: scale(0.95);
+}
+.controls .controls_colors{
+	display: flex;
+}
+.controls_colors .controls_color{
+	width: 40px;
+	height: 40px;
+	margin-left: 5px;
+	border-radius: 20px;
+	cursor: pointer;
+	box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+}
+.controls_colors .black{margin-left: 0; background-color: #2c2c2c;}
+.controls_colors .white{background-color: #ffffff;}
+.controls_colors .red{background-color: #ff3b30;}
+.controls_colors .orange{background-color: #ff9500;}
+.controls_colors .yellow{background-color: #ffcc00;}
+.controls_colors .green{background-color: #4cd963;}
+.controls_colors .skyblue{background-color: #5ac8fa;}
+.controls_colors .blue{background-color: #0579ff;}
+.controls_colors .purple{background-color: #5856d6;}
