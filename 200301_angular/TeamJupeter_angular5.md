@@ -1,33 +1,37 @@
-VS Code 플로그인 (ctrl + shift + p)
+# Angular
+
+#### VS Code 플로그인 (ctrl + shift + p)
 
 > Angular Language Service
 >
 > Angular Snippets
 
-VS Code 열기
+#### VS Code 열기
 
 ```shell
 $code 	//VS Code 열기
 $code . //파일포함 열기
 ```
 
-
-
 ---
 
-앵귤러 설치하기
+#### 앵귤러 설치하기s
 
 ```shell
 $npm install -g @angular/cli
 ```
 
-앵귤러 처음 폴더 만들기
+#### 앵귤러 처음 폴더 만들기
 
 ```shell
 $ng new 폴더이름 (html,css/scss,ts)
 ```
 
-APP
+
+
+## 앵귤러 구조
+
+**APP**
 
 >component.html
 >
@@ -45,7 +49,9 @@ APP
 >
 >style.css
 
-컴포넌트 만들기
+
+
+#### 컴포넌트 만들기
 
 ```shell
 $ng generate component 폴더이름
@@ -54,7 +60,7 @@ $ng g c 폴더이름
 
 ---
 
-angular
+angular 컴포넌트 기본 세팅
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -71,7 +77,7 @@ export class AboutComponent implements OnInit {
 }
 ```
 
-
+기본 세팅 세부설명
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -90,6 +96,23 @@ export class AboutComponent implements OnInit {
 }
 ```
 
+
+
+#### @component
+
+> 컴포넌트임을 알리는 표시
+> 컴포넌트를 구성하는 정보를 전달할 때 쓰는 통로
+> @ (데코레이터)로 시작
+
+#### 메타데이터
+
+> 컴포넌트를 통하여 앵귤러에 전달하는 컴포넌트를 구성하는 정보
+> 
+
+
+
+
+
 ```typescript
 templateUrl: './about.component.html',
     //파일 위치 / 싱글따음표 ('')
@@ -97,7 +120,7 @@ template: '<h1> 회사 로고 </h1>',  //inline (외부 css X)
     //template 태그 / 두줄 이상 쓸 경우 빽쿼터(``)를 사용
 ```
 
-interpolation {{}}
+#### interpolation {{}}
 
 - html, ts 파일 소통
 - 태그 / function 호출 가능

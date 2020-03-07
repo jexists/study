@@ -9,7 +9,9 @@ export class AboutComponent implements OnInit {
 
   greeting = "이름을 적어주세요";
   hello = "something";
+  hell = "";
   hell01 = "뭐가나올까";
+  hello1 = "";
 
   constructor() { }
 
