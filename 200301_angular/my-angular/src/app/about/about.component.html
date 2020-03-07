@@ -1,0 +1,37 @@
+<p>about works!</p>
+<p>{{greeting}} 환영합니다</p> //onewayBinding
+ <button (click)="button()">어바웃</button>
+
+ <br />
+ <br />
+ <input type="text" [(ngModel)]="greeting"/>
+ <!-- twowayBinding: 내가 입력한 데이터가 ts로 가서 html으로 보여줌 -->
+ <!-- 위에 {{greeting에 내용이 그대로 나온다}} -->
+
+ <!-- <input type="text"> -->
+<hr />
+ <p>Directive</p>
+ <p>앞에 *이 붙여있음</p>
+
+ <p> {{hello}} </p>
+ <p *ngIf="expression"></p>
+
+ <p *ngIf="hello">hello라는 내용이 있으면 나타나다</p> 
+ <p *ngIf="hell">hell라는 것이 없기때문에 안나온다</p> 
+ <!-- hello = ""; 안에 내용이 없을경우 -->
+ <p *ngIf="!hell01">hell안에 내용이라는 것이 없지만 !반대일경우 나와라</p> 
+ <p *ngIf="hello1; else otherTemplate"></p>
+
+ <ng-template #otherTemplate> hello01이 없으면 else 아니면 이내용이 나와라</ng-template>
+ <!-- else하고 다른것을 보여줄때 이름 정할때 #쓰고 이름  -->
+ <!--
+ attribute로 집어넣은거 ngIf랑 비슷함 
+ if(hello) {
+    참이면 코드 수행
+ }else{
+    거짓이면 코드 수행
+ } 
+-->
+ <!-- //참과 거짓을 판결한다 -->
+
+ <!-- ng for  -->

@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-angular';
+  title = 'angular 수업';
+  
+  appButton() {
+    console.log("app component.ts");
+  }
 }
