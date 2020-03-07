@@ -33,7 +33,7 @@ function askForName(){
 function paintGreeting(text){
 	form.classList.remove(Showing_Cn);
 	greeting.classList.add(Showing_Cn);
-	greeting.innerText = `${text}의 오늘 할일`;
+	greeting.innerText = `오늘 ${text}의 해야 할일`;
 }
 
 //이름불러오고 환영 if문
