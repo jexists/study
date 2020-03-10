@@ -5,17 +5,20 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
+import { HeroService } from './hero.service';
+import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule //import해서 사용할려고
   ],
-  providers: [],
+  providers: [HeroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

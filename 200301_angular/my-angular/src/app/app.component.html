@@ -1,3 +1,27 @@
 <p>{{title}}</p>
 <button (click)="appButton()">버튼</button>
 <about></about>
+
+<!-- ng for  -->
+<ul>
+    <li *ngFor= "let item of fruit">fruit</li>
+</ul>
+<ul>
+   <li *ngFor= "let item of fruit">{{ fruit }}</li>
+</ul>
+<ul>
+   <li *ngFor= "let item of fruit">{{ item }}</li>
+</ul>
+<ul>
+   <li *ngFor= "let color of colors">{{ color.name }}</li>
+</ul>
+<ul>
+   <li *ngFor= "let color of colors">{{ color | json }}</li>
+</ul>
+<ul>
+   <li *ngFor= "let color of colors; let i = index">{{ i + 1 }} {{ color.name }}</li>
+</ul>
+<ul>
+    <li *ngFor= "let hero of heroes; let i = index">{{ i + 1 }} {{ hero }}</li>
+ </ul>
+ <app-courses></app-courses>

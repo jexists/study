@@ -8,17 +8,35 @@
  <!-- twowayBinding: 내가 입력한 데이터가 ts로 가서 html으로 보여줌 -->
  <!-- 위에 {{greeting에 내용이 그대로 나온다}} -->
 
- <!-- <input type="text"> -->
-<hr />
+<!-- 삽입식 바인딩 예제
+ <div>{{ content }}</div> //content 속성 반영
+ <textarea>{{ getSomeText() }}</textarea> //getsomeText 메서드 실행결과 반영
+ <a href="{{ someLink + "?who=angular" }}">link</a> //someLink속성+?who=angular 반영
+ <p> 1 + myVal = {{ 1 + myVal }} </p> //1+myVal속성 반영 -->
+
+<!-- 프로퍼티바인딩 예제
+ <p [textContent]="contents"></p>
+ <img [src]="./img.jpg" [width]="10*20">
+ <img [src]="imgUrl" width="10">
+ <img src="{{imgUrl}}" width="10"> -->
+
+<!--  이벤트 바인딩 예제 
+ <button type="button" (click)="confirm()">확인</button>
+ <div (mousemove)="printPosition($event)"></div>
+ <input type="text" (keyup)="myStr = $event.target.value"/>
+ <button type="button" (click)="clicked = true; callEvent($event)">확인</button> -->
+
+ <hr />
  <p>Directive</p>
  <p>앞에 *이 붙여있음</p>
-
  <p> {{hello}} </p>
  <!-- <p *ngIf="expression"></p> -->
+ <!-- <p> 1 + myVal = {{ 1 + myVal }} </p> -->
 
  <p *ngIf="hello">hello라는 내용이 있으면 나타나다</p> 
  <p *ngIf="hell">hell라는 것이 없기때문에 안나온다</p> 
  <!-- hello = ""; 안에 내용이 없을경우 -->
+ <P *ngIf="hello">내용이야기</P>
  <p *ngIf="!hell01">hell안에 내용이라는 것이 없지만 !반대일경우 나와라</p> 
  <p *ngIf="hello1; else otherTemplate"></p>
 
@@ -34,4 +52,3 @@
 -->
  <!-- //참과 거짓을 판결한다 -->
 
- ng for 

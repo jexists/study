@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HeroService } from './hero.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,13 @@ export class AppComponent {
   appButton() {
     console.log("app component.ts");
   }
+
+  fruit: string[] = ["apple", "banana", "cherry", "mango"];
+  colors = [{name:"red"}, {name:"blue"}, {name:"white"}];
+
+  heroes;
+  constructor( hero: HeroService ) {
+    this.heroes = hero.Hero;
+   }
+  // haha: [{name:"string"}] = [{name:"red"}, {name:"blue"}, {name:"white"}];
 }

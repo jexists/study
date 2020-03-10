@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'about',
   templateUrl: './about.component.html',
@@ -12,13 +13,12 @@ export class AboutComponent implements OnInit {
   hell = "";
   hell01 = "뭐가나올까";
   hello1 = "";
-
-  constructor() { }
-
+  
   ngOnInit(): void {
   }
+
   button() {
-    console.log('어바웃이댜 ㅋㅋ')
+    console.log('버튼클릭했다');
   }
 
 }
