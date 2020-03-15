@@ -748,6 +748,10 @@ export class CoursesComponent {
 
 Pipe 사용방식 (angular.io = pipe참고)
 
+-노출할 데이터를 간단하게 변환하거나 가공할 때 사용
+
+-기본제공: DatePipe, UpperCasePipe, LowerCasePipe,CurrencyPipe, PercentPipe
+
 ```typescript
 import { Component, OnInit } from '@angular/core';
 
