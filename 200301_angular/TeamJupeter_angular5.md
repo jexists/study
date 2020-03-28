@@ -787,6 +787,166 @@ export class CoursesComponent {
 }
 ```
 
+**Custom Pipes**
+
+이름.pipe.ts 파일 생성
+
+데코레이트 - 컴포넌트, 서비스,  파이프 어떤 역할인지 알려줌
+
+```
+@component({})
+@Pipe({})
+```
+
+```
+
+```
+
+```typescript
+//slice.pipe.ts (기본세팅)
+
+import { Pipe } from '@angular/core';
+@Pipe({
+    name: 'slice'
+})
+export class SliceText {
+}
+```
+
+PipeTransform - interface
+
+```typescript
+//slice.pipe.ts (implement 추가)
+import { Pipe, PipeTransform } from '@angular/core';
+@Pipe({
+    name: 'slice'
+})
+export class SliceText implements PipeTransform {
+}
+```
+
+```typescript
+//slice.pipe.ts (pipetransform interface 찾기)
+import { Pipe, PipeTransform } from '@angular/core';
+@Pipe({
+    name: 'slice'
+})
+
+export class SliceText implements PipeTransform {
+    transform(value: any, ...args: any[]):any {
+    }
+}
+```
+
+value : any - string 변경
+
+```typescript
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+    name: 'slice'
+})
+
+export class SliceText implements PipeTransform {
+    transform(value: string, ...args: any[]):any {
+     return value.substr(0, 20) + '...'
+     //처음에서 20번째까지 잘라서 뒤에 ...을 붙여라
+    }
+}
+```
+
+Pipe는 declaration 에 추가
+
+```typescript
+//app.module.ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'; //form input사용하기위해 import함
+
+import { AppComponent } from './app.component';
+import { AboutComponent } from './about/about.component';
+import { HeroService } from './hero.service';
+import { CoursesComponent } from './courses/courses.component';
+import { SliceText } from './courses/slice.pipe';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    AboutComponent,
+    CoursesComponent,
+    SliceText
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule //import해서 사용할려고
+  ],
+  providers: [HeroService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
 
-25유투브
+
+```typescript
+//slice.pipe.ts (파이널)
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+    name: 'slice'
+})
+export class SliceText implements PipeTransform {
+    transform(value: string):any {
+     return value.substr(0, 20) + '...'
+     //처음에서 20번째까지 잘라서 뒤에 ...을 붙여라
+    }
+}
+```
+
+```typescript
+//slice.pipe.ts (파이널)
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+    name: 'slice'
+})
+
+export class SliceText implements PipeTransform {
+    transform(value: string, limit?:number):any {
+    if (!limit){
+        return null;
+    }
+     return value.substr(0, limit) + '...'
+     //limit만큼 잘라라
+    }
+}
+```
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-courses',
+  template: `
+    <!-- <p> {{text | slice: '5' }} </p> -->
+  `,
+  styleUrls: ['./courses.component.css']
+})
+export class CoursesComponent {
+  text = `
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, voluptate.
+  `;
+}
+```
+
+```
+//25 custom Pipe만들기 에러
+ERROR in src/app/courses/courses.component.ts:37:11 - error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'undefined'.
+37     <p> {{text | slice: '5' }} </p>
+```
+
+# custom pipe 에러... :(

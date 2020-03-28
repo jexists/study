@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { HeroService } from './hero.service';
 import { CoursesComponent } from './courses/courses.component';
+import { SliceText } from './courses/slice.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    CoursesComponent
+    CoursesComponent,
+    SliceText
   ],
   imports: [
     BrowserModule,

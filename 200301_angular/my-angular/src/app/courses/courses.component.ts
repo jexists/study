@@ -34,7 +34,7 @@ import { Component, OnInit } from '@angular/core';
       {{ course.price | currency:'KRW'}} <br />
       {{ course.date |date:'shortDate'}} <br />
     </p>
-
+    <!-- <p> {{text | slice: '5' }} </p> -->
   `,
   styleUrls: ['./courses.component.css']
 })
@@ -47,7 +47,9 @@ export class CoursesComponent {
     date: new Date(2018,1,1),
   }
   email: string = "juae@naver.com";
-
+  text = `
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, voluptate.
+  `;
   title: string = "angular";
   register: string = "juae";
   imgUrl: string = "../img/img.jpg";
