@@ -950,3 +950,36 @@ ERROR in src/app/courses/courses.component.ts:37:11 - error TS2769: No overload 
 ```
 
 # custom pipe 에러... :(
+
+
+
+```html
+//parent.component.html
+<child [childProperty]="parentProperty"><child>
+```
+
+```typescript
+export class ParentComponent{
+parentProperty: sting;
+}
+```
+
+일반적인 html의 attribute은 w3c에서 만들어서 웹브라우저가 아는데
+
+우리가 만든  element의 attribute은 앵귤러 프레임워크가 만들어준다. 
+
+> (규칙: 만든 element의 attribute 은 자식/만든 element html의 ts파일에 정의되어야한다.)
+
+```html
+//child.component.html
+<img [src]="imgUrl">
+//src = w3c / imgUrl = 우리가 만든것
+```
+
+```typescript
+export class ChildComponent {
+imgUrl: string;
+childProperty:string;
+}
+```
+
