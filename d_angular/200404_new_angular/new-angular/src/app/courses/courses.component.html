@@ -1,1 +1,6 @@
-<app-angular-basic></app-angular-basic>
+<!-- <app-angular-basic [isSelected]="ParentSelected"></app-angular-basic> -->
+<!-- [자식 프로펄티]="부모 프로펄티" -->
+<!-- <button type="button" (click)="onClick()">ParentButton</button> -->
+
+<app-angular-basic (greeting)="onGreeting($event)"></app-angular-basic>
+

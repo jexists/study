@@ -1,4 +1,4 @@
-# Angular
+Angular
 
 #### VS Code 플로그인 (ctrl + shift + p)
 
@@ -980,6 +980,309 @@ parentProperty: sting;
 export class ChildComponent {
 imgUrl: string;
 childProperty:string;
+}
+```
+
+
+
+## input & output - 부모자식간의 데이터 전송
+
+**Input Property 흐름**
+
+> parentComponent.html => @input => parentComponent.ts => childComponent.ts => childComponent.html
+
+```html
+//courses.component.html (부모)
+<app-angular-basic [isSelected]="ParentSelected"></app-angular-basic>
+<!-- [자식 프로펄티]="부모 프로펄티" -->
+<button type="button" (click)="onClick()">ParentButton</button>
+```
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-courses',
+  templateUrl: './courses.component.html',
+  styleUrls: ['./courses.component.css']
+})
+export class CoursesComponent implements OnInit {
+  ParentSelected: boolean = true;
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+  onClick(){
+    this.ParentSelected = !this.ParentSelected;
+    console.log(this.ParentSelected);  
+  }
+}
+```
+
+```html
+//angular-basic.component.html (자식)
+<!-- <button type="button" (click)="onClick()" [disabled]="!isSelected">angular Basic Button</button> -->
+<button type="button" [disabled]="!isSelected">angular Basic Button</button>
+```
+
+```typescript
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-angular-basic',
+  templateUrl: './angular-basic.component.html',
+  styleUrls: ['./angular-basic.component.css']
+})
+export class AngularBasicComponent implements OnInit {
+  @Input() isSelected: boolean = true; 
+  //Input => 태그의 attribute로 사용하겠다고 Input Decorate를 지정
+  constructor() { }
+  ngOnInit(): void {
+  }
+  // onClick(){
+  //   this.isSelected = !this.isSelected;
+  //   console.log(this.isSelected);
+  // } => courses.component로 이동
+}
+```
+
+
+
+**Output Property 흐름**
+
+> childComponent.html(이벤트발생) => childComponent.ts  => @output  => parentComponent.html => parentComponent.ts 
+
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+```html
+//angular-basic.component(자식)
+<button type="button" (click)="onChildClick()">angular Basic Button</button>
+```
+
+```typescript
+//angular-basic.component(자식)
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+// import { EventEmitter } from 'protractor'; 
+//=> EventEmitter @angular/core에서 가져와야한다.
+
+@Component({
+  selector: 'app-angular-basic',
+  templateUrl: './angular-basic.component.html',
+  styleUrls: ['./angular-basic.component.css']
+})
+export class AngularBasicComponent implements OnInit {
+  @Output() greeting = new EventEmitter;
+  constructor() { }
+  ngOnInit(): void {
+  }
+  onChildClick(){
+    console.log('자식');
+    this.greeting.emit();
+    console.log(this.greeting); // 이벤트 보내고 있는거 확인
+  }
+}
+```
+
+```html
+//courses.component.html (부모)
+<app-angular-basic (greeting)="onGreeting()"></app-angular-basic>
+```
+
+```typescript
+//courses.component.ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-courses',
+  templateUrl: './courses.component.html',
+  styleUrls: ['./courses.component.css']
+})
+export class CoursesComponent implements OnInit {
+  constructor() { }
+  ngOnInit(): void {
+  }
+  onGreeting(){
+    console.log('부모');    
+  }
+}
+```
+
+
+
+---
+
+## 데이터 전송하기
+
+```typescript
+//angular-basic (자식)
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-angular-basic',
+  templateUrl: './angular-basic.component.html',
+  styleUrls: ['./angular-basic.component.css']
+})
+export class AngularBasicComponent implements OnInit {
+  @Output() greeting = new EventEmitter;
+  constructor() { }
+  ngOnInit(): void {
+  }
+  onChildClick(){
+    console.log('자식');
+    this.greeting.emit({
+      name: "superman",
+      level: "beginner",
+      tel: "010-1245-1233"
+    });
+    //이벤트를 보낼수있고 여러가지로 보낼수 있음
+    console.log(this.greeting);
+  }
+}
+```
+
+```html
+//courses.component (부모)
+<app-angular-basic (greeting)="onGreeting($event)"></app-angular-basic>
+```
+
+```typescript
+//courses.component.ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-courses',
+  templateUrl: './courses.component.html',
+  styleUrls: ['./courses.component.css']
+})
+export class CoursesComponent implements OnInit {
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+  onGreeting(student){
+    //(greeting)="onGreeting($event)"에서 받은 이벤트 = student(내가 정함)
+    console.log(student); //{name: "superman", level: "beginner", tel: "010-1245-1233"}
+    console.log(student.name); //superman
+  }
+}
+```
+
+```typescript
+//typeScript형식
+onGreeting(student: {name: string, level:string, tel:string}){
+    //(greeting)="onGreeting($event)"에서 받은 이벤트 = student
+    // console.log('부모');
+    console.log(student);
+    console.log(student.name); 
+}
+```
+
+```typescript
+//정리
+//interface registered {
+//	name: string,
+//	level: string,
+//	tel: string
+//} => 보내는 사람쪽에서 지정 (angular-basic.ts)
+export class AngularBasicComponent implements OnInit {
+	onGreeting(student: {name: registered){
+    	console.log(student);
+    	console.log(student.name); 
+	}
+}
+```
+
+```typescript
+//angular-basic.component 
+export interface registered {
+//다른 곳에서 사용해야해서 export해야함
+	name: string,
+	level: string,
+	tel: string
+} 
+```
+
+```typescript
+//final angular-basic.component
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+export interface registered {
+	name: string,
+	level: string,
+	tel: string
+}
+@Component({
+  selector: 'app-angular-basic',
+  templateUrl: './angular-basic.component.html',
+  styleUrls: ['./angular-basic.component.css']
+})
+
+export class AngularBasicComponent {
+  @Output() greeting = new EventEmitter;
+  onChildClick(){
+    this.greeting.emit({
+      name: "superman",
+      level: "beginner",
+      tel: "010-1245-1233"
+    });
+  }
+}
+```
+
+```typescript
+//정리
+import { registered } from './angular-basic/angular-basic.component';
+
+export class AngularBasicComponent implements OnInit {
+	onGreeting(student: registered){
+    	console.log(student);
+    	console.log(student.name); 
+	}
+}
+```
+
+
+
+
+
+# ERROR & 고민
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+ selector: 'darth',
+ template: `
+  //<luke [lukeInput]="darthData" (lukeOutput)="darthMethod()"></luke>
+  //<luke #luke [lukeInput]="darthData" (lukeOutput)="darthMethod(luke.lukeInput)"></luke> => 어떤 종류의 Output을 내는지 몰라서 앵귤러 알수없다.(실행할 방법이 없다)
+	<luke #luke [lukeInput]="darthData" (click)="darthMethod(luke.lukeInput)"></luke> => click 메소드 
+	`
+})
+export class DarthComponent {
+    darthData: string = "I`m your father."
+    
+    darthMethod(luke) {
+        console.log(luke);
+    }
+}
+```
+
+[lukeInput], (lukeOutput) => LukeComponent에 정의
+
+="darthData", ="darthMethod()" => DarthComponent에 정의
+
+```typescript
+import { Component, Input, Output } from '@angular/core';
+
+@Component({
+	selector:'luke',
+	template:`
+	<p>I'm Luke hahaha</p>
+	`
+})
+
+export class LukeComponent {
+	@Input() lukeInput;
+	@Output() lukeOutput;
 }
 ```
 
