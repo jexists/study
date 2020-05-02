@@ -1,0 +1,19 @@
+
+
+<!-- 
+<section class="title">
+  <div class="display">
+    <app-time-display [inputData]="present"></app-time-display>
+    <app-buttons (clickEvent)="onStart($event)"></app-buttons>
+    데이터를 받을려면 $event 적어야함
+  </div>
+</section> -->
+
+
+<section class="title">
+  <div class="display">
+    <app-time-display [inputData]="present"></app-time-display>
+    <app-buttons (clickEvent)="onButton($event)"></app-buttons>
+    <!-- 데이터를 받을려면 $event 적어야함 -->
+  </div>
+</section>
