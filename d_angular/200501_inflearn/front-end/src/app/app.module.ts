@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SectionComponent } from './section/section.component';
 import { TimeDisplayComponent } from './section/time-display/time-display.component';
 import { ButtonsComponent } from './section/buttons/buttons.component';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,12 @@ import { ButtonsComponent } from './section/buttons/buttons.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    LayoutModule
+    //import * as LayoutModule from './a.module' 의미가 같다.
+    //LayoutModule.TestComponent를 불러올수있다.
+    //LayoutModule에서 export해야 AppComponent에 사용이 가능하다.
   ],
   providers: [],
   bootstrap: [AppComponent]
