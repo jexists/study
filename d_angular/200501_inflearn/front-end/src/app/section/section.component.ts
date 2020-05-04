@@ -7,16 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SectionComponent implements OnInit {
 
-  present: string ='20';
+  // present: string ='20';
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onButton(time: string):void {
-    // console.log(time);
-    this.present = time;
+  // onButton(time: string):void {
+  //   // console.log(time);
+  //   this.present = time;
     
-  }
+  // }
 
 }

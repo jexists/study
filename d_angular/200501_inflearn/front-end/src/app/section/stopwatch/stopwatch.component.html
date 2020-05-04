@@ -1,11 +1,5 @@
 
 
-<router-outlet></router-outlet>
-
-<!-- path => stopwatch -->
-<!-- <app-stopwatch></app-stopwatch> -->
-
-
 <!-- 
 <section class="title">
   <div class="display">
@@ -16,10 +10,14 @@
 </section> -->
 
 
-<!-- <section class="title">
+<section class="title">
   <div class="display">
     <app-time-display [inputData]="present"></app-time-display>
-    <app-buttons (clickEvent)="onButton($event)"></app-buttons> -->
+    <app-buttons (clickEvent)="onButton($event)"></app-buttons>
     <!-- 데이터를 받을려면 $event 적어야함 -->
-  <!-- </div>
-</section> -->
+  </div>
+
+  <!-- <a href=""></a> -->
+  <!-- <a [routerLink]="'/clock '" >시계로 이동</a> -->
+  <a [routerLink]="'/clock'">시계로 이동</a>
+</section>
