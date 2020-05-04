@@ -1,0 +1,23 @@
+
+
+.title {
+  width: 100%;
+  height: 80vh;
+  background-color: #fff;
+
+  .display {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &.date_text {
+      font-size: 3rem;
+      font-weight: bold;
+      .small {
+        font-size: 2rem;
+        font-weight: normal;
+      }
+    }
+  }
+}
