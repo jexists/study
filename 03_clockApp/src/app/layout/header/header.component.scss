@@ -1,0 +1,18 @@
+
+
+#headBox{
+  width: 100%;
+  height: 10vh;
+  margin: 0;
+  background-color: #433a83;
+  color: #fff;
+  text-align: center;
+  line-height: 10vh;
+  .title {
+    // background-color: #fff;
+    text-transform: capitalize;
+    font-size: 2rem;
+    margin : 0;
+    padding: 0;
+  }
+}
