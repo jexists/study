@@ -2,8 +2,22 @@
 
 .title {
   width: 100%;
-  height: 80vh;
-  background-color: #fff;
+  height: 90vh;
+  background-image: linear-gradient(#5d57b3, #9965c5);
+  .linkbtn {
+    display:flex;
+    flex-direction: row;
+    padding-right: 50px;
+    align-items: flex-end !important;
+    button {
+      width: 150px;
+      height: 40px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      line-height: 38px;
+      border-radius: 10px;
+    }
+  }
 
   .display {
     width: 100%;
@@ -15,6 +29,7 @@
   .linkbtn {
     width: 100%;
     padding-top: 50px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;

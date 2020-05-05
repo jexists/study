@@ -1,8 +1,55 @@
-.time_text {
-  font-size: 3rem;
-  font-weight: bold;
-  .small {
-    font-size: 2rem;
-    font-weight: normal;
-  }
+.time {
+  display: flex;
+  width: 350px;
+  height: 350px;
+  margin-top: 60px;
+  // margin-bottom: 80px;
+  padding: 30px;
+  padding-top: 50px;
+  box-sizing: border-box;
+  border: 5px solid #fff;
+  border-radius: 100%;
+  box-shadow: 0 0 50px #433a83;
 }
+.time_etc {
+  font-weight: bold;
+  color: #fff;
+  float: left;
+  font-size: 5rem;
+}
+.time_text {
+  width: 85px;
+  font-weight: bold;
+  text-align: right;
+  color: #fff;
+  float: left;
+  font-size: 5rem;
+}
+  .small {
+    float: left;
+    display: block;
+    width: 85px;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: normal;
+    margin-top: 115px;
+  }
+
+  .btn {
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      // display: ;
+      width: 80px;
+      height: 40px;
+      margin: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      line-height: 38px;
+      border-radius: 10px;
+      margin-top: 40px;
+    }
+  }
