@@ -22,8 +22,8 @@ import { RouterModule } from '@angular/router';
     // ButtonsComponent,
   ],
   imports: [
-    RouterModule,
-    //라우터 최상단에다가 적는다.
+    // RouterModule,
+    //라우터 최상단에다가 적지만 라우터끼리 모을려고(기능, 설정값) appRoutingModule에다가 담는다.
     BrowserModule,
     AppRoutingModule,
 

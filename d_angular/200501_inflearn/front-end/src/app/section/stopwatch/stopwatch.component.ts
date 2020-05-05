@@ -5,17 +5,33 @@ import { PageToggleService } from 'src/app/share/page-toggle.service';
 @Component({
   selector: 'app-stopwatch',
   templateUrl: './stopwatch.component.html',
-  styleUrls: ['./stopwatch.component.scss']
+  styleUrls: ['./stopwatch.component.scss'],
+  providers: [
+    PageToggleService
+  ]
 })
 export class StopwatchComponent implements OnInit {
 
   present: string ='20';
   constructor(
     private router: Router,
-    private pageToggle: PageToggleService
+    public pageToggle: PageToggleService
   ) { }
 
   ngOnInit(): void {
+  }
+  ngAfterContentInit(): void {
+    console.log('2ng on after init');
+  }
+  ngAfterContentChecked(): void {
+    console.log('2ng on after content checked');
+  }
+
+  ngAfterViewInit(): void {
+    console.log('2ng on after view init');
+  }
+  ngAfterViewChecked(): void {
+    console.log('2ng on after view check');
   }
 
   onButton(time: string):void {

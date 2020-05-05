@@ -24,7 +24,7 @@ import { PageToggleService } from 'src/app/share/page-toggle.service';
     CommonModule
   ],
   providers: [
-    PageToggleService
+    // PageToggleService
   ]
 })
 export class StopwatchModule { }

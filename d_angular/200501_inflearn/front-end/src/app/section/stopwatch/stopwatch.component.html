@@ -22,4 +22,9 @@
   <a [routerLink]="'/clock'">시계로 이동</a>
   <br />
   <button type="button" (click)="goClock()">시계로 이동</button>
+
+  <button (click)="pageToggle.plusCount()">
+    숫자확인테스트
+  </button>
+  <p>{{pageToggle.routingCount}}</p>
 </section>

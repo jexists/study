@@ -4,6 +4,12 @@
   <span class="small">. <span *ngIf="msTime < 10">00</span> {{msTime}}</span>
 </p> -->
 <p class="time_text">
-  {{minTime}} : {{secTime}} 
-  <span class="small">. {{msTime}}</span>
+  {{min}} : {{sec}} 
+  <span class="small">. {{ms}}</span>
 </p>
+
+<div>
+  <button type="button" class="start_btn" (click)="timeStart()">시작</button>
+  <button type="button" class="stop_btn" (click)="timeStop()">중지</button>
+  <button type="button" class="reset_btn" (click)="timeReset()">초기화</button>
+</div>

@@ -13,7 +13,11 @@ export class PageToggleService {
     private router: Router
   ) { }
 
-  goPage(target){
+  plusCount(): void {
+    this.routingCount++;
+  }
+
+  goPage(target):void {
 
     this.routingCount++;
     this.router.navigateByUrl(target)
