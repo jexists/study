@@ -15,10 +15,13 @@ import { HeroService } from '../core/hero.service';
   styleUrls: [ './hero-search.component.scss' ]
 })
 export class HeroSearchComponent implements OnInit {
+
   heroes$: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private heroService: HeroService) {}
+  constructor(
+    private heroService: HeroService
+    ) {}
 
   // 사용자가 입력한 검색어를 옵저버블 스트림으로 보냅니다.
   search(term: string): void {
