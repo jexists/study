@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <nav class="menu">
+    <a href="#" class="menu-link" data-menu="1">menu 1</a>
+    <a href="#" class="menu-link" data-menu="2">menu 2</a>
+    <a href="#" class="menu-link" data-menu="3">menu 3</a>
+  </nav>
+
+  <script>
+    var menuLinks = document.querySelectorAll('.menu-link');
+
+    function clickMenuHandler(){
+      //이름 생성룰: onClickMenu / clickMenuHandler / clickMenuListener
+      //on , handler, listener => 이벤트 리스널 함수
+      console.log('click');
+      // menuLink[1].classList.add('menu-active'); 
+      // menuLinks.classList.remove('menu-active');
+      //jQuery에서 하는 스타일 
+      for (var i = 0; i < menuLinks.length; i++) {
+        menuLink[i].classList.remove('menu-active');
+      } 
+      //메뉴액티브 찾은후 지우기 -> 속도
+      var activeMenu = document.querySelector('.menu-active');
+      if (activeMenu) {
+        activeMenu.classList.remove('menu-active');
+      }
+      //
+      var currentMenu;
+
+      this.classList.add('menu-active');
+      //addEventListener을 가르키는 것 / 클릭한것 = this
+    }
+
+    for (var i = 0; i < menuLinks.length; i++){
+      menuLinks.addEventListener('click',clickMenuHandler);
+    }
+
+  </script>
+
+  <script>
+    var currentMenu;
+    var menuLinks = document.querySelectorAll('.menu-link');
+
+    function clickMenuHandler() {
+      if (currentMenu){
+        currentMenu.classList.remove('menu-active');
+      }
+      this.classList.add('menu-active');
+      currentMenu = this;
+    }
+  </script>
+</body>
+</html>
+
+
