@@ -13,7 +13,7 @@ const rabbit = {
   color: 'white',
   size: 'null',
   birthDate: new Date(),
-  symbol: Symbol('id'),
+  // symbol: Symbol('id'),
   jump: () => {
     console.log(`${name} can jump!`);
     
@@ -31,8 +31,9 @@ console.log(json); //{'name':'tori', 'color':'white'}
 
 json = JSON.stringify(rabbit, (key, value) => {
   console.log((`key: ${key}, value: ${value}`));
+  return value;
 });
-console.log(json); 
+console.log(json);
 
 
 json = JSON.stringify(rabbit, (key, value) => {
@@ -45,7 +46,7 @@ console.log(json);
 // 2. JSON to Object
 // parse(json)
 json = JSON.stringify(rabbit);
-const obj = JSON.parse(json);
+let obj = JSON.parse(json);
 console.log(obj);
 rabbit.jump();
 // obj.jump() //error
@@ -54,15 +55,24 @@ console.log(rabbit.birthDate.getDate());
 // console.log(obj.birthDate.getDate()); //error
 
 //reviver
-const obj = JSON.parse(json, (key, value) => {
+obj = JSON.parse(json, (key, value) => {
+  console.log((`key: ${key}, value: ${value}`));
+  return value;
+});
+// console.clear();
+console.log(obj);
+
+obj = JSON.parse(json, (key, value) => {
   console.log((`key: ${key}, value: ${value}`));
   return value;
 });
 console.log(obj);
+console.log(rabbit.birthDate.getDate());
+// console.log(obj.birthDate.getDate());
 
-const obj = JSON.parse(json, (key, value) => {
+obj = JSON.parse(json, (key, value) => {
   console.log((`key: ${key}, value: ${value}`));
-  return key === 'birthDat' ? new Date(value) : value;
+  return key === 'birthDate' ? new Date(value) : value;
 });
 console.log(obj);
 console.log(rabbit.birthDate.getDate());
