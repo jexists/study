@@ -85,3 +85,12 @@ console.log(colors); //red, white, gray, red
 console.log(colors.indexOf('red')); //0 => 첫번째 값만 
 console.log(colors.lastIndexOf('red')); //3 => 마지막 값만 
 
+
+// document.getElementsByClassName
+// document.getElementsByName
+// document.getElementById
+// document.getElementsByTagName
+// document.getElementsByTagNameNS
+
+// document.querySelector
+// document.querySelectorAll

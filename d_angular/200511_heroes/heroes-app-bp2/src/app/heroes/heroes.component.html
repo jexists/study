@@ -21,7 +21,7 @@
   
   <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
 
-  <h2>내 버킷리스트</h2>
+  <h2>my heroes</h2>
   <ul class="heroes">
     <li *ngFor="let hero of  heroes">
       <a href="#" routerLink="/detail/{{hero.id}}">
@@ -32,11 +32,11 @@
     </li>
   </ul>
   <div>
-    <label>버킷리스트:
+    <label>Hero name:
       <input #heroName />
     </label>
     <!-- (click) 이벤트를 감지하면 현재값을 인자로 전달하면서 add() 함수를 실행하고, 입력 필드를 비웁니다. -->
     <button (click)="add(heroName.value); heroName.value=''">
-      추가하기
+      add
     </button>
   </div>
