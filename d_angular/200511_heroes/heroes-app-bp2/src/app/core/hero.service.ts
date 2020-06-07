@@ -23,7 +23,7 @@ export class HeroService {
   // }
 
   private log(message: string) {
-    this.messageService.add(`History: ${message}`);
+    this.messageService.add(`HeroServicee: ${message}`);
   }
   private heroesUrl = 'api/heroes';
 
@@ -41,7 +41,7 @@ export class HeroService {
   getHeroes (): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
-        tap(_ => this.log('버킷리스트 확인')),
+        tap(_ => this.log('fetched heroes')),
         catchError(this.handleError<Hero[]> ('getHeroes', []))
       );
   }
@@ -55,7 +55,7 @@ export class HeroService {
   getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
-      tap(_ => this.log(`${id}번째로 가고싶은 여행지 이동`)),
+      tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
     );
   }
@@ -63,7 +63,7 @@ export class HeroService {
   /** PUT: 서버에 저장된 히어로 데이터를 변경 */
   updateHero (hero: Hero): Observable<any> {
     return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap(_ => this.log(`${hero.id}번째 버킷리스트 수정`)),
+      tap(_ => this.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
     );
   }
@@ -79,7 +79,7 @@ export class HeroService {
   /** POST: 서버에 새로운 히어로를 추가 */
   addHero (hero: Hero): Observable<Hero> {
     return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap((newHero: Hero) => this.log(`${newHero.id}번째 버킷리스트 추가`)),
+      tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
       catchError(this.handleError<Hero>('addHero'))
     );
   }
@@ -90,7 +90,7 @@ export class HeroService {
     const url = `${this.heroesUrl}/${id}`;
 
     return this.http.delete<Hero>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`${id}번째 버킷리스트 삭제`)),
+      tap(_ => this.log(`deleted hero id=${id}`)),
       catchError(this.handleError<Hero>('deleteHero'))
     );
   }

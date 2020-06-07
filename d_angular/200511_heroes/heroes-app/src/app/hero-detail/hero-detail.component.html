@@ -1,10 +1,10 @@
 
 <div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
+  <h2>{{hero.name | uppercase}} 버킷리스트</h2>
+  <div><span>순위: </span>{{hero.id}}</div>
   <div>
-    <label for="#">name:
-      <input [(ngModel)]="hero.name" type="text" placeholder="name" />
+    <label for="#">버킷리스트:
+      <input [(ngModel)]="hero.name" type="text" placeholder="버킷리스트" />
     </label>
   </div>
 </div>
