@@ -282,7 +282,9 @@ export class AppComponent {
 
 #### 1) 단방향바인딩
 
->**1-1삽입식 {{}} - interpolation**
+**1-1삽입식 {{}} - interpolation**
+
+
 
 -문자열로 변환
 
