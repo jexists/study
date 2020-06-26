@@ -31,22 +31,39 @@ function findShort(word) {
 //console.log(findShort('dkfjdlf dfjid dff'));
 /////////////////////////////////////////////////
 
-
 // 단어 지우기
-function addWord(w) {
+function eraseWord(w) {
   let arr = w.split('HA');
+  console.log(arr);
   let sentence = '';
   for (let word of arr) {
-    if (word !== ''){sentence += word+' '}
+    if (word !== ''){sentence += word + ' '}
   }
   return sentence.trim();
   // 맨 뒤 스페이스 공백 지우기
   // return sentence;
 }
-console.log(addWord('dgHAHAHAkha gkHAdgHAHA'));
-
+// console.log(eraseWord('dgHAHAHAkha gkHAdgHAHA'));
+/////////////////////////////////////////////////
   
-// 수박 =========================
+// 보안 숫자 숨기기
+function maskify(n) {
+  let len = n.length;
+  if (len <= 4){
+    return n;
+  } else {
+    let mySlice = n.toString().slice(len - 4, len)
+    let newNum = '';
+    for(let i = 0; i < len-4; i++) {
+      newNum += '#';
+    } 
+    return newNum += mySlice;
+  }
+}
+// console.log(maskify("33444dd43"));
+/////////////////////////////////////////////////
+
+// 글자돌리기 =========================
 // ERROR
 function solution(n) {
   var answer = '';
@@ -64,7 +81,7 @@ function solution(n) {
   return answer;
 }
 solution(8);
-/////////////////////////////////////////////////
+
 function solution(n) {
   var answer = '';
   let watermelon = '';
@@ -77,3 +94,4 @@ function solution(n) {
 }
 solution(8);
 /////////////////////////////////////////////////
+
