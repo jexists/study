@@ -63,6 +63,41 @@ function maskify(n) {
 // console.log(maskify("33444dd43"));
 /////////////////////////////////////////////////
 
+//짝수는 대문자 홀수는 소문자 변환 index = 0 공백은 포함x
+function toCapitalSmall(string) {
+  let arr = string.split(' ');
+  //split = array->string
+  let fullWord = '';
+  arr.forEach(function(v, i){
+    let split = arr[i].split('');
+    let newSplit = split.map(function(alphabet, num){
+      if(num % 2 == 0){
+        //짝수인덱스 -> 대문자
+        return alphabet.toUpperCase();
+      } else {
+        return alphabet.toLowerCase();
+      }
+    });
+    fullWord += ' ' + newSplit.join('')
+  });
+  return fullWord.trim();
+}
+// console.log(toCapitalSmall('is it correct it hard'));
+
+function toCapSm(string){
+  let fullword = string.split(' ').map((x, i) => {
+    let word = x.split('').map((y, num) => {
+      if (num % 2 == 0) return y.toUpperCase()
+        else return y.toLowerCase()
+    });
+    return word.join('')
+  });
+  return fullword.join(' ');
+}
+// console.log(toCapSm("idfdfsdfs dfdf"));
+/////////////////////////////////////////////////
+
+
 // 글자돌리기 =========================
 // ERROR
 function solution(n) {
