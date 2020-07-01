@@ -1,0 +1,29 @@
+
+body, html {
+  background-color: #cfcfcf;
+}
+.nav {
+  margin: auto;
+  margin-top: 30px;
+  width: 180px;
+  height: 30px;
+  border: 2px solid #444;
+  /* background-color: #444; */
+  border-radius: 30px;
+  overflow: hidden;
+}
+.nav a {
+  display: block;
+  float: left;
+  width: calc(50% - 1px);
+  text-align: center;
+  line-height: 32px;
+  /* color: #fff; */
+}
+.nav a:first-of-type {
+  border-right: 2px solid #444;
+}
+.nav a:hover {
+  background-color: #444;
+  color: #fff;
+}
