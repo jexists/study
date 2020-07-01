@@ -6,6 +6,7 @@ import { HashRouter, Route } from 'react-router-dom';
 import "./app.css";
 import Home from './routes/Home';
 import About from './routes/About';
+// import Detail from './routes/Detail';
 import Detail from './routes/Detail';
 import Nav from './components/Nav';
 
