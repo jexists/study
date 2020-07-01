@@ -18,32 +18,37 @@ class App extends React.Component{
         data: { movies }
       }
     } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
-    // console.log(movies);
-    // this.setState({movies: movies}) //state: axios
-    // this.setState({ movies }) //위에 코드랑 같은 의미
-    this.setState({ movies, isLoaing: false });
+    console.log(movies);
+    this.setState({ movies, isLoading: false });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getMovies();
   }
 
-  render(){
+  render() {
     const { isLoading, movies } = this.state;
     return (
-      // <div>{isLoading ? "로딩중..." : "로딩완료"}</div>
-      <div>{isLoading ? "로딩중..." : movies.map(movie => (
-          // console.log(movie),
-          <Movie
-            key={movie.id}
-            id={movie.id}
-            year={movie.year}
-            title={movie.title}
-            summary={movie.summary}
-            poster={movie.medium_cover_image}
-          />
-        ))}
-      </div>
+      <section className="container">
+        {isLoading ? ( 
+          <div className="loader">
+            <span>"로딩중..."</span>
+          </div> 
+        ) : ( 
+          <div className="movies">
+            {movies.map(movie => (
+              <Movie 
+                key={movie.id}
+                id={movie.id}
+                year={movie.year}
+                title={movie.title}
+                summary={movie.summary}
+                poster={movie.medium_cover_image}
+              />
+            ))}
+          </div>
+        )}
+      </section>
     );
   }
 }
