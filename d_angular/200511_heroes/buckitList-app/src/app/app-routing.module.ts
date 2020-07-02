@@ -7,10 +7,10 @@ import { DashboardComponent } from './layout/dashboard/dashboard.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  {path: '/dashboard', component: DashboardComponent},
-  {path: '/detail/:id', component: BuckitListDetailComponent},
-  {path: '/buckitlists', component: BuckitListsComponent},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'detail/:id', component: BuckitListDetailComponent},
+  {path: 'buckitlists', component: BuckitListsComponent},
 ];
 
 @NgModule({
