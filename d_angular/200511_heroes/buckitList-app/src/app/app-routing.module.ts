@@ -8,13 +8,13 @@ import { DashboardComponent } from './layout/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'detail/:id', component: BuckitListDetailComponent},
-  {path: 'buckitlists', component: BuckitListsComponent},
+  {path: '/dashboard', component: DashboardComponent},
+  {path: '/detail/:id', component: BuckitListDetailComponent},
+  {path: '/buckitlists', component: BuckitListsComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
