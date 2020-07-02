@@ -6,21 +6,21 @@ import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
 
-import { Hero } from '../core/hero';
-import { HeroService } from '../core/hero.service';
+import { BuckitList } from '../../core/buckitlist';
+import { BuckitListService } from '../../core/bucklist.service';
 
 @Component({
-  selector: 'app-hero-search',
-  templateUrl: './hero-search.component.html',
-  styleUrls: [ './hero-search.component.scss' ]
+  selector: 'app-buckitlist-search',
+  templateUrl: './buckitlist-search.component.html',
+  styleUrls: [ './buckitlist-search.component.scss' ]
 })
-export class HeroSearchComponent implements OnInit {
+export class BuckitListSearchComponent implements OnInit {
 
-  heroes$: Observable<Hero[]>;
+  buckitLists$: Observable<BuckitList[]>;
   private searchTerms = new Subject<string>();
 
   constructor(
-    private heroService: HeroService
+    private buckitListService: BuckitListService
     ) {}
 
   // 사용자가 입력한 검색어를 옵저버블 스트림으로 보냅니다.
@@ -29,7 +29,7 @@ export class HeroSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.heroes$ = this.searchTerms.pipe(
+    this.buckitLists$ = this.searchTerms.pipe(
       // 연속된 키입력을 처리하기 위해 300ms 대기합니다.
       debounceTime(300),
 
@@ -37,7 +37,7 @@ export class HeroSearchComponent implements OnInit {
       distinctUntilChanged(),
 
       // 검색어가 변경되면 새로운 옵저버블을 생성합니다.
-      switchMap((term: string) => this.heroService.searchHeroes(term)),
+      switchMap((term: string) => this.buckitListService.searchBuckitList(term)),
     );
   }
 }

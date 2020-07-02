@@ -1,0 +1,14 @@
+<div id="search">
+  <div class="search-item">
+    <h4><label for="search-box">검색</label></h4>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  </div>
+    
+  <ul class="result">
+    <li *ngFor="let buckitlist of buckitLists$ | async">
+      <a routerLink="/detail/{{buckitlist.id}}" class="buckitlists">
+        {{buckitlist.name}}
+      </a>
+    </li>
+  </ul>
+</div>

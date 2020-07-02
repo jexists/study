@@ -1,0 +1,21 @@
+
+  <h3>all buckitList</h3>
+  <div class="add">
+    <label>
+      <input #buckitlistName />
+    </label>
+    <!-- (click) 이벤트를 감지하면 현재값을 인자로 전달하면서 add() 함수를 실행하고, 입력 필드를 비웁니다. -->
+    <button (click)="add(buckitlistName.value); buckitlistName.value=''">
+      버킷리스트 추가
+    </button>
+  </div>
+  <ul class="my-buckitlist">
+    <li *ngFor="let buckitlists of  buckitLists" class="buckitlists">
+      <a href="#" routerLink="/detail/{{buckitlists.id}}">
+        <span class="badge">{{buckitlists.id}}</span> {{buckitlists.name}}
+      </a>
+      <button class="delete" title="delete_hero"
+  (click)="delete(buckitlists)">x</button>
+    </li>
+  </ul>
+  

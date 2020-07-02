@@ -1,13 +1,14 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Hero } from './hero';
+import { BuckitList } from './buckitlist';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const heroes = [
+    const buckitLists = [
       { id: 11, name: '세계여행하기' },
       { id: 12, name: '국내여행 완전정보' },
       { id: 13, name: '유튜브 내 채널 개설하기' },
@@ -19,13 +20,13 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 19, name: '좋아하는 연예인과 사진찍기' },
       { id: 20, name: '악기 한개 마스터하기' }
     ];
-    return {heroes};
+    return { buckitLists };
   }
 
-  // 히어로 객체가 항상 id 프로퍼티를 갖도록 getId 메소드를 오버라이드 합니다.
-  // 히어로 목록이 비어있다면 이 메소드는 초기값(11)을 반환합니다.
-  // 히어로 목록이 비어있지 않으면 히어로 id의 최대값에 1을 더해서 반환합니다.
-  genId(heroes: Hero[]): number {
-    return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
+  // 버킷리스트 객체가 항상 id 프로퍼티를 갖도록 getId 메소드를 오버라이드 합니다.
+  // 버킷리스트 목록이 비어있다면 이 메소드는 초기값(11)을 반환합니다.
+  // 버킷리스트 목록이 비어있지 않으면 버킷리스트 id의 최대값에 1을 더해서 반환합니다.
+  genId(buckitLists: BuckitList[]): number {
+    return buckitLists.length > 0 ? Math.max(...buckitLists.map(buckitList => buckitList.id)) + 1 : 11;
   }
 }

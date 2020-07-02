@@ -14,5 +14,7 @@ export class MessageService {
   }
   clear() {
     this.messages = [];
+    document.querySelector('.msg').classList.add('hidden');
+    document.querySelector('.data').classList.add('w-100');
   }
 }

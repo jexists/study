@@ -1,0 +1,14 @@
+
+<div *ngIf="buckitList" class="detail">
+  <h3>{{buckitList.name | uppercase}}</h3>
+  <div class="buckitId">{{buckitList.id}}<span>번째 버킷리스트</span></div>
+  <div>
+    <label for="#">
+      <input [(ngModel)]="buckitList.name" type="text" placeholder="버킷리스트" />
+    </label>
+  </div>
+</div>
+<div class="detailBtn">
+  <button type="button" (click)="goBack()">뒤로가기</button>
+  <button type="button" (click)="save()">수정하기</button>
+</div>

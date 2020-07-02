@@ -8,20 +8,20 @@ import { InMemoryDataService }  from './core/in-memory-data.service';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { MessageComponent } from './message/message.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { BuckitListsComponent } from './layout/buckitlists/buckitlists.component';
+import { BuckitListDetailComponent } from './layout/buckitlist-detail/buckitlist-detail.component';
+import { MessageComponent } from './layout/message/message.component';
+import { DashboardComponent } from './layout/dashboard/dashboard.component';
+import { BuckitListSearchComponent } from './layout/buckitlist-search/buckitlist-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
+    BuckitListsComponent,
+    BuckitListDetailComponent,
     MessageComponent,
     DashboardComponent,
-    HeroSearchComponent
+    BuckitListSearchComponent
   ],
   imports: [
     BrowserModule,

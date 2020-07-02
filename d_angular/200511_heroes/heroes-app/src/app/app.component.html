@@ -1,10 +1,13 @@
 <div class="wrap">
-  <h1>{{title}}</h1>
-  <nav>
-    <a href="#" routerLink="/dashboard">홈으로</a>
-    <a href="#" routerLink="/heroes">버킷리스트</a>
-  </nav>
-  <!-- <app-heroes></app-heroes> -->
-  <router-outlet></router-outlet>
-  <app-message></app-message>
+  <div class="data">
+    <h1 class="title">{{title}}</h1>
+    <nav class="nav-link">
+      <a href="#" class="nav-home" routerLink="/dashboard">home</a>
+      <a href="#" class="nav-buckit" routerLink="/buckitlists">buckitlist</a>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="msg">
+    <app-message></app-message>
+  </div>
 </div>

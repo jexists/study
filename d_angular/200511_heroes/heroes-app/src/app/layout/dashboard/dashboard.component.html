@@ -1,0 +1,9 @@
+<h3>top buckitlists</h3>
+<div class="top-buckitlist">
+  <a *ngFor="let buckitList of buckitLists" class="buckitlists" routerLink="/detail/{{buckitList.id}}">
+    <div class="module">
+      <h4>{{buckitList.name}}</h4>
+    </div>
+  </a>
+</div>
+<app-buckitlist-search></app-buckitlist-search>
