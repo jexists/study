@@ -24,7 +24,7 @@ class Detail extends React.Component {
             <h5 className="detail_year">{location.state.year}</h5>
             <ul className="detail_genres">
               {location.state.genres.map((genre, index) => (
-                <li key={index} className="genres">{genre}</li>
+                <li key={index} className="genres">#{genre}</li>
               ))}
             </ul>
             <p className="detail_summary">{location.state.summary}</p>

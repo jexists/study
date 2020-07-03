@@ -20,6 +20,7 @@
 .detail_year{
   font-size: 1.5rem;
   margin-top: 15px;
+  color: #777;
 }
 .detail_genres{
   margin-top: 10px;
@@ -34,4 +35,13 @@
   width: 100%;
   margin-top: 10px;
   font-size: 1.1rem;
+}
+.detail_summary:before,
+.detail_summary::before {
+  content: " ";
+  display: block;
+  border-top: 2px solid #777;
+  opacity: 0.5;
+  margin-top: -5px;
+  margin-bottom: 7px;
 }

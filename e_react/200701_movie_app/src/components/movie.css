@@ -41,6 +41,7 @@
 
 .movie_year {
   margin-top: 5px;
+  color: #777;
 }
 .movie_genres {
   display: flex;
@@ -50,10 +51,21 @@
 
 .genres {
   margin-right: 5px;
+  color: #777;
 }
 
 .movie_summary {
   width: 100%;
-  margin-top: 5px;
+  margin-top: 10px;
   word-break: keep-all;
+}
+
+.movie_summary:before,
+.movie_summary::before {
+  content: " ";
+  display: block;
+  border-top: 2px solid #777;
+  opacity: 0.5;
+  margin-top: -5px;
+  margin-bottom: 7px;
 }
