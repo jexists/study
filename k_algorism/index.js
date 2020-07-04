@@ -97,36 +97,95 @@ function toCapSm(string){
 // console.log(toCapSm("idfdfsdfs dfdf"));
 /////////////////////////////////////////////////
 
-
+///https://im-developer.tistory.com/36?category=831367
 // 글자돌리기 =========================
 // ERROR
-function solution(n) {
-  var answer = '';
-  let watermelon = [];
-  for (let i = 0; i < n; i++) {
-      if(i % 2 == 0){
-          watermelon.push('수');
-      }else{
-          watermelon.push('박');
-      }
-      answer = JSON.stringify(watermelon.join());
-      console.log(answer);
-    }
-    console.log(answer);
-  return answer;
-}
-solution(8);
+// function solution(n) {
+//   var answer = '';
+//   let watermelon = [];
+//   for (let i = 0; i < n; i++) {
+//       if(i % 2 == 0){
+//           watermelon.push('수');
+//       }else{
+//           watermelon.push('박');
+//       }
+//       answer = JSON.stringify(watermelon.join());
+//       console.log(answer);
+//     }
+//     console.log(answer);
+//   return answer;
+// }
+// solution(8);
 
-function solution(n) {
-  var answer = '';
-  let watermelon = '';
+// function solution(n) {
+//   var answer = '';
+//   let watermelon = '';
   
-  for (let i = 0; i < n; i++) {
-      if(i % 2 == 0){watermelon += '수';
-      }else{ watermelon += '박';}
-      answer = watermelon;}
-  return answer;
-}
-solution(8);
+//   for (let i = 0; i < n; i++) {
+//       if(i % 2 == 0){watermelon += '수';
+//       }else{ watermelon += '박';}
+//       answer = watermelon;}
+//   return answer;
+// }
+// solution(8);
 /////////////////////////////////////////////////
 
+
+function solution(name_list) {
+  var answer;
+  // var name_split = name_list.join(',')
+  // let ;
+  let same = [].length;
+  for(let i = 0 ; i<name_list.length; i++){
+    // console.log(sum[i]);
+    if(name_list[i] === name_list[i+1]){
+      // final_sum.push(sum[i])
+      // answer = true;
+      same.push(name_list[i])
+    }
+    if(name_list[i] + name_list[i] === name_list[i+1]){
+    }
+  }
+  console.log(same);
+  // if(name_list[i])
+  if(same === 0 ){
+    answer = false;
+  }
+  return answer;
+}
+solution(["가을","우주","너굴","봄", "봄봄"]);
+console.log(solution(["가을","우주","너굴","봄", "봄봄"]))
+
+function solution2(arrayA, arrayB) {
+  var answer = [];
+  var arrayA_leng = arrayA.length;
+  var arrayB_leng = arrayB.length;
+  var sum = arrayA.concat(arrayB).sort();
+  // let a = arrayA.toString();
+  // let b = arrayB.toString();
+
+
+  final_sum = []
+  same_sum = []
+  for(let i = 0 ; i<sum.length; i++){
+    // console.log(sum[i]);
+    if(sum[i] !== sum[i+1]){
+      final_sum.push(sum[i])
+    }
+    if(sum[i] === sum[i+1]){
+      same_sum.push(sum[i])
+    }
+
+  }
+  console.log('$$$' + same_sum)
+  var array_sum = final_sum.length;
+  
+  return [arrayA_leng, arrayB_leng, array_sum];
+
+}
+
+// solution2([1,2,4],[3,1,5])
+
+
+
+console.log(solution2([1,2,4],[3,1,2,5]));
