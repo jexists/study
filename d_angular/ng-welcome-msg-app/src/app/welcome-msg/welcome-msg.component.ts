@@ -21,7 +21,7 @@ export class WelcomeMsgComponent {
   }
 
   showWelcomeMsg() {
-    this.welcomeMsg = this.i18nSupporter.getWelcomeMsgByCode(this.userName);
+    this.welcomeMsg = this.i18nSupporter.getWelcomeMsg(this.userName);
   }
 
 

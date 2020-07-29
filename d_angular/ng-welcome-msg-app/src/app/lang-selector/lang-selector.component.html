@@ -1,18 +1,7 @@
-
-<div id="lang-select">
-  <div class="lang-box">
-    <img src="/assets/img/South_Korea.png" alt="한국" />
-    <label *ngIf="langCode === 'ko'" for="">선택됨</label>
-    <button type="button" (click)="setLangCode('ko')" [disabled]="langCode === 'ko'">한국어</button>
-  </div>
-  <div class="lang-box">
-    <img src="/assets/img/English.png" alt="영어" />
-    <label *ngIf="langCode === 'en'" for="">선택됨</label>
-    <button type="button" (click)="setLangCode('en')" [disabled]="langCode === 'en'">영어</button>
-  </div>
-  <div class="lang-box">
-    <img src="/assets/img/Filipino.png" alt="따갈로그" />
-    <label *ngIf="langCode === 'fi'" for="">선택됨</label>
-    <button type="button" (click)="setLangCode('fi')" [disabled]="langCode === 'fi'">따갈로그</button>
-  </div>
-</div>
+<ul>
+  <li *ngFor="let lang of langMetaData">
+    <img src="{{'/assets/img/' + lang.flagImgName}}" alt="{{lang.name}}">
+    <label *ngIf="langCode === langCode">선택됨</label>
+    <button type="button" (click)="setLangCode(lang.code)" [disabled]="langCode === lang.code">{{lang.name}}</button>
+  </li>
+</ul>
