@@ -7,13 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LangSelectorComponent implements OnInit {
 
-  constructor() { }
+  langCode: string;
+
+  constructor() {
+    
+  }
 
   ngOnInit(): void {
 
   }
 
-  langCode;
-  setLangCode;
+  setLangCode(code: string) {
+    this.langCode = code;
+  }
 
 }
