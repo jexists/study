@@ -1,0 +1,23 @@
+{
+  "name": "welcome-msg-app",
+  "version": "1.0.0",
+  "description": "learn node.js",
+  "main": "index.js",
+  "dependencies": {
+    "http-server": "^0.12.3",
+    "jquery": "^1.12.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jexists",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "jexists"
+  },
+  "keywords": [
+    "node.js"
+  ]
+}
