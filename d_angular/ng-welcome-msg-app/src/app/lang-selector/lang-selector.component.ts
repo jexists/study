@@ -23,10 +23,10 @@ export class LangSelectorComponent implements OnInit {
     
   }
 
-  setLangCode(code: string) {
-    this.langCode = code;
+  syncToService(code) {
+    // this.langCode = code;
     this.i18nSupporter.langCode = code;
-    console.log(this.langCode);
+    // console.log(this.langCode);
     
   }
 

@@ -1,7 +1,10 @@
-<ul>
-  <li *ngFor="let lang of langMetaData">
-    <img src="{{'/assets/img/' + lang.flagImgName}}" alt="{{lang.name}}">
-    <label *ngIf="langCode === langCode">선택됨</label>
-    <button type="button" (click)="setLangCode(lang.code)" [disabled]="langCode === lang.code">{{lang | langSelectorBtn}}</button>
-  </li>
-</ul>
+
+
+<mat-card>
+  <mat-radio-group [(ngModel)]="langCode" (change)="syncToService($event.value)">
+    <mat-radio-button *ngFor="let lang of langMetaData" [value]="lang.code">
+      {{lang | langSelectorBtn}}
+      <!-- <img src="{{'/assets/img/' + lang.flagImgName}}" alt="{{lang.name}}"> -->
+    </mat-radio-button>
+  </mat-radio-group>
+</mat-card>

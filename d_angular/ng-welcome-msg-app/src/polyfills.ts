@@ -74,3 +74,4 @@ import 'core-js/es/array';
 import 'core-js/es/regexp';
 import 'core-js/es/map';
 import 'core-js/es/set';
+import 'hammerjs';
