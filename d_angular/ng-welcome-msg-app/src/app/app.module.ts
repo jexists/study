@@ -13,9 +13,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeMsgComponent } from './welcome-msg/welcome-msg.component';
-import { LangSelectorComponent } from './lang-selector/lang-selector.component';
 import { I18nSupportService } from './i18n-support.service';
 import { LangSelectorBtnPipe } from './lang-selector/lang-selector-btn.pipe';
+import { LangSelectorComponent } from './lang-selector/lang-selector.component';
 
 @NgModule({
   declarations: [

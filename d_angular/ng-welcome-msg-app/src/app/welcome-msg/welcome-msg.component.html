@@ -1,11 +1,10 @@
 
 <mat-card>
   <div class="contents">
-    <!-- <mat-input-container></mat-input-container> -->
-    <label for="user-name">사용자 이름: </label>
+    <!-- <label for="user-name">사용자 이름: </label> -->
     <input matInput type="text" name="value" placeholder="사용자이름" id="user-name" [(ngModel)]="userName" (ngModelChange)="onChange()">
     <button mat-raised-button type="button" (click)="showWelcomeMsg()">입력</button>
   </div>
-  
+
   <h4>{{welcomeMsg}}</h4>
 </mat-card>
