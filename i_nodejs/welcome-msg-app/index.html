@@ -17,12 +17,14 @@
 
   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
   <script>
+    //<!CDATA[
     $(document).ready(function(){
       $("button").on('click', function() {
         var userName = $("#user-name").val();
         $("#display-name").text(userName);
       });
     });
+    //]]>
   </script>
 </body>
 </html>
