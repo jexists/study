@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { MySpecialLoggerService } from './my-special-logger.service';
 import { LogLevel } from './log-level.enum';
 

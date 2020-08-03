@@ -19,7 +19,7 @@ import { AnotherLoggerService } from './another-logger.service';
   providers: [ 
     MySpecialLoggerService, 
     AnotherLoggerService,
-    { provide: LOG_LEVEL_TOKEN, useValue: LogLevel.INFO }],
+    { provide: LOG_LEVEL_TOKEN, useValue: LogLevel.DEBUG }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
