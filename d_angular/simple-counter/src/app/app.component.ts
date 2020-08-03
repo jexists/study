@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,6 +10,8 @@ export class AppComponent {
   curVal: number = 0;
   manualVal: number = 0;
   static LIMIT_CNT = 100;
+
+  myName: string = "angular";
 
   colorByValue() {
     if (this.curVal > 0) {
