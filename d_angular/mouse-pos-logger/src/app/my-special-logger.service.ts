@@ -1,27 +1,31 @@
-import { Injectable } from '@angular/core';
-import { LogLevel } from './log-level.enum';
+import { Injectable, Inject } from '@angular/core';
 // import * as format from 'date-fns/format';
 import { format } from 'date-fns';
+
+import { LogLevel } from './log-level.enum';
+import { LOG_LEVEL_TOKEN } from './app.tokens';
+import { LoggerService } from './logger-service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class MySpecialLoggerService {
+export class MySpecialLoggerService extends LoggerService {
 
-  logLevel: LogLevel;
+  // logLevel: LogLevel;
   logs: string[] = [];
   private readonly MAX_HISTORY_CNT: number = 100;
   private readonly TIME_FORMATTER: string = "yyyy-MM-dd HH:mm:ss.SSS";
 
-  constructor(logLevel: LogLevel) {
-    this.logLevel = logLevel;
+  constructor(@Inject(LOG_LEVEL_TOKEN) logLevel: LogLevel) {
+    // this.logLevel = logLevel;
+    super(logLevel)
   }
 
-  debug(msg: string) { this.log(LogLevel.DEBUG, msg); }
-  info(msg: string) { this.log(LogLevel.INFO, msg); }
-  warn(msg: string) { this.log(LogLevel.WARN, msg); }
-  error(msg: string) { this.log(LogLevel.ERROR, msg); }
+  // debug(msg: string) { this.log(LogLevel.DEBUG, msg); }
+  // info(msg: string) { this.log(LogLevel.INFO, msg); }
+  // warn(msg: string) { this.log(LogLevel.WARN, msg); }
+  // error(msg: string) { this.log(LogLevel.ERROR, msg); }
 
   log(logLevel: LogLevel, msg: string) {
     const logMsg = this.getFormattedLogMsg(logLevel, msg);
@@ -43,9 +47,9 @@ export class MySpecialLoggerService {
     return `[${LogLevel[logLevel]}] ${curTimestamp} - ${msg}`
   }
 
-  private isProperLogLevel(logLevel: LogLevel): boolean {
-    if (this.logLevel === LogLevel.DEBUG) return true;
-    return logLevel >= this.logLevel;
-  }
+  // private isProperLogLevel(logLevel: LogLevel): boolean {
+  //   if (this.logLevel === LogLevel.DEBUG) return true;
+  //   return logLevel >= this.logLevel;
+  // }
 
 }
