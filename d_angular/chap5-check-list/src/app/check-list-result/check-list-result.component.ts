@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckListResultComponent implements OnInit {
 
-  constructor() { }
+  checkedCnt: number;
+  checkedResult: string[];
+
+  constructor() { 
+    this.initResult();
+  }
 
   ngOnInit(): void {
   }
 
+  private initResult() {
+    this.checkedCnt = 0;
+    this.checkedResult = [];
+  }
 }

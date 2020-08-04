@@ -9,30 +9,21 @@ import { CheckItem } from './check-item';
   styleUrls: ['./check-list.component.scss']
 })
 export class CheckListComponent implements OnInit {
-
-  INIT_TOTAL_CNT: number = 4;
-  checkList: CheckItem[] = [];
-  curCheckedItem: CheckItem;
-
+  checkList: string[];
+  checkedResult: boolean[] = [];
+  
   constructor(
-    public checkListDataService: CheckListDataService
     ) {
-    // this.checkList = this.checkListDataService.initList(this.INIT_TOTAL_CNT);
+      this.checkList = [
+        'check one',
+        'check two',
+        'check three',
+        'check four',
+      ];
+      this.checkList.forEach(() => this.checkedResult.push(false));
   }
 
   ngOnInit() { }
 
-  onChangeCnt(op: string) {
-    this.checkListDataService.changeTotalCntByOp(op);
-  }
-
-  onChecked(isChecked, checkedItem: CheckItem) {
-    checkedItem.isChecked = isChecked
-    this.curCheckedItem = JSON.parse(JSON.stringify(checkedItem));
-    this.checkListDataService.checkItem(checkedItem);
-  }
-
-  unCheckedItem(idx) {
-    this.checkListDataService.unCheckItem(idx);
-  }
+  
 }
