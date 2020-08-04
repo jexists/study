@@ -1,0 +1,11 @@
+<p>test-parent works!</p>
+<ol>
+  <li *ngFor="let num of checkListNums">
+    <!-- <test-child></test-child> -->
+    <app-test-child></app-test-child>
+  </li>
+</ol>
+<div>
+  <button type="button" (click)="checkedAll()">Check All</button>
+  <button type="button" (click)="unCheckedAll()">Uncheck All</button>
+</div>
