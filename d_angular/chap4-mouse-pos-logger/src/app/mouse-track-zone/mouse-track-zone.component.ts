@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Host, Optional } from '@angular/core';
 
+import { Observable, of, Subject } from 'rxjs';
+import { throttleTime, map } from 'rxjs/operators';
+
 import { MySpecialLoggerService } from '../my-special-logger.service';
 import { LogLevel } from '../log-level.enum';
 import { LOG_LEVEL_TOKEN } from '../app.tokens';
@@ -19,6 +22,8 @@ export class MouseTrackZoneComponent implements OnInit {
   // logLevel: LogLevel = LogLevel.INFO;
   // @Input() private logger: MySpecialLoggerService;
   logger: LoggerService;
+  moveSubject: Subject<MouseEvent> = new Subject<MouseEvent>();
+  move$: Observable<MouseEvent> = this.moveSubject.asObservable();
 
   constructor(
     @Host() @Optional() mySpecialLogger: MySpecialLoggerService,
@@ -29,13 +34,19 @@ export class MouseTrackZoneComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.move$
+      .pipe(
+        throttleTime(1000),
+        map(evt => [evt.clientX, evt.clientY]))
+      .subscribe(pos => this.logger.info(`x:${pos[0]} y:${pos[1]}`)) 
   }
 
 
   captureMousePos($event: MouseEvent) {
     this.logger.debug('click event occured');
-    const pos = [$event.clientX, $event.clientY];
-    this.logger.info(`x:${pos[0]} y:${pos[1]}`)
+    // const pos = [$event.clientX, $event.clientY];
+    // this.logger.info(`x:${pos[0]} y:${pos[1]}`)
+    this.moveSubject.next($event);
   }
 
 }
