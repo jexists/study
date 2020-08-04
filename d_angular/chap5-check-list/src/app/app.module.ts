@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { CheckListComponent } from './check-list/check-list.component';
 import { CheckListResultComponent } from './check-list-result/check-list-result.component';
 import { CheckListDataService } from './check-list/check-list-data.service';
+import { ResultGraphComponent } from './result-graph/result-graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckListComponent,
-    CheckListResultComponent
+    CheckListResultComponent,
+    ResultGraphComponent
   ],
   imports: [
     BrowserModule,
