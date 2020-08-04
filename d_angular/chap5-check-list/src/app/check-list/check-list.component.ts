@@ -14,13 +14,13 @@ export class CheckListComponent implements OnInit {
   
   constructor(
     ) {
-      this.checkList = [
-        'check one',
-        'check two',
-        'check three',
-        'check four',
-      ];
-      this.checkList.forEach(() => this.checkedResult.push(false));
+    this.checkList = [
+      'check one',
+      'check two',
+      'check three',
+      'check four',
+    ];
+    this.checkList.forEach(() => this.checkedResult.push(false));
   }
 
   ngOnInit() { }
