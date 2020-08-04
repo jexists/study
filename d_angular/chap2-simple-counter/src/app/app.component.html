@@ -12,6 +12,8 @@
   </div>
 </div>
 
-<p name="member-name">{{ myName | uppercase | honor}}</p>
-<!-- <p name="member-name">{{ myName | uppercase | honor | greekMarker}}</p> -->
-<p name="member-name">{{ myName | uppercase | honor | greekMarker:'A'}}</p>
+<div class="pipe">
+  <p name="member-name">{{ myName | uppercase | honor}}</p>
+  <!-- <p name="member-name">{{ myName | uppercase | honor | greekMarker }}</p> -->
+  <p name="member-name">{{ myName | uppercase | honor | greekMarker:'A'}}</p>
+</div>
