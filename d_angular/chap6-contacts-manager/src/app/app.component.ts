@@ -22,7 +22,7 @@ export class AppComponent {
       const user = res.data;
       this.searchedUser = user;
     };
-    // this.userService.getUser(id, onSuccess);
+    this.userService.getUser(id, onSuccess);
   }
 
   addUser() {
@@ -32,7 +32,8 @@ export class AppComponent {
       console.log(JSON.stringify(newUser));
       alert(`id:${newUser.id}\n name:${newUser.name}\n age:${newUser.age}\n`)
     };
-    // this.userService.addUser(newUser, callback);
+    // this.userService.addUser(newUser);
+    this.userService.addUser(newUser, callback);
     this.user = new User();
   }
 
@@ -43,23 +44,24 @@ export class AppComponent {
     }
 
     const callback = res => {
-      const newUser: User = res.data;
+      const newUser: User = res;
       console.log(JSON.stringify(newUser));
       alert(`id:${newUser.id}\n name:${newUser.name}\n age:${newUser.age}\n`)
     }
-    // this.userService.modifyUser(this.user, callback);
+    this.userService.modifyUser(this.user, callback);
   }
 
   removeUser(id) {
     const onSuccess = res => {
-      if(res.status === 204) {
+      // console.log(res.status);
+      if(res) {
         alert(`user Id: ${id} deleted`);
         console.log(res);
         return;
       }
       alert('Delete Fail');
     };
-    // this.userService.removeUser(id, onSuccess);
+    this.userService.removeUser(id, onSuccess);
   }
 
 }
