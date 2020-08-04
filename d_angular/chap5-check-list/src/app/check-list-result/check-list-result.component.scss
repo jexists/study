@@ -1,11 +1,16 @@
 :host {
   display: block;
+  float: left;
   border: 1px solid dimgray; 
   width: 380px;
+  min-height: 300px;
   margin: 10px;
   padding: 10px;
 }
 
 ul {
   margin-top: 5px;
+  li {
+    margin-top: 5px;
+  }
 }

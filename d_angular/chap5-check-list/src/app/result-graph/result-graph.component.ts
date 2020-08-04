@@ -10,16 +10,25 @@ export class ResultGraphComponent implements OnInit {
 
   checkedRatio: string = '0%';
   graphToggle = true;
+
   constructor(
     public checkListDataService: CheckListDataService,
   ) { }
 
   ngOnInit(): void {
+    this.checkListDataService.changedCntState.subscribe(() => this.printGraph());
   }
 
-  onPrintGraph() {
+  // onPrintGraph() {
+  //   this.graphToggle = false;
+  //   this.checkedRatio = this.checkListDataService.getCheckedItemRatioText();
+  //   setTimeout(() => this.graphToggle = true, 1)
+  // }
+
+  printGraph() {
     this.graphToggle = false;
     this.checkedRatio = this.checkListDataService.getCheckedItemRatioText();
-    setTimeout(() => this.graphToggle = true, 1)
+    setTimeout(() => this.graphToggle = true, 1);
   }
+  
 }

@@ -1,0 +1,15 @@
+.float {
+  float: left;
+  width: 380px;
+  padding: 30px;
+  min-height: 320px;
+  margin: 10px;
+  box-sizing: border-box;
+  border: 1px solid dimgray; 
+}
+.row label {
+  margin-right: 10px;
+}
+.row button {
+  margin-left: 10px;
+}

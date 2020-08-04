@@ -17,17 +17,21 @@
   (onSelectedToRemoveItem)="removeCheckedItem($event)">
 </app-check-list-result> -->
 
-<div class="row">
-  <label>항목 증감</label>
-  <button type="button" (click)="onChangeCnt('+')">+</button>
-  <button type="button" (click)="onChangeCnt('-')">-</button>
-</div>
-<div class="row">
-  <span *ngFor="let item of checkList; let i = index">
-    <label for="chk-{{item.idx}}">{{item.content}}</label>
-    <input type="checkbox" id="chk-{{item.idx}}" (ngModelChange)="onChecked($event, item)" [(ngModel)]="item.isChecked" />
-  </span>
+<div class="float">
+  <div class="row">
+    <label>항목 증감</label>
+    <button type="button" (click)="onChangeCnt('+')">+</button>
+    <button type="button" (click)="onChangeCnt('-')">-</button>
+  </div>
+  <ul class="row">
+    <li *ngFor="let item of checkList; let i = index">
+      <label for="chk-{{item.idx}}">{{item.content}}</label>
+      <input type="checkbox" id="chk-{{item.idx}}" (ngModelChange)="onChecked($event, item)" [(ngModel)]="item.isChecked" />
+    </li>
+  </ul>
 </div>
 
 <app-check-list-result [checkItem]="curCheckedItem"
   (onSelectedToRemoveItem)="unCheckedItem($event)"></app-check-list-result>
+
+<app-result-graph></app-result-graph>

@@ -9,8 +9,9 @@
 <ul>
   <!-- <li *ngFor="let item of checkedData">{{item}}</li> -->
   <li *ngFor="let item of _checkedData; let idx = index">
-    {{item}}
+    {{item.content}}
     <button type="button" (click)="onRemove(idx)">x</button>
   </li>
   <!-- <li *ngIf="_checkedData.length === 0">체크된 목록이 없습니다.</li> -->
 </ul>
+<!-- <app-result-graph></app-result-graph> -->
