@@ -3,3 +3,13 @@
 <!-- <h3 [(ngModel)]="checkList">체크한 항목수: {{}}</h3> -->
 
 <!-- <button type="button" class="btn">결과 출력</button> -->
+
+<h4>체크한 항목 수: {{checkedCnt}}</h4>
+<h4>체크한 항목: </h4>
+<ul>
+  <!-- <li *ngFor="let item of checkedData">{{item}}</li> -->
+  <li *ngFor="let item of _checkedData; let idx = index">
+    {{item}}
+    <button type="button" (click)="removeItem(idx)">x</button>
+  </li>
+</ul>
