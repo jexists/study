@@ -43,3 +43,9 @@
 <div class="float">
   <app-element-ref></app-element-ref>
 </div>
+
+<div class="float">
+  <h2>ngOnInit and ngOnDestory</h2>
+  <button type="button" (click)="toggle = !toggle">toggle</button>
+  <app-life-cycle *ngIf="toggle" [exContent]="sampleContent"></app-life-cycle>
+</div>

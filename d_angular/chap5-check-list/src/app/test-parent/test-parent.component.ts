@@ -7,8 +7,6 @@ import { TestChildComponent } from '../test-child/test-child.component';
   styleUrls: ['./test-parent.component.scss']
 })
 export class TestParentComponent implements OnInit {
-
-
   
   checkListNums: number[];
   @ViewChildren(TestChildComponent) testChild: QueryList<TestChildComponent>;

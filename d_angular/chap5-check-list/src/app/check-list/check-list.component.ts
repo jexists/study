@@ -13,6 +13,8 @@ export class CheckListComponent implements OnInit {
   // checkList: string[];
   // checkedResult: boolean[] = [];
   // checkedResultData: string[];
+  toggle: boolean = false;
+  sampleContent: string = "ngOnInit & ngOnDestroy";
   
 
   INIT_TOTAL_CNT: number = 4;
@@ -49,6 +51,7 @@ export class CheckListComponent implements OnInit {
   }
 
 
+  
   // extractCheckedResult() {
   //   this.checkedResultData = [];
   //   this.checkedResult.forEach((isChecked, idx) => {
