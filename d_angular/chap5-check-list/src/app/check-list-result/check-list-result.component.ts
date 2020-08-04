@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-check-list-result',
@@ -7,17 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckListResultComponent implements OnInit {
 
+  
   checkedCnt: number;
-  checkedResult: string[];
+  @Input() checkedResult: string[];
 
-  constructor() { 
-    this.initResult();
-    const buttonElem = <HTMLElement>document.querySelector('.btn');
-    console.log(buttonElem);
-    
-    if(buttonElem){
-      buttonElem.addEventListener('click',() => this.collectCheckedResult());
-    }
+  constructor() {
   }
 
   ngOnInit(): void {
@@ -28,8 +22,6 @@ export class CheckListResultComponent implements OnInit {
     this.checkedResult = [];
   }
   private collectCheckedResult() {
-    console.log('btn clicked');
-    
     this.initResult();
     const spanElems = document.querySelectorAll('span');
     for (let i = 0; i < spanElems.length; i++) {
