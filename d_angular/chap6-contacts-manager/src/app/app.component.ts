@@ -51,6 +51,7 @@ export class AppComponent {
     this.userService.modifyUser(this.user, callback);
   }
 
+  //삭제 수정
   removeUser(id) {
     const onSuccess = res => {
       // console.log(res.status);
