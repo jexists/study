@@ -1,0 +1,7 @@
+<p>
+  <label for="test-input">NgModel: </label>
+  <input type="text" id="test-input"
+  [(ngModel)]="myData" #myModel="ngModel" required pattern="010-[0-9]{4}-[0-9]{4}">
+  <span class="result">{{myData}}</span>
+</p>
+<label for="is-valid">유효?: </label><span id="is-valid">{{myModel.valid}}</span>
