@@ -1,4 +1,4 @@
-<h2 class="pl-4 my-3">{{title}}</h2>
+<h4 class="pl-4 my-3">{{title}}</h4>
 <form (ngSubmit)="onSubmit()" [formGroup]="prodForm" novalidate>
   <h4 class="pl-5 mt-5">상품 정보</h4>
   <fieldset class="mx-5 mb-5 p-3 rounded">
@@ -16,6 +16,19 @@
     </div>
     <div class="input-group pl-5 my-3">
       <textarea class="form-control col-6" formControlName="desc" rows="4" placeholder="상품 상세 설명"></textarea>
+    </div>
+  </fieldset>
+
+  <h4 class="pl-5 mt-5">담당자 정보</h4>
+  <fieldset class="mx-5 mb-5 p-3 rounded">
+    <div class="pl-2 my-2">
+      <button type="button" class="btn btn-info btn-sm mr-1" (click)="addManager()">+</button>
+      <button type="button" class="btn btn-warning btn-sm mr-1" (click)="removeManager()">-</button>
+    </div>
+    <div class="pl-5 my-3" formArrayName="managers">
+      <div *ngFor="let manager of managers.controls; let i = index">
+        <app-manager-info [idx]="i" [manager]="manager"></app-manager-info>
+      </div>
     </div>
   </fieldset>
 

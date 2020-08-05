@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { CustomValidationComponent } from './custom-validation/custom-validation.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { ManagerInfoComponent } from './manager-info/manager-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateFormComponent,
     CustomValidationComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    ManagerInfoComponent
   ],
   imports: [
     BrowserModule,

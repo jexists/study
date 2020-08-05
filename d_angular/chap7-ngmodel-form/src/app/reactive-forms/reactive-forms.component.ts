@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModel, NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgModel, NgForm, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -8,13 +8,17 @@ import { NgModel, NgForm, FormGroup, FormBuilder, Validators } from '@angular/fo
 })
 export class ReactiveFormsComponent implements OnInit {
 
-  title: 'reactive';
+  title = 'Reactive Forms';
   prodForm: FormGroup;
+  managers: FormArray;
 
   ngOnInit(): void {
   }
 
-  constructor(public formBuilder: FormBuilder) {
+  constructor(
+    public formBuilder: FormBuilder
+    ) {
+    this.managers = this.formBuilder.array([this.buildManagerFormGroup()]);
     this.prodForm = this.formBuilder.group({
       name: ['', Validators.required],
       listPrice: [0,
@@ -23,24 +27,30 @@ export class ReactiveFormsComponent implements OnInit {
           Validators.minLength(1),
           Validators.maxLength(100),
           Validators.pattern('[1-9]\\d*')
-        ])
-      ],
+        ])],
       qty: [0,
         Validators.compose([
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(100),
           Validators.pattern('[1-9]\\d*')
-        ])
-      ],
+        ])],
       desc: ['',
         Validators.compose([
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(100)
-        ])
-      ],
+        ])],
+      managers: this.managers
     });
+  }
+
+  addManager() {
+    this.managers.push(this.buildManagerFormGroup());
+  }
+
+  removeManager() {
+    this.managers.removeAt(this.managers.length - 1);
   }
 
   buildManagerFormGroup() {
