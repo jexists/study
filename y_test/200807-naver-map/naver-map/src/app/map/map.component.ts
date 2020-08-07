@@ -23,8 +23,10 @@ export class MapComponent implements OnInit {
   }
 
   mapTest(): void {
+    //그림위치
     var HOME_PATH = '.';
 
+    //지도생성 옵션
     var cityhall = new naver.maps.LatLng(37.5666805, 126.9784147),
       map = new naver.maps.Map('map', {
         center: cityhall.destinationPoint(0, 500),
@@ -34,6 +36,28 @@ export class MapComponent implements OnInit {
         map: map,
         position: cityhall
       });
+
+    // min/max 줌 레벨
+    // let zoom = document.querySelector("#min-max-zoom");
+    // zoom.addEventListener('click',  onZoom($event));
+    // onZoom($event): void {
+    //   e.preventDefault();
+
+    //   if (map.getOptions("minZoom") === 10) {
+    //     map.setOptions({
+    //       minZoom: 7,
+    //       maxZoom: 21
+    //     });
+    //     $(this).val(this.name + ': 7 ~ 21');
+    //   } else {
+    //     map.setOptions({
+    //       minZoom: 10,
+    //       maxZoom: 21
+    //     });
+    //     $(this).val(this.name + ': 10 ~ 21');
+    //   }
+    // }
+  
 
     var contentString = [
       '<div class="iw_inner">',
