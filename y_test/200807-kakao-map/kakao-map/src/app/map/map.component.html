@@ -1,12 +1,20 @@
 <!-- <p>map works!</p> -->
-<div class="box">  
+<div class="box">
   <div id="map"></div>
 
-  <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
-  <div class="custom_zoomcontrol radius_border"> 
-    <span (click)="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>  
-    <span (click)="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
-</div>
+  <!-- 지도 확대, 축소 버튼 디자인 -->
+  <div class="custom_zoomcontrol">
+    <button type="button" (click)="zoomIn()"><img
+        src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></button>
+    <button type="button" (click)="zoomOut()"><img
+        src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></button>
+  </div>
+
+  <!-- 지도 범위 재설정 -->
+  <p>
+    <button (click)="onMyPlace()">현재위치 이동</button>
+  </p>
+
   <div>
     <app-map-info></app-map-info>
   </div>
