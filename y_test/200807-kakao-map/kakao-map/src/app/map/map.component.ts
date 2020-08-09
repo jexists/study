@@ -75,13 +75,12 @@ export class MapComponent implements OnInit {
       // LatLngBounds 객체에 좌표를 추가
       bounds.extend(points[i]);
     }
-    //지도범위 재설정
+    //지도범위 재설정 (중심좌표, 레벨 바뀜)
     this.setBounds(bounds);
   }
 
   setBounds(bounds) {
     // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정
-    // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
     this.map.setBounds(bounds);
   }
 }
