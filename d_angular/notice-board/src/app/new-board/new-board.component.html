@@ -1,1 +1,9 @@
-<p>new-board works!</p>
+
+
+<form [formGroup]="newBoardForm" (ngSubmit)="onSubmit()">
+
+  <input #newTitle formControlName="newTitle" type="text" class="new-title" placeholder="제목을 입력하세요" />
+  <angular-editor [config]="config" formControlName="newContents"></angular-editor>
+  <button mat-raised-button type="submit" style="float: right; margin-top: 20px;" [disabled]="!onValid()">작성완료</button>
+  
+</form>
