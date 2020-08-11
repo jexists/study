@@ -1,8 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CommentElement } from '../core/board.model';
+import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+
+import { CommentElement } from '../core/board.model';
 import { BoardDataService } from '../core/board-data.service';
+import { UUIDService } from '../core/uuid.service';
 
 @Component({
   selector: 'app-new-comment',
@@ -12,10 +15,13 @@ import { BoardDataService } from '../core/board-data.service';
 export class NewCommentComponent implements OnInit {
 
   @Input() selBoard;
+  @Output() created = new EventEmitter;
+  @Output() isReply = new EventEmitter;
   comment: CommentElement;
 
   newCommentForm: FormGroup;
   constructor(
+    private router: Router,
     private datePipe: DatePipe,
     private boardService: BoardDataService
   ) { }
@@ -40,17 +46,31 @@ export class NewCommentComponent implements OnInit {
   }
 
 
+  test(): void {
+    console.log(this.selBoard.uuid);
+     
+  }
   onSubmit(): void {
-    this.comment.boardUuid = this.selBoard.uuid;
+    // if(!this.selBoard.uuid === undefined) {
+      this.comment.boardUuid = this.selBoard.uuid;
+
     this.comment.date = this.datePipe.transform(new Date(), "yyyy-MM-dd");
-    this.comment.user = this.selBoard.user;
+    this.comment.user = "새댓글";
+    this.comment.uuid = UUIDService.generateUUID();
     this.comment.contents = this.newCommentForm.value.newComment;
 
-    console.log(this.comment);
     this.boardService.createComment(this.comment);
     this.newCommentForm.get('newComment').setValue('');
+    this.created.emit(this.comment);
+    // alert(JSON.stringify(this.comment));
+    alert(JSON.stringify(this.comment));
+    this.onPropertyInit();
+    this.onCancleCmt();
   }
 
+  onCancleCmt(): void {
+    this.isReply.emit();
+  }
   onValid(): boolean{
     if (this.newCommentForm.get('newComment').valid) {
       return true;

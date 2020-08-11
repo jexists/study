@@ -11,9 +11,24 @@
   line-height: 40px;
 }
 .comment-text {
-  width: 600px;
+  width: 750px;
   height: 30px;
+  box-sizing: border-box;
   border-right: none;
   border: none;
   border-bottom: 2px solid #ddd;
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid #00f;
+  }
+}
+
+.comment-btn {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 10px 0;
+  button {
+    margin-left: 10px;
+  }
 }

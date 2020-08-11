@@ -1,9 +1,12 @@
-<h4>댓글</h4>
+<!-- <h4>댓글</h4> -->
 <div class="new-comment">
   <form [formGroup]="newCommentForm" (ngSubmit)="onSubmit()">
-    <div class="user-pic">{{selBoard.user | slice: 0:1}}</div>
-    <input #newComment formControlName="newComment" placeholder="댓글 입력해주세요" class="comment-text" />
-    <button type="reset" mat-raised-button color="warn">취소</button>
-    <button type="submit" mat-raised-button [disabled]="!onValid()">완료</button>
+    <div class="user-pic">새</div>
+    <!-- <div class="user-pic">{{selBoard.user | slice: 0:1}}</div> -->
+    <input #newComment formControlName="newComment" placeholder="댓글 입력해주세요" class="comment-text" (keypress)="test()"/>
+    <div class="comment-btn">
+      <button type="reset" mat-raised-button color="warn" (click)="onCancleCmt()">취소</button>
+      <button type="submit" mat-raised-button [disabled]="!onValid()">완료</button>
+    </div>
   </form>
 </div>

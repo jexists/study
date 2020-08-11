@@ -1,5 +1,3 @@
-
-
 <div class="dtl-wrap">
   <div class="title">
     <h3>{{selBoard.title}}</h3>
@@ -13,22 +11,16 @@
 
   </div>
 
+  <h4>댓글</h4>
   <div class="new-comment">
-    <app-new-comment [selBoard]="selBoard"></app-new-comment>
+    <app-new-comment [selBoard]="selBoard" (created)="onAddComment($event)"></app-new-comment>
   </div>
 
 
   <ul class="comments">
-    <li *ngFor="let list of (boardDataService.getCommentByBoardId())">
-      {{list.contents}}
+    <li *ngFor="let comment of filterMap">
+      <app-dtl-comment [comment]="comment"></app-dtl-comment>
     </li>
   </ul>
 
 </div>
-
-
-
-
-
-
-

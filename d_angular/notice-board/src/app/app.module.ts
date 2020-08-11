@@ -19,6 +19,8 @@ import { NewBoardComponent } from './new-board/new-board.component';
 import { DtlBoardComponent } from './dtl-board/dtl-board.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
 import { UUIDService } from './core/uuid.service';
+import { DtlCommentComponent } from './dtl-comment/dtl-comment.component';
+import { ReplyComponent } from './reply/reply.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { UUIDService } from './core/uuid.service';
     MainBoardComponent,
     NewBoardComponent,
     DtlBoardComponent,
-    NewCommentComponent
+    NewCommentComponent,
+    DtlCommentComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,

@@ -64,8 +64,6 @@ export class NewBoardComponent implements OnInit {
     
     this.selBoard.title = this.newBoardForm.value.newTitle;
 
-    // console.log(JSON.stringify(this.selBoard));
-
     this.boardService.createBoard(this.selBoard);
     this.router.navigate([`/main`]);
   }

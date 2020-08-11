@@ -2,3 +2,24 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button:disabled,
+button[disabled] {
+  background-color: #ddd !important;
+  color: #333 !important;
+}
+
+.recomment {
+  // transform: scale(0.9);
+  padding-left: 40px;
+  box-sizing: border-box;
+  .comment-text {
+    width: 710px !important;
+  }
+  .user-pic {
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    margin-left: 5px;
+  }
+}

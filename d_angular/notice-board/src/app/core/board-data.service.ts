@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { BoardElement } from './board.model';
+import { BoardElement, CommentElement } from './board.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,10 +29,16 @@ export class BoardDataService {
     { uuid: "c220aed0-e7f3-6dd8-1be1-57e0162e6619", id: 10, title: '[오피셜] 이케르 카시야스 현역 은퇴', user: '헐랭랭', date: '2020.08.10', contents: '은퇴퇴퇴 ' },
   ];
 
-  public comments: BoardElement[] = [
+  public comments: CommentElement[] = [
+    { uuid: "c150aed0-e7f3-6dd8-1be1-57e0162e6523",
+      boardUuid: "4d1b6c34-753b-8166-8b7c-509592615d9f",
+      user: "뉴댓글",
+      date: "2020.08.11",
+      contents: "댓글"}
   ];
 
-  private commentsMap: Map<String, BoardElement[]> = new Map<String, BoardElement[]>();
+  public cmtMap: Map<String, CommentElement[]> = new Map<String, CommentElement[]>();
+  public filterMap: CommentElement[] = [];
 
   //////////////////////////////////////////////
   //
@@ -40,31 +46,50 @@ export class BoardDataService {
   //
   /////////////////////////////////////////////
 
-  clearBoards(): void {
-    this.boards.length = 0;
-  }
-
-  loadBoards(boards, isClear: boolean): void {
-    if (isClear) { this.clearBoards(); }
-    this.boards = this.boards.concat(boards);
-  }
-
   createBoard(board): void {
     this.boards.push(board);
   }
 
-  /////////////////////////////////////
+  //////////////////////////////////////////////
+  //
+  //  Comments Function
+  //
+  /////////////////////////////////////////////
+
+  clearCards(): void {
+    this.comments.length = 0;
+  }
 
   createComment(comment): void {
     this.comments.push(comment);
   }
 
-  loadComments(): void {
-    this.comments = this.comments.concat();
+  loadComments(comments: CommentElement[], isClear: boolean): void {
+    if (isClear) { this.clearCards(); }
+    comments.forEach((cmt) => {
+      if (this.cmtMap.has(cmt.boardUuid)){
+        let target: CommentElement[] = this.cmtMap.get(cmt.boardUuid);
+        target.push(cmt);
+      }else{
+        let target: CommentElement[] = [];
+        target.push(cmt);
+        this.cmtMap.set(cmt.boardUuid, target);
+      }
+    });
   }
+  
 
-  getCommentByBoardId(): BoardElement[] {
-    return this.comments;
-  }
+  // loadComments(data:CommentElement[], id): void {
+  //   let FinalCmt = data.filter((cmt) => {
+  //     if (cmt.boardUuid === id){
+  //       this.cmtMap.push(cmt)
+  //     }else{
+  //       return false;
+  //     }
+  //   });
+  //   console.log("&&&" + JSON.stringify(FinalCmt));
+    
+  // }
+  
 }
 

@@ -14,24 +14,22 @@ import { BoardDataService } from '../core/board-data.service';
 export class MainBoardComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'title', 'user', 'date'];
-  dataSource = this.BoardDataService.boards;
+  dataSource = this.boardDataService.boards;
 
   constructor(
     private router: Router,
-    private BoardDataService: BoardDataService,
+    private boardDataService: BoardDataService,
   ) { }
 
   ngOnInit(): void {
-    // console.log('main-board');
   }
 
-  onModalOpen(row): void {
-    // console.log(`click ${JSON.stringify(row.id)}`);
+  onMoveDtl(row): void {
     this.router.navigate([`/dtl/${row.id}`]);
-    console.log(row);
+    // console.log(row);
   }
   
-  onNewModalOpen(): void {
+  onMoveNew(): void {
     this.router.navigate([`/new`]);
     
   }
