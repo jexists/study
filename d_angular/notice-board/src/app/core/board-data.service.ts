@@ -30,11 +30,9 @@ export class BoardDataService {
   ];
 
   public comments: CommentElement[] = [
-    { uuid: "c150aed0-e7f3-6dd8-1be1-57e0162e6523",
-      boardUuid: "4d1b6c34-753b-8166-8b7c-509592615d9f",
-      user: "뉴댓글",
-      date: "2020.08.11",
-      contents: "댓글"}
+    { uuid: "c150aed0-e7f3-6dd8-1be1-57e0162e6523", boardUuid: "4d1b6c34-753b-8166-8b7c-509592615d9f", user: "뉴댓글", date: "2020.08.11", contents: "댓글"},
+    { uuid: "c111aed0-e7f3-6dd8-1be1-57e0134e6421", boardUuid: "4d1b6c34-753b-8166-8b7c-509592615d9f", user: "뉴댓글", date: "2020.08.11", contents: "두번째 댓글 댓글 2빠"},
+    { uuid: "c289aed0-e7f3-6dd8-1be1-57e0162e1234", boardUuid: "c150aed0-e7f3-6dd8-1be1-57e0162e6523", user: "뉴댓글", date: "2020.08.11", contents: "대댓글 나와라라라라라"},
   ];
 
   public cmtMap: Map<String, CommentElement[]> = new Map<String, CommentElement[]>();
@@ -62,23 +60,18 @@ export class BoardDataService {
 
   createComment(comment): void {
     this.comments.push(comment);
-  }
-
-  loadComments(comments: CommentElement[], isClear: boolean): void {
-    if (isClear) { this.clearCards(); }
-    comments.forEach((cmt) => {
-      if (this.cmtMap.has(cmt.boardUuid)){
-        let target: CommentElement[] = this.cmtMap.get(cmt.boardUuid);
-        target.push(cmt);
-      }else{
-        let target: CommentElement[] = [];
-        target.push(cmt);
-        this.cmtMap.set(cmt.boardUuid, target);
-      }
-    });
+    console.log(JSON.stringify(this.comments));
+    
   }
   
 
+  loadComment(selBoard): void {
+    for (let i = 0; i < this.comments.length; i++) {
+      if (selBoard.uuid === this.comments[i].boardUuid) {
+        this.filterMap.push(this.comments[i]);
+      }
+    }
+  }
   // loadComments(data:CommentElement[], id): void {
   //   let FinalCmt = data.filter((cmt) => {
   //     if (cmt.boardUuid === id){

@@ -33,13 +33,14 @@ export class DtlBoardComponent implements OnInit, OnDestroy {
   }
 
   onFilterCmt(): void {
-    for (let i = 0; i < this.comments.length; i++) {
-      // console.log('첫번째값 : ', this.selBoard.uuid);
-      // console.log('두번째값 : ', this.comments[i].boardUuid);
-      if (this.selBoard.uuid === this.comments[i].boardUuid) {
-        this.filterMap.push(this.comments[i]);
-      }
-    }
+    // for (let i = 0; i < this.comments.length; i++) {
+    //   // console.log('첫번째값 : ', this.selBoard.uuid);
+    //   // console.log('두번째값 : ', this.comments[i].boardUuid);
+    //   if (this.selBoard.uuid === this.comments[i].boardUuid) {
+    //     this.filterMap.push(this.comments[i]);
+    //   }
+    // }
+    this.boardDataService.loadComment(this.selBoard);
   }
 
   onAddComment($event): void{

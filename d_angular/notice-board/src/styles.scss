@@ -14,7 +14,8 @@ button[disabled] {
   padding-left: 40px;
   box-sizing: border-box;
   .comment-text {
-    width: 710px !important;
+    // width: 710px !important;
+    width: calc(100% - 54px) !important;
   }
   .user-pic {
     width: 30px !important;
@@ -23,3 +24,7 @@ button[disabled] {
     margin-left: 5px;
   }
 }
+.dtl-comment {
+  width: calc(100% - 50px) !important;
+}
+li {list-style: none;}

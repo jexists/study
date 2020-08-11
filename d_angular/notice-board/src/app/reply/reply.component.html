@@ -1,6 +1,6 @@
 <div class="comment">
 
-  <div class="user-pic">{{comment.user | slice: 0:1}}</div>
+  <div class="user-pic" (click)="onTest()">{{comment.user | slice: 0:1}}</div>
   <div class="dtl-comment">
     <span class="user">{{comment.user}}</span>
     <span class="date">{{comment.date}}</span>
@@ -10,4 +10,7 @@
     <button *ngIf="!isReply" type="button" (click)="onOpenNewCmt()">답글</button>
     <!-- <button type="button">답글 보기</button> -->
   </div>
+</div>
+<div *ngIf="isReply" class="recomment">
+  <app-new-comment [selBoard]="comment" (isReply)="onOpenNewCmt()"></app-new-comment>
 </div>

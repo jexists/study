@@ -10,17 +10,23 @@ export class ReplyComponent implements OnInit {
   @Input() comment;
 
   @Input() isReply;
-  @Output() isCancle = new EventEmitter;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.isReply);
-    
+    // console.log(this.comment);
   }
 
+  onTest(){
+    console.log("##" + JSON.stringify(this.comment));
+    
+  }
+  // onOpenNewCmt() {
+  //   this.isCancle.emit();
+  //   console.log('답글 클릭');
+    
+  // }
   onOpenNewCmt() {
-    // this.isReply = !this.isReply;
-    this.isCancle.emit();
+    this.isReply = !this.isReply;
   }
 }
