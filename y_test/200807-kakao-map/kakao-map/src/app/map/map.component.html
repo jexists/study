@@ -1,6 +1,25 @@
 <!-- <p>map works!</p> -->
 <div class="box">
+
+
+  <!-- 지도 -->
   <div id="map"></div>
+
+  <!-- 지도 검색창 -->
+  <div id="menu_wrap" class="bg_white">
+    <div class="option">
+        <div>
+            <form onsubmit="searchPlaces(); return false;">
+                키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
+                <button type="submit">검색하기</button> 
+            </form>
+        </div>
+    </div>
+    <!-- <hr> -->
+    <ul id="placesList"></ul>
+    <div id="pagination"></div>
+</div>
+
 
   <!-- 지도 확대, 축소 버튼 디자인 -->
   <div class="custom_zoomcontrol">
@@ -14,6 +33,7 @@
   <p>
     <button (click)="onMyPlace()">현재위치 이동</button>
   </p>
+
 
   <div>
     <app-map-info></app-map-info>
