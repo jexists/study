@@ -17,18 +17,28 @@ export class DtlBoardComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private BoardDataService: BoardDataService,
+    public boardDataService: BoardDataService,
     ) { }
     
     ngOnInit(): void {
       this.onDataInit();
+      this.onContents();
+      this.onLoadComments();
   }
 
+  onLoadComments(): void {
+    // const boardId = +this.route.snapshot.paramMap.get('id') - 1;
+    this.boardDataService.loadComments()
+  }
 
   onDataInit(): void {
     const boardId = +this.route.snapshot.paramMap.get('id') - 1;
-    this.selBoard = this.BoardDataService.boards[boardId];
+    this.selBoard = this.boardDataService.boards[boardId];
   }
   
+  onContents(): void {
+    let contents = <HTMLElement>document.querySelector('.contents');
+    contents.innerHTML = this.selBoard.contents;
+  }
 
 }

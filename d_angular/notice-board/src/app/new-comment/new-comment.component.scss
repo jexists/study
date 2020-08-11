@@ -1,0 +1,19 @@
+
+.user-pic{
+  float: left;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  background-color: #777;
+  border-radius: 100%;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+}
+.comment-text {
+  width: 600px;
+  height: 30px;
+  border-right: none;
+  border: none;
+  border-bottom: 2px solid #ddd;
+}

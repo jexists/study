@@ -8,7 +8,27 @@
   <div class="info">
     <span>{{selBoard.date}}</span>
   </div>
+  <!-- <div class="contents">{{selBoard.contents}}</div> -->
   <div class="contents">
-    <p>{{selBoard.contents}}</p>
+
   </div>
+
+  <div class="new-comment">
+    <app-new-comment [selBoard]="selBoard"></app-new-comment>
+  </div>
+
+
+  <ul class="comments">
+    <li *ngFor="let list of (boardDataService.getCommentByBoardId())">
+      {{list.contents}}
+    </li>
+  </ul>
+
 </div>
+
+
+
+
+
+
+

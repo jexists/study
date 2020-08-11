@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+
 import { BoardElement } from '../core/board.model';
 import { BoardDataService } from '../core/board-data.service';
-import { Router } from '@angular/router';
+import { UUIDService } from '../core/uuid.service';
+
 
 @Component({
   selector: 'app-new-board',
@@ -50,14 +53,18 @@ export class NewBoardComponent implements OnInit {
   onSubmit(): void {
     this.selBoard.user = '새로작성';
     this.selBoard.contents = this.newBoardForm.value.newContents;
-    this.selBoard.date = this.datePipe.transform(new Date(), "yyyy-MM-dd'T'HH:mm:ss")
+    this.selBoard.date = this.datePipe.transform(new Date(), "yyyy-MM-dd");
+    // this.selBoard.date = this.datePipe.transform(new Date(), "yyyy-MM-dd'T'HH:mm:ss")
 
+
+    this.selBoard.uuid = UUIDService.generateUUID();
+    
     let num = this.boardService.boards.length;
     this.selBoard.id = ++num;
-
-    console.log(this.selBoard.contents);
     
     this.selBoard.title = this.newBoardForm.value.newTitle;
+
+    // console.log(JSON.stringify(this.selBoard));
 
     this.boardService.createBoard(this.selBoard);
     this.router.navigate([`/main`]);
@@ -69,37 +76,4 @@ export class NewBoardComponent implements OnInit {
     }
     return false;
   }
-
-  config: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: '30rem',
-    minHeight: '5rem',
-    placeholder: 'Enter text here...',
-    translate: 'no',
-    defaultParagraphSeparator: 'p',
-    defaultFontName: 'Arial',
-    toolbarHiddenButtons: [
-      ['bold']
-    ],
-    fonts:[
-      {class: 'Noto Sans KR', name: 'Noto Sans KR'},
-      {class: 'comic-sans-ms', name: 'Comic Sans MS'}
-    ],
-    customClasses: [
-      {
-        name: "quote",
-        class: "quote",
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: "titleText",
-        class: "titleText",
-        tag: "h1",
-      },
-    ], 
-  };
 }

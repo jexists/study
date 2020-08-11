@@ -27,6 +27,13 @@
   }
 }
 .info {
-  float: right;
+  display: block;
+  text-align: right;
   margin: 10px;
+}
+
+.contents{
+  width: 100%;
+  min-height: 500px;
+  // background-color: #333;
 }
