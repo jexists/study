@@ -1,0 +1,31 @@
+<!-- <p>map works!</p> -->
+<h2>검색하기</h2>
+
+<div class="box">
+  <!-- 지도 -->
+  <div id="map"></div>
+  <!-- 지도 범위 재설정 -->
+  <p>
+    <button (click)="onMyPlace()">현재위치 이동</button>
+  </p>
+  <!-- 지도 검색창 -->
+  <div id="menu_wrap" class="bg_white">
+    <!-- <div class="option">
+      <div>
+        <form [formGroup]="searchField" (ngSubmit)="searchPlaces(keyword.value)">
+          <label for="keyword">키워드 : </label>
+          <input #keyword formControlName="keyword" type="text" value="이태원 맛집" id="keyword" size="15">
+          <button type="submit">검색하기</button>
+        </form>
+      </div>
+    </div> -->
+    <!-- <hr> -->
+    <ul id="placesList"></ul>
+    <div id="pagination"></div>
+  </div>
+
+
+  <!-- <div>
+    <app-map-info></app-map-info>
+  </div> -->
+</div>
