@@ -1,0 +1,22 @@
+#headBox {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #ccc;
+}
+ul{
+  display: flex;
+  li {
+    margin-right: 10px;
+  }
+}
+a {
+  padding: 0 20px;
+  text-transform: capitalize;
+  &.active {
+    color: #f07;
+    // font-weight: bold;
+  }
+}

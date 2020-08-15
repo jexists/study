@@ -1,9 +1,12 @@
-<h1>logo</h1>
+<header id="headBox">
 
-<nav>
-  <ul>
-    <li [routerLink]="['/']" routerLinkActive="active">home</li>
-    <li [routerLink]="['/']" routerLinkActive="active">sign in</li>
-    <li [routerLink]="['/']" routerLinkActive="active">sign up</li>
-  </ul>
-</nav>
+  <h1><a [routerLink]="['/']">logo</a></h1>
+  
+  <nav>
+    <ul>
+      <li><a [routerLink]="['/home']" routerLinkActive="active">home</a></li>
+      <li><a [routerLink]="['/signin']" routerLinkActive="active">sign in</a></li>
+      <li><a [routerLink]="['/signup']" routerLinkActive="active">sign up</a></li>
+    </ul>
+  </nav>
+</header>
