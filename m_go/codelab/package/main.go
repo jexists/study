@@ -1,3 +1,4 @@
+//2. import 개념 이해
 package main
 
 import (

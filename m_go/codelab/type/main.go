@@ -1,3 +1,4 @@
+//3. 타입 알아보기
 package main
 
 import "fmt"
@@ -23,4 +24,6 @@ func main() {
 
 	*intpType = 100
 	fmt.Println(intType) //100
+	//포인터는 있지만 연산은 지원 안함
+
 }

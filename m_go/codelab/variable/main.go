@@ -1,3 +1,4 @@
+//4. 변수 적는방법
 package main
 
 import (
