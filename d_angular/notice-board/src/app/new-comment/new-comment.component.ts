@@ -62,7 +62,7 @@ export class NewCommentComponent implements OnInit {
     this.boardService.createComment(this.comment);
     this.newCommentForm.get('newComment').setValue('');
     this.created.emit(this.comment);
-    // alert(JSON.stringify(this.comment));
+    alert(JSON.stringify(this.comment));
     this.onPropertyInit();
     this.onCancleCmt();
   }
