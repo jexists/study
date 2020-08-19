@@ -35,8 +35,45 @@ export class RxjsBasicComponent implements OnInit {
       .pipe(throttleTime(1000))
       .subscribe((e) => console.log(e));
     //(alias) throttleTime<Event>(duration: number, scheduler?: SchedulerLike, config?: ThrottleConfig): MonoTypeOperatorFunction<Event>
+    
+    //////////////////////////////////////////////////////////////
 
+    //Observer : Object 버전  
+    let Observer = {
+      next: function(value) {
+        console.log(value);
+      },
+      error: function(error) {
+        console.log((error));
+      },
+      complete: function() {
+        console.log('finished');
+      }
+    }
+    let button1 = document.querySelector('button');
+    Observable.fromEvent(button, 'click')
+      .subscribe(
+        Observer
+      )
 
+    let button2 = document.querySelector('button');
+    //Observable
+    Observable.fromEvent(button, 'click')
+    .subscribe(
+      //Observer: function or Object
+        (event) => console.log('clicked')
+      )
   }
 
+
+  //////////////////////////////////////////////////////////////
+  //"functional declaration" define Observable type, not instantiation
+  Observable.create(function(obs) {
+    //automation execution (자동실행)
+    obs.next('some value');
+    obs.error('some error');
+    obs.complete('finished');
+  });
+
+  
 }
