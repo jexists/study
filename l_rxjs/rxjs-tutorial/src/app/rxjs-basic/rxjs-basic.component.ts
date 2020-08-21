@@ -51,14 +51,14 @@ export class RxjsBasicComponent implements OnInit {
       }
     }
     let button1 = document.querySelector('button');
-    Observable.fromEvent(button, 'click')
+    fromEvent(button, 'click')
       .subscribe(
         Observer
       )
 
     let button2 = document.querySelector('button');
     //Observable
-    Observable.fromEvent(button, 'click')
+    fromEvent(button, 'click')
     .subscribe(
       //Observer: function or Object
         (event) => console.log('clicked')
@@ -68,12 +68,19 @@ export class RxjsBasicComponent implements OnInit {
 
   //////////////////////////////////////////////////////////////
   //"functional declaration" define Observable type, not instantiation
-  Observable.create(function(obs) {
-    //automation execution (자동실행)
-    obs.next('some value');
-    obs.error('some error');
-    obs.complete('finished');
-  });
+  //옛날버젼
+  // Observable.create(function(obs) {
+  //   //automation execution (자동실행)
+  //   obs.next('some value');
+  //   obs.error('some error');
+  //   obs.complete('finished');
+  // });
+
+  observer = {
+    next: x => console.log('Observer got a next value: ' + x),
+    error: err => console.error('Observer got an error: ' + err),
+    complete: () => console.log('Observer got a complete notification'),
+  };
 
   
 }
