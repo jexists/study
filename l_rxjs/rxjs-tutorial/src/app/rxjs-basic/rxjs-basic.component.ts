@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, fromEvent } from 'rxjs';
+import { Observable, fromEvent, observable } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 
 @Component({
@@ -63,24 +63,33 @@ export class RxjsBasicComponent implements OnInit {
       //Observer: function or Object
         (event) => console.log('clicked')
       )
-  }
-
-
+      
+      
+    
   //////////////////////////////////////////////////////////////
   //"functional declaration" define Observable type, not instantiation
   //옛날버젼
   // Observable.create(function(obs) {
   //   //automation execution (자동실행)
+  //   //asynchronous
   //   obs.next('some value');
   //   obs.error('some error');
   //   obs.complete('finished');
   // });
 
-  observer = {
-    next: x => console.log('Observer got a next value: ' + x),
-    error: err => console.error('Observer got an error: ' + err),
-    complete: () => console.log('Observer got a complete notification'),
-  };
+  // const observer = {
+  //   next: x => console.log('Observer got a next value: ' + x),
+  //   error: err => console.error('Observer got an error: ' + err),
+  //   complete: () => console.log('Observer got a complete notification'),
+  // };
 
+  // observable.create(function(obs){
+  //   obs.next(console.log('hello'));
+  //   obs.error(console.log('some Error'));
+  //   obs.complete(console.log('finished'));
+  // }).subscribe(
+  //   value => 
+  // )
+  }
   
 }
