@@ -1,0 +1,14 @@
+.box {
+  display: flex;
+  justify-content: space-between;
+}
+.map {
+  width: 70%;
+  min-width: 600px;
+  height: 600px;
+}
+.map-list {
+  width: 250px;
+  height: 600px;
+  background-color: #ddd;
+}
