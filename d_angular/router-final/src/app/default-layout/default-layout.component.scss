@@ -1,0 +1,78 @@
+.headBox {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  // background-color: #777;
+  a {
+    margin: 0 10px;
+    padding: 0 20px;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+.wrap {
+  width: 100%;
+  height: 100%;
+  .sidebar {
+    width: 300px;
+    height: 100%;
+    float: left;
+    background-color: #fcc;
+  }
+  .main {
+    float: left;
+    width: calc(100% - 300px);
+    height: 100%;
+    background-color: #ee0;
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+  background-color: #ccc;
+}
+
+.nav-bar {
+  a {
+    display: block;
+    padding: 20px 20px;
+    margin: 10px 30px;
+    &:hover{ 
+      background-color: #f00;
+      color: #fff;
+    }
+  }
+}
+
+
+///@at-root
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+.example-sidenav-container {
+
+  flex: 1;
+  background-color: #fcd;
+}
+
+.example-is-mobile .example-sidenav-container {
+  flex: 1 0 auto;
+}

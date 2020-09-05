@@ -1,0 +1,49 @@
+<!-- <div class="headBox">
+  <a routerLink="./market/">마켓</a>
+  <a routerLink="./talk/">토크</a>
+  <a routerLink="./login/">로그인</a>
+</div> -->
+
+<!-- <div class="wrap"> -->
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button class="navbar-toggle" mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="example-app-name">HEAD BOX</h1>
+    <div class="headBox">
+      <a routerLink="./market/">마켓</a>
+      <a routerLink="./talk/">토크</a>
+      <a routerLink="./login/">로그인</a>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" opened
+      fixedTopGap="56">
+      <mat-nav-list>
+        <div class="nav-bar">
+          <a routerLink="./market/">마켓</a>
+          <a routerLink="./talk/">토크</a>
+          <a routerLink="./login/">로그인</a>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  <!-- <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div> -->
+  <!-- <div class="sidebar">
+    사이드바
+  </div>
+  <div class="main">
+  </div> -->
+  <!-- </div> -->
+  
+  <div class="footer">
+    풋터
+  </div>
+</div>
