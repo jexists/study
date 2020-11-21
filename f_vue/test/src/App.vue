@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Navibar />
     <div id="content" class="content">
       <router-view></router-view>
       <!-- 여기부분만 재로딩 -->
@@ -9,14 +9,14 @@
 </template>
 
 <script>
-import Header from './components/layout/Header.vue'
+import Navibar from './components/layout/Navibar.vue'
 
 export default {
   name: 'App',
   components: {
-    Header
-  }
-}
+    Navibar,
+  },
+};
 </script>
 
 <style>
