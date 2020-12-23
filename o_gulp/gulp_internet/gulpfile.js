@@ -1,9 +1,11 @@
 var gulp = require('gulp');
 var scss = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps'); 
+var nodemon = require('gulp-nodemon');
 
 // 소스 파일 경로 
-var PATH = { 
+var PATH = {
+  HTML: './workspace/html',
   ASSETS: { 
     FONTS: './workspace/assets/fonts' , 
     IMAGES: './workspace/assets/images' , 
@@ -12,6 +14,7 @@ var PATH = {
 }, 
 // 산출물 경로 
 DEST_PATH = { 
+  HTML: './dist',
   ASSETS: { 
     FONTS: './dist/assets/fonts' , 
     IMAGES: './dist/assets/images' , 
@@ -38,4 +41,23 @@ gulp.task( 'scss:compile', () => {
   }); 
 }); 
   
-gulp.task( 'default', gulp.series(['scss:compile']));
+gulp.task( 'html', () => { 
+  return new Promise( resolve => { 
+    gulp.src( PATH.HTML + '/*.html' ) 
+      .pipe( gulp.dest( DEST_PATH.HTML ) ); 
+    resolve(); 
+  }); 
+});
+
+// gulp.task( 'default', gulp.series(['scss:compile']));
+gulp.task( 'nodemon:start', () => { 
+  return new Promise( resolve => { 
+    nodemon({ 
+      script: 'app.js', 
+      watch: 'app' 
+    }); 
+    resolve(); 
+  });
+}); 
+
+gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start']) );
