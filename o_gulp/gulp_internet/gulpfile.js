@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var scss = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps'); 
 var nodemon = require('gulp-nodemon');
+var browserSync = require('browser-sync');
 
 // 소스 파일 경로 
 var PATH = {
@@ -12,6 +13,7 @@ var PATH = {
     STYLE: './workspace/assets/style' 
   } 
 }, 
+
 // 산출물 경로 
 DEST_PATH = { 
   HTML: './dist',
@@ -36,7 +38,8 @@ gulp.task( 'scss:compile', () => {
       .pipe( sourcemaps.init() ) 
       .pipe( scss(options) )
       .pipe( sourcemaps.write() ) 
-      .pipe( gulp.dest( DEST_PATH.ASSETS.STYLE ) ); 
+      .pipe( gulp.dest( DEST_PATH.ASSETS.STYLE ) )
+      .pipe( browserSync.reload({stream: true}) ); 
     resolve(); 
   }); 
 }); 
@@ -44,7 +47,8 @@ gulp.task( 'scss:compile', () => {
 gulp.task( 'html', () => { 
   return new Promise( resolve => { 
     gulp.src( PATH.HTML + '/*.html' ) 
-      .pipe( gulp.dest( DEST_PATH.HTML ) ); 
+      .pipe( gulp.dest( DEST_PATH.HTML ) ) 
+      .pipe( browserSync.reload({stream: true}) ); 
     resolve(); 
   }); 
 });
@@ -54,7 +58,7 @@ gulp.task( 'nodemon:start', () => {
   return new Promise( resolve => { 
     nodemon({ 
       script: 'app.js', 
-      watch: 'app' 
+      watch: DEST_PATH.HTML 
     }); 
     resolve(); 
   });
@@ -74,4 +78,14 @@ gulp.task('watch', () => {
   }); 
 }); 
 
-gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start', 'watch']));
+gulp.task('browserSync', () => { 
+  return new Promise( resolve => { 
+    browserSync.init( null, { 
+      proxy: 'http://localhost:8005' , 
+      port: 8006 
+    }); 
+  resolve(); 
+  }); 
+});
+
+gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start', 'browserSync', 'watch']));
