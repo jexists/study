@@ -60,4 +60,18 @@ gulp.task( 'nodemon:start', () => {
   });
 }); 
 
-gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start']) );
+gulp.task('watch', () => { 
+  return new Promise( resolve => { 
+    gulp.watch(
+      PATH.HTML + "/**/*.html", 
+      gulp.series(['html'])
+    ); 
+    gulp.watch(
+      PATH.ASSETS.STYLE + "/**/*.scss", 
+      gulp.series(['scss:compile'])
+    ); 
+    resolve(); 
+  }); 
+}); 
+
+gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start', 'watch']));
