@@ -4,6 +4,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var nodemon = require('gulp-nodemon');
 var browserSync = require('browser-sync');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+
 
 // 소스 파일 경로 
 var PATH = {
@@ -67,12 +70,17 @@ gulp.task( 'nodemon:start', () => {
   });
 }); 
 
-gulp.task( 'script:concat', () => { 
+gulp.task( 'script:build', () => { 
   return new Promise( resolve => { 
     gulp.src( PATH.ASSETS.SCRIPT + '/*.js' ) 
     // src 경로에 있는 모든 js 파일을 common.js 라는 이름의 파일로 합친다. 
       .pipe( concat('common.js') ) 
       .pipe( gulp.dest( DEST_PATH.ASSETS.SCRIPT ) ) 
+      .pipe( uglify({ 
+        mangle: true // 알파벳 한글자 압축 
+      })) 
+      .pipe( rename('common.min.js') ) 
+      .pipe( gulp.dest( DEST_PATH.ASSETS.SCRIPT ) )
       .pipe( browserSync.reload({stream: true}) ); 
     resolve(); 
   }); 
@@ -91,7 +99,7 @@ gulp.task('watch', () => {
     ); 
     gulp.watch(
       PATH.ASSETS.SCRIPT + "/**/*.js", 
-      gulp.series(['script:concat'])
+      gulp.series(['script:build'])
     ); 
     resolve(); 
   }); 
@@ -115,7 +123,7 @@ gulp.task('browserSync', () => {
 gulp.task( 'default', gulp.series([
   'scss:compile', 
   'html', 
-  'script:concat',
+  'script:build',
   'nodemon:start', 
   'browserSync', 
   'watch'
