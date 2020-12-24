@@ -3,6 +3,7 @@ var scss = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps'); 
 var nodemon = require('gulp-nodemon');
 var browserSync = require('browser-sync');
+var concat = require('gulp-concat');
 
 // 소스 파일 경로 
 var PATH = {
@@ -10,7 +11,8 @@ var PATH = {
   ASSETS: { 
     FONTS: './workspace/assets/fonts' , 
     IMAGES: './workspace/assets/images' , 
-    STYLE: './workspace/assets/style' 
+    STYLE: './workspace/assets/style' ,
+    SCRIPT: './workspace/assets/script' 
   } 
 }, 
 
@@ -20,7 +22,8 @@ DEST_PATH = {
   ASSETS: { 
     FONTS: './dist/assets/fonts' , 
     IMAGES: './dist/assets/images' , 
-    STYLE: './dist/assets/style' 
+    STYLE: './dist/assets/style' ,
+    SCRIPT: './dist/assets/script' 
   } 
 }; 
 
@@ -64,6 +67,18 @@ gulp.task( 'nodemon:start', () => {
   });
 }); 
 
+gulp.task( 'script:concat', () => { 
+  return new Promise( resolve => { 
+    gulp.src( PATH.ASSETS.SCRIPT + '/*.js' ) 
+    // src 경로에 있는 모든 js 파일을 common.js 라는 이름의 파일로 합친다. 
+      .pipe( concat('common.js') ) 
+      .pipe( gulp.dest( DEST_PATH.ASSETS.SCRIPT ) ) 
+      .pipe( browserSync.reload({stream: true}) ); 
+    resolve(); 
+  }); 
+});
+
+
 gulp.task('watch', () => { 
   return new Promise( resolve => { 
     gulp.watch(
@@ -73,6 +88,10 @@ gulp.task('watch', () => {
     gulp.watch(
       PATH.ASSETS.STYLE + "/**/*.scss", 
       gulp.series(['scss:compile'])
+    ); 
+    gulp.watch(
+      PATH.ASSETS.SCRIPT + "/**/*.js", 
+      gulp.series(['script:concat'])
     ); 
     resolve(); 
   }); 
@@ -88,4 +107,16 @@ gulp.task('browserSync', () => {
   }); 
 });
 
-gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start', 'browserSync', 'watch']));
+
+// gulp-concat 파일을 하나의 파일로 압축해준다. 
+// gulp-uglify 자바스크립트 코드를 압축해 용량을 줄여준다. 
+// gulp-rename 파일의 이름을 바꿔준다.
+
+gulp.task( 'default', gulp.series([
+  'scss:compile', 
+  'html', 
+  'script:concat',
+  'nodemon:start', 
+  'browserSync', 
+  'watch'
+]));
