@@ -7,6 +7,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var imagemin = require('gulp-imagemin');
+var del = require('del');
 
 // 소스 파일 경로 
 var PATH = {
@@ -31,6 +32,13 @@ DEST_PATH = {
     LIB: './dist/assets/lib' 
   } 
 }; 
+
+gulp.task('clean', () => { 
+  return new Promise( resolve => { 
+    del.sync(DEST_PATH.HTML); 
+  resolve();
+ }); 
+});
 
 gulp.task( 'scss:compile', () => { 
   return new Promise( resolve => { 
@@ -178,7 +186,8 @@ gulp.task('browserSync', () => {
 //   'watch'
 // ]));
 
-var allSeries = gulp.series([ 
+var allSeries = gulp.series([
+  'clean' ,
   'scss:compile' , 
   'html' , 
   'script:build' , 
