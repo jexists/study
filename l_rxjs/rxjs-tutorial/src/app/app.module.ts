@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RxjsBasicComponent } from './rxjs-basic/rxjs-basic.component';
+import { OperatorsComponent } from './operators/operators.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
-      RxjsBasicComponent
+      RxjsBasicComponent,
+      OperatorsComponent
    ],
   imports: [
     BrowserModule,
