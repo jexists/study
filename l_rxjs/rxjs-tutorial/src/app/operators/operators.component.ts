@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { from, fromEvent, interval, of } from 'rxjs';
-import { filter, first, map, throttleTime } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, first, map, throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-operators',
   templateUrl: './operators.component.html',
-  styleUrls: ['./operators.component.scss']
+  styleUrls: ['./operators.component.scss'],
 })
 export class OperatorsComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     // RxJS: OPERATORS
@@ -20,7 +19,7 @@ export class OperatorsComponent implements OnInit {
     // observable.subscribe((x) => {
     //   console.log(x);
     // })
-    
+
     // const obs = from([1, 2, 3])
     // obs.subscribe((x) => {
     //   console.log(x);
@@ -30,7 +29,6 @@ export class OperatorsComponent implements OnInit {
     // obs.subscribe((x) => {
     //   console.log(x);
     // });
-
 
     // const button = document.querySelector('button');
 
@@ -63,18 +61,38 @@ export class OperatorsComponent implements OnInit {
     //   )
     //   .subscribe((x) => console.log(x));
 
+    // const button = document.querySelector('button');
 
-    const button = document.querySelector('button');
-
-    fromEvent(button, 'click')
-      .subscribe((e: MouseEvent) => {
-        console.log(e);
-    });
+    // fromEvent(button, 'click')
+    //   .subscribe((e: MouseEvent) => {
+    //     console.log(e);
+    // });
     // fromEvent(button, 'click')
     //   .pipe(throttleTime(1000))
     //   .subscribe((e: MouseEvent) => {
     //     console.log(e);
     // });
-  }
 
+    const input = document.querySelector('input');
+
+    // fromEvent(input, 'input')
+    //   .pipe(throttleTime(1000))
+    //   .subscribe((e: InputEvent) => {
+    //     console.log(e);
+    //   });
+    // fromEvent(input, 'input')
+    //   .pipe(throttleTime(1000))
+    //   .subscribe((e: InputEvent) => {
+    //     console.log((<HTMLInputElement>e.target).value);
+    //   });
+
+    fromEvent(input, 'input')
+      .pipe(
+        debounceTime(1000),
+        // distinctUntilChanged()
+      )
+      .subscribe((e: InputEvent) => {
+        console.log((<HTMLInputElement>e.target).value);
+      });
+  }
 }
