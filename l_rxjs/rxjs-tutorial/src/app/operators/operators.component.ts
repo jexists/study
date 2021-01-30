@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { from, fromEvent, interval, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, first, map, throttleTime } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  first,
+  map,
+  pluck,
+  throttleTime,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-operators',
@@ -86,13 +94,27 @@ export class OperatorsComponent implements OnInit {
     //     console.log((<HTMLInputElement>e.target).value);
     //   });
 
+    // fromEvent(input, 'input')
+    //   .pipe(
+    //     map((e: InputEvent) =>
+    //       (<HTMLInputElement>e.target).value),
+    //     debounceTime(1000),
+    //     distinctUntilChanged()
+    //   )
+    //   .subscribe((val) => {
+    //     console.log(val);
+    //   });
+
     fromEvent(input, 'input')
       .pipe(
+        pluck('target', 'value'),
         debounceTime(1000),
-        // distinctUntilChanged()
+        distinctUntilChanged()
       )
-      .subscribe((e: InputEvent) => {
-        console.log((<HTMLInputElement>e.target).value);
+      .subscribe((val) => {
+        console.log(val);
       });
   }
 }
+
+
