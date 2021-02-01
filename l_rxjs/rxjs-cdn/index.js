@@ -27,8 +27,9 @@ rxjs
   .fromEvent(button, 'click')
   .pipe(
     rxjs.operators.throttleTime(1000),
-    rxjs.operators.scan((count) => count + 1, 0)
+    rxjs.operators.map((event) => event.clientX),
+    rxjs.operators.scan((count, clientX) => count + clientX, 0)
   ).subscribe((count) => {
-    return console.log('click', count);
+    console.log('click', count);
   });
 
