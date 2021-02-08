@@ -90,7 +90,7 @@
 // RxJS - mergeMap and switchMap
 
 import { of, fromEvent } from 'rxjs';
-import { debounceTime, map, mergeMap } from 'rxjs/operators';
+import { debounceTime, map, mergeMap, switchMap } from 'rxjs/operators';
 
 const title$ = of('joy', 'sadness', 'anger');
 title$.subscribe(console.log);
@@ -116,3 +116,9 @@ const result$ = title$.pipe(
 );
 
 result$.subscribe(console.log);
+
+const numbers$ = of(1, 2, 3).pipe(
+  switchMap((x: number) => of(x, 2 * x, 3 * x))
+)
+
+numbers$.subscribe(console.log);
