@@ -80,8 +80,39 @@
 // disposing Observable Executions
 
 
-import { from, Observable, of } from 'rxjs';
+// import { from, Observable, of } from 'rxjs';
 
-const observable = of([10, 20, 30])
-const subscription = observable.subscribe((x)=>console.log(x));
-subscription.unsubscribe();
+// const observable = of([10, 20, 30])
+// const subscription = observable.subscribe((x)=>console.log(x));
+// subscription.unsubscribe();
+
+/////////////////////////////////
+// RxJS - mergeMap and switchMap
+
+import { of, fromEvent } from 'rxjs';
+import { debounceTime, map, mergeMap } from 'rxjs/operators';
+
+const title$ = of('joy', 'sadness', 'anger');
+title$.subscribe(console.log);
+
+// const numbers$ = of(1, 2, 3);
+// numbers$.pipe(map((num: number) => num * num)).subscribe(console.log)
+
+const inputEl = document.querySelector('input');
+
+const input$ = fromEvent(inputEl, 'input');
+
+// input$.subscribe((e: InputEvent) => {
+//   console.log((<HTMLInputElement>e.target).value);
+// });
+
+const result$ = title$.pipe(
+  mergeMap((title) => {
+    return input$.pipe(
+      debounceTime(1000),
+      map((e: InputEvent) => title + ' ' + (<HTMLInputElement>e.target).value)
+    );
+  })
+);
+
+result$.subscribe(console.log);
