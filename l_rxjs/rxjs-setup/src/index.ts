@@ -89,36 +89,64 @@
 /////////////////////////////////
 // RxJS - mergeMap and switchMap
 
-import { of, fromEvent } from 'rxjs';
-import { debounceTime, map, mergeMap, switchMap } from 'rxjs/operators';
+// import { of, fromEvent } from 'rxjs';
+// import { debounceTime, map, mergeMap, switchMap } from 'rxjs/operators';
 
-const title$ = of('joy', 'sadness', 'anger');
-title$.subscribe(console.log);
+// const title$ = of('joy', 'sadness', 'anger');
+// title$.subscribe(console.log);
 
 // const numbers$ = of(1, 2, 3);
 // numbers$.pipe(map((num: number) => num * num)).subscribe(console.log)
 
-const inputEl = document.querySelector('input');
+// const inputEl = document.querySelector('input');
 
-const input$ = fromEvent(inputEl, 'input');
+// const input$ = fromEvent(inputEl, 'input');
 
 // input$.subscribe((e: InputEvent) => {
 //   console.log((<HTMLInputElement>e.target).value);
 // });
 
-const result$ = title$.pipe(
-  mergeMap((title) => {
-    return input$.pipe(
-      debounceTime(1000),
-      map((e: InputEvent) => title + ' ' + (<HTMLInputElement>e.target).value)
-    );
-  })
-);
+// const result$ = title$.pipe(
+//   mergeMap((title) => {
+//     return input$.pipe(
+//       debounceTime(1000),
+//       map((e: InputEvent) => title + ' ' + (<HTMLInputElement>e.target).value)
+//     );
+//   })
+// );
 
-result$.subscribe(console.log);
+// result$.subscribe(console.log);
 
-const numbers$ = of(1, 2, 3).pipe(
-  switchMap((x: number) => of(x, 2 * x, 3 * x))
-)
+// const numbers$ = of(1, 2, 3).pipe(
+//   switchMap((x: number) => of(x, 2 * x, 3 * x))
+// )
 
-numbers$.subscribe(console.log);
+// numbers$.subscribe(console.log);
+
+//RxJS Subject and BehaviorSubject
+
+// Unicast
+// import { of } from 'rxjs';
+
+// const numbers$ = of(1, 2, 3);
+
+// numbers$.subscribe(console.log);
+// numbers$.subscribe((num) => console.log(2 * num));
+
+// Multicast
+
+import { BehaviorSubject, Subject } from 'rxjs';
+
+const subject = new Subject<string>();
+// const subject = new BehaviorSubject<string>('User');
+
+subject.subscribe({
+  next: (value) => console.log(`welcome ${value}`)
+});
+
+subject.subscribe({
+  next: (value) => console.log(value),
+});
+
+subject.next('Joy');
+subject.next('Sadness');
