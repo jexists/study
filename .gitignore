@@ -7,3 +7,5 @@
 **/*.log
 
 **/f_farcel_test
+
+**/env
