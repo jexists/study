@@ -8,4 +8,6 @@
 
 **/f_farcel_test
 
-**/env
+**/env/bin
+**/env/lib
+**/env/include
