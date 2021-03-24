@@ -8,10 +8,8 @@ def index(request): #첫번째 파라미터: request
 # http://localhost:8000/posts/ -> 실행
 
 
-def test(request):
-  return HttpResponse('Hello Test!')
-# http://localhost:8000/test/ -> 실행
+def detail(request, post_id):
+  return HttpResponse(f'post: {post_id}!')
 
-def home(request):
-  return HttpResponse('Hello Home!')
-# http://localhost:8000/ -> 실행
+def comment(request, post_id):
+  return HttpResponse('Hello comment!')
