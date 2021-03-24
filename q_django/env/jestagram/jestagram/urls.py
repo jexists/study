@@ -19,5 +19,7 @@ from posts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home),
     path('posts/', views.index),
+    path('test/', views.test),
 ]
