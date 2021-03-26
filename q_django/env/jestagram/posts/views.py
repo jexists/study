@@ -1,21 +1,29 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
-class Member:
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
-    
+# class Member:
+#   def __init__(self, name, age):
+#     self.name = name
+#     self.age = age
+
 def index(request): #첫번째 파라미터: request
+  # context = {
+  #   'post': {
+  #     'author': 'jexists',
+  #     'summary': 'django project'},
+  #     #dictionary
+  #     'numbers': [10,20, 30],
+  #     #list
+  #     'member': Member('jexists', 20)
+  #     #class instance
+  # }
   context = {
-    'post': {
-      'author': 'jexists',
-      'summary': 'django project'},
-      #dictionary
-      'numbers': [10,20, 30],
-      #list
-      'member': Member('jexists', 20)
-      #class instance
+    'posts': [
+      {'author': 'joy', 'summary': 'book1'},
+      {'author': 'sadness', 'summary': 'book2'},
+      {'author': 'anger', 'summary': 'book3'}
+    ]
+    
   }
   return render(request, 'posts/index.html', context)
   # return render(request, 'posts/index.html', {context 작성 가능})
