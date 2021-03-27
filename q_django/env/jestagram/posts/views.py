@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Post
 # Create your views here.
 # class Member:
 #   def __init__(self, name, age):
@@ -17,13 +18,17 @@ def index(request): #첫번째 파라미터: request
   #     'member': Member('jexists', 20)
   #     #class instance
   # }
+  # context = {
+  #   'posts': [
+  #     {'author': 'joy', 'summary': 'book1'},
+  #     {'author': 'sadness', 'summary': 'book2'},
+  #     {'author': 'anger', 'summary': 'book3'}
+  #   ]
+  # }
+  posts = Post.objects.all()
+  # 포스트에 저장되있는 모든 데이터를 불러온다
   context = {
-    'posts': [
-      {'author': 'joy', 'summary': 'book1'},
-      {'author': 'sadness', 'summary': 'book2'},
-      {'author': 'anger', 'summary': 'book3'}
-    ]
-    
+    'posts': posts
   }
   return render(request, 'posts/index.html', context)
   # return render(request, 'posts/index.html', {context 작성 가능})
