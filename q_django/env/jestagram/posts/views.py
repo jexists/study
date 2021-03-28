@@ -47,5 +47,23 @@ def detail(request, post_id):
   return render(request, 'posts/detail.html', context)
   # return HttpResponse(f'post: {post_id}!')
 
+def new(request):
+  return render(request, 'posts/new.html')
+
+
+def create(request):
+  print(request.GET)
+  # request.GET['author']
+  # request.GET['body']
+  #아래코드가 더 안전
+  print(request.GET.get('author'))
+  print(request.GET.get('body'))
+  request.GET.get('author')
+  request.GET.get('body')
+  # print(reqest.GET)
+
+  context = {'author': request.GET.get('author'), 'body': request.GET.get('body')}
+  return render(request, 'posts/create.html', context)
+
 # def comment(request, post_id):
 #   return HttpResponse('Hello comment!')

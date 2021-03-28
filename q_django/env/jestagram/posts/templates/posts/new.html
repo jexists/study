@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+  <title>Jestagram</title>
+</head>
+
+<body>
+  <h1>new post</h1>
+  
+  <form method="GET" action="/posts/create">
+  <!-- <form method="POST" action="posts/create"> -->
+  <!--get파라미터/url파라미터/query string url: new/?name=data&body=body내용 -->
+  <!-- &기호로 구분 -->
+    <div>
+      <label for="author">author</label>
+      <input type="text" id="author" name="author"/>
+    </div>
+
+    <div>
+      <label for="body">body</label>
+      <textarea id="body" name="body" cols="30" rows="10"></textarea>
+    </div>
+
+    <input type="submit" value="작성하기">
+  </form>
+
+  <a href="{% url 'posts:index' %}">목록으로</a>
+</body>
+
+</html>
