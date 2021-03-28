@@ -75,7 +75,23 @@ def create(request):
   return redirect('posts:detail', post_id=post.id)
   # 새로운 상세페이지로 이동
 
+def edit(request, post_id):
+  post = Post.objects.get(id=post_id)
+  context = { 'post': post }
+  return render(request, 'posts/edit.html', context)
 
+def update(request, post_id):
+  post = Post.objects.get(id=post_id)
+  post.author = request.POST.get('author')
+  post.body = request.POST.get('body')
+  post.save()
+  return redirect('posts:detail', post_id=post.id)
+
+
+def delete(request, post_id):
+  post = Post.objects.get(id=post_id)
+  post.delete()
+  return redirect('posts:index')
 
 
 # def comment(request, post_id):

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+  <title>Jestagram</title>
+</head>
+
+<body>
+  <h1>edit post</h1>
+  
+    <form method="POST" action="{% url 'posts:update' post.id %}">
+      {% csrf_token %}
+      <div>
+        <label for="author">author</label>
+        <input type="text" id="author" name="author" value="{{ post.author }}"/>
+      </div>
+
+    <div>
+      <label for="body">body</label>
+      <textarea id="body" name="body" cols="30" rows="10">{{ post.body }}</textarea>
+    </div>
+
+    <input type="submit" value="수정하기">
+  </form>
+
+  <a href="{% url 'posts:index' %}">목록으로</a>
+  <a href="{% url 'posts:detail' post.id %}">취소하기</a>
+</body>
+
+</html>
