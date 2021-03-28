@@ -1,4 +1,7 @@
-{% load static %}
+{% extends 'posts/base.html' %}
+  
+  {% block content %}
+  <!-- {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -10,7 +13,8 @@
   <title>Jestagram</title>
 </head>
 
-<body>
+<body> -->
+  
   <h1>post Detail</h1>
   {% if post %}
   <dl>
@@ -33,6 +37,8 @@
   <a href="{% url 'posts:index' %}">목록으로</a>
   <a href="{% url 'posts:edit' post.id %}">수정하기</a>
   <a href="{% url 'posts:delete' post.id %}">삭제하기</a>
-</body>
 
-</html>
+  {% endblock %}
+<!-- </body>
+
+</html> -->

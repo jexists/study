@@ -1,5 +1,9 @@
+{% extends 'posts/base.html' %}
+  
+  {% block content %}
+<!--
 {% load static %}
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -10,7 +14,7 @@
   <title>Jestagram</title>
 </head>
 
-<body>
+<body> -->
   <h1>posts</h1>
   {% if posts %}
   <table>
@@ -42,6 +46,8 @@
 
 
   <a href="{% url 'posts:new' %}">글쓰기</a>
+
+  {% endblock %}
   <!-- {% comment %} <img src="{% static 'posts/images/joy.jpeg' %}" alt="사진">
 
   <div class="img_bg"></div>
@@ -72,7 +78,7 @@
     <li>Name: {{member.name}}</li>
     <li>Age: {{member.age}}</li>
   </ul> -->
-
+<!-- 
 </body>
 
-</html>
+</html> -->

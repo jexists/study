@@ -1,3 +1,7 @@
+{% extends 'posts/base.html' %}
+  
+  {% block content %}
+<!--   
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
@@ -10,7 +14,7 @@
   <title>Jestagram</title>
 </head>
 
-<body>
+<body> -->
   <h1>new post</h1>
   
   <!-- <form method="GET" action="/posts/create"> -->
@@ -39,6 +43,8 @@
   </form>
 
   <a href="{% url 'posts:index' %}">목록으로</a>
-</body>
 
-</html>
+  {% endblock %}
+<!-- </body>
+
+</html> -->

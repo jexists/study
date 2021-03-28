@@ -1,3 +1,8 @@
+{% extends 'posts/base.html' %}
+  
+  {% block content %}
+
+<!--   
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
@@ -10,7 +15,7 @@
   <title>Jestagram</title>
 </head>
 
-<body>
+<body> -->
   <h1>edit post</h1>
   
     <form method="POST" action="{% url 'posts:update' post.id %}">
@@ -30,6 +35,8 @@
 
   <a href="{% url 'posts:index' %}">목록으로</a>
   <a href="{% url 'posts:detail' post.id %}">취소하기</a>
-</body>
 
-</html>
+  {% endblock %}
+<!-- </body>
+
+</html> -->
