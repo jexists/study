@@ -13,11 +13,19 @@
 <body>
   <h1>new post</h1>
   
-  <form method="GET" action="/posts/create">
-  <!-- <form method="POST" action="posts/create"> -->
-  <!--get파라미터/url파라미터/query string url: new/?name=data&body=body내용 -->
-  <!-- &기호로 구분 -->
-    <div>
+  <!-- <form method="GET" action="/posts/create"> -->
+    <!-- <form method="POST" action="posts/create"> -->
+      <!--get파라미터/url파라미터/query string url: new/?name=data&body=body내용 -->
+      <!-- &기호로 구분 -->
+
+    <!-- <form method="POST" action="/posts/create"> ERROR -->
+    <!-- <form method="POST" action="/posts/create/"> -->
+    <!-- <form method="POST" action="{% url 'posts:create' %}"> -->
+      <!-- CSRF 검증에 실패했습니다. 요청을 중단하였습니다. -->
+      <!-- 아래 코드작성 -->
+    <form method="POST" action="{% url 'posts:create' %}">
+      {% csrf_token %}
+      <div>
       <label for="author">author</label>
       <input type="text" id="author" name="author"/>
     </div>

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Post
+from django.utils import timezone
 # Create your views here.
 # class Member:
 #   def __init__(self, name, age):
@@ -52,18 +53,30 @@ def new(request):
 
 
 def create(request):
-  print(request.GET)
+  #GET 방식일 경우
+  # print(request.GET)
   # request.GET['author']
   # request.GET['body']
   #아래코드가 더 안전
-  print(request.GET.get('author'))
-  print(request.GET.get('body'))
-  request.GET.get('author')
-  request.GET.get('body')
+  # print(request.GET.get('author'))
+  # print(request.GET.get('body'))
+  # request.GET.get('author')
+  # request.GET.get('body')
   # print(reqest.GET)
+  # context = {'author': request.GET.get('author'), 'body': request.GET.get('body')}
+  # return render(request, 'posts/create.html', context)
 
-  context = {'author': request.GET.get('author'), 'body': request.GET.get('body')}
-  return render(request, 'posts/create.html', context)
+  author = request.POST.get('author')
+  body = request.POST.get('body')
+
+  post = Post(author=author, body=body, created_at=timezone.now())
+  post.save()
+
+  return redirect('posts:detail', post_id=post.id)
+  # 새로운 상세페이지로 이동
+
+
+
 
 # def comment(request, post_id):
 #   return HttpResponse('Hello comment!')
