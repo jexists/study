@@ -25,7 +25,13 @@ def index(request): #첫번째 파라미터: request
   #     {'author': 'anger', 'summary': 'book3'}
   #   ]
   # }
-  posts = Post.objects.all()
+  posts = Post.objects.all().order_by('created_at')[0:1]
+  print(posts.query)
+  # 오름차순 정렬
+  # posts = Post.objects.all().order_by('-created_at')
+  # 내림차순 정렬
+
+
   # 포스트에 저장되있는 모든 데이터를 불러온다
   context = {
     'posts': posts
