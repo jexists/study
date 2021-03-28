@@ -25,17 +25,15 @@ def index(request): #첫번째 파라미터: request
   #     {'author': 'anger', 'summary': 'book3'}
   #   ]
   # }
-  posts = Post.objects.all().order_by('created_at')[0:1]
-  print(posts.query)
+  # posts = Post.objects.all().order_by('created_at')[0:1]
+  # print(posts.query)
   # 오름차순 정렬
   # posts = Post.objects.all().order_by('-created_at')
   # 내림차순 정렬
 
-
+  posts = Post.objects.all()
   # 포스트에 저장되있는 모든 데이터를 불러온다
-  context = {
-    'posts': posts
-  }
+  context = { 'posts': posts }
   return render(request, 'posts/index.html', context)
   # return render(request, 'posts/index.html', {context 작성 가능})
   # print('로그 남기기: 디버깅')
@@ -44,7 +42,10 @@ def index(request): #첫번째 파라미터: request
 
 
 def detail(request, post_id):
-  return HttpResponse(f'post: {post_id}!')
+  post = Post.objects.get(id=post_id)
+  context = { 'post': post }
+  return render(request, 'posts/detail.html', context)
+  # return HttpResponse(f'post: {post_id}!')
 
-def comment(request, post_id):
-  return HttpResponse('Hello comment!')
+# def comment(request, post_id):
+#   return HttpResponse('Hello comment!')

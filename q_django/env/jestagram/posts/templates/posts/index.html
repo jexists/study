@@ -12,8 +12,36 @@
 
 <body>
   <h1>posts</h1>
+  {% if posts %}
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>작성자</th>
+        <th>본문</th>
+        <th>게시일</th>
+        <th>상세페이지</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in posts %}
+      <tr>
+        <td>{{ post.id }}</td>
+        <td>{{ post.author }}</td>
+        <td>{{ post.body }}</td>
+        <td>{{ post.created_at }}</td>
+        <td><a href="{% url 'posts:detail' post.id %}">보기</a></td>
+        <!-- <td><a href="/posts/{{ post.id }}">보기</a></td> -->
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>no post</p>
+  {% endif %}
 
-  <img src="{% static 'posts/images/joy.jpeg' %}" alt="사진">
+
+  <!-- {% comment %} <img src="{% static 'posts/images/joy.jpeg' %}" alt="사진">
 
   <div class="img_bg"></div>
   {% if posts %}
@@ -24,7 +52,7 @@
   </ul>
   {% else %}
   <p>no post</p>
-  {% endif %}
+  {% endif %} {% endcomment %} -->
   <!-- <h2>dictionary</h2>
   <ul>
     <li>Author: {{post.author}}</li>
