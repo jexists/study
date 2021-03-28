@@ -23,17 +23,18 @@
   
     <form method="POST" action="{% url 'posts:update' post.id %}">
       {% csrf_token %}
-      <div>
-        <label for="author">author</label>
-        <input type="text" id="author" name="author" value="{{ post.author }}"/>
+      <div class="mb-4 col-6">
+        <label class="form-label"  for="author">author</label>
+        <input class="form-control"  type="text" id="author" name="author" value="{{ post.author }}"/>
       </div>
 
-    <div>
-      <label for="body">body</label>
-      <textarea id="body" name="body" cols="30" rows="10">{{ post.body }}</textarea>
+    <div class="mb-4 col-6">
+      <label class="form-label"  for="body">body</label>
+      <textarea class="form-control"  id="body" name="body" cols="30" rows="10">{{ post.body }}</textarea>
     </div>
 
-    <input type="submit" value="수정하기">
+    <!-- <input type="submit" value="수정하기"> -->
+    <button type="submit" class="btn btn-primary">수정하기</button>
   </form>
 
   <a href="{% url 'posts:index' %}">목록으로</a>
