@@ -37,6 +37,7 @@ def login(request):
     if request.method == 'POST':
         if request.POST.get('username') and request.POST.get('password'):
 
+            #암호화 되어서 authenticate 함수사용
             user = auth.authenticate(
                 request,
                 username = request.POST.get('username'),
