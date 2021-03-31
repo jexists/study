@@ -54,3 +54,10 @@ def login(request):
             context['error'] = '아이디와 비밀번호를 다시 확인해주세요.'
     
     return render(request, 'accounts/login.html', context)
+
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        #섹션,쿠기 삭제 로그아웃
+
+    return redirect('posts:index')
