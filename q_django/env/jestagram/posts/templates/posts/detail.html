@@ -22,7 +22,8 @@
   {% if post %}
   <dl>
     <dt>작성자</dt>
-    <dd>{{ post.author }}</dd>
+    <dd>{{ post.user.get_username }}</dd>
+    <!-- <dd>{{ post.author }}</dd> -->
   </dl>
   <dl>
     <dt>본문</dt>
@@ -38,8 +39,10 @@
 
   <!-- <a href="/posts">목록으로</a> -->
   <a href="{% url 'posts:index' %}">목록으로</a>
-  <a href="{% url 'posts:edit' post.id %}">수정하기</a>
-  <a href="{% url 'posts:delete' post.id %}">삭제하기</a>
+  {% if user == post.user %}
+    <a href="{% url 'posts:edit' post.id %}">수정하기</a>
+    <a href="{% url 'posts:delete' post.id %}">삭제하기</a>
+  {% endif %}
 
   {% endblock %}
 <!-- </body>

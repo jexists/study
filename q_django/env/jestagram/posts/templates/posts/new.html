@@ -32,10 +32,10 @@
       <!-- 아래 코드작성 -->
     <form method="POST" action="{% url 'posts:create' %}">
       {% csrf_token %}
-      <div class="mb-4 col-6">
-      <label class="form-label"  for="author">author</label>
-      <input class="form-control"  type="text" id="author" name="author"/>
-    </div>
+      <!-- <div class="mb-4 col-6">
+        <label class="form-label"  for="author">author</label>
+        <input class="form-control"  type="text" id="author" name="author"/>
+       </div> -->
 
     <div class="mb-4 col-6">
       <label class="form-label"  for="body">body</label>

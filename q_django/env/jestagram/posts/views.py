@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Post
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 # class Member:
 #   def __init__(self, name, age):
@@ -48,10 +49,14 @@ def detail(request, post_id):
   return render(request, 'posts/detail.html', context)
   # return HttpResponse(f'post: {post_id}!')
 
+@login_required
 def new(request):
+  # if not request.user.is_authenticated:
+  #   return redirect('accounts:login')
   return render(request, 'posts/new.html')
 
 
+@login_required
 def create(request):
   #GET 방식일 경우
   # print(request.GET)
@@ -66,30 +71,44 @@ def create(request):
   # context = {'author': request.GET.get('author'), 'body': request.GET.get('body')}
   # return render(request, 'posts/create.html', context)
 
-  author = request.POST.get('author')
+  # if not request.user.is_authenticated:
+  #   return redirect('accounts:login')
+
+  # author = request.POST.get('author')
+  user = request.user
   body = request.POST.get('body')
 
-  post = Post(author=author, body=body, created_at=timezone.now())
+  # post = Post(author=author, body=body, created_at=timezone.now())
+  post = Post(user=user, body=body, created_at=timezone.now())
   post.save()
 
   return redirect('posts:detail', post_id=post.id)
   # 새로운 상세페이지로 이동
 
+@login_required
 def edit(request, post_id):
-  post = Post.objects.get(id=post_id)
+  try:
+    post = Post.objects.get(id=post_id, user=request.user)
+  except Post.DoesNotExist:
+    return redirect('posts:index')
   context = { 'post': post }
   return render(request, 'posts/edit.html', context)
 
+@login_required
 def update(request, post_id):
   post = Post.objects.get(id=post_id)
-  post.author = request.POST.get('author')
+  # post.author = request.POST.get('author')
   post.body = request.POST.get('body')
   post.save()
   return redirect('posts:detail', post_id=post.id)
 
-
+@login_required
 def delete(request, post_id):
-  post = Post.objects.get(id=post_id)
+  try:
+    post = Post.objects.get(id=post_id, user=request.user)
+  except Post.DoesNotExist:
+    return redirect('posts:index')
+
   post.delete()
   return redirect('posts:index')
 

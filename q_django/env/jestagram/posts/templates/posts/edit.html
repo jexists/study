@@ -23,10 +23,10 @@
   
     <form method="POST" action="{% url 'posts:update' post.id %}">
       {% csrf_token %}
-      <div class="mb-4 col-6">
+      <!-- <div class="mb-4 col-6">
         <label class="form-label"  for="author">author</label>
         <input class="form-control"  type="text" id="author" name="author" value="{{ post.author }}"/>
-      </div>
+      </div> -->
 
     <div class="mb-4 col-6">
       <label class="form-label"  for="body">body</label>
