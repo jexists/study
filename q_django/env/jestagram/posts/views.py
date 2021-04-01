@@ -115,3 +115,24 @@ def delete(request, post_id):
 
 # def comment(request, post_id):
 #   return HttpResponse('Hello comment!')
+
+@login_required
+def like(request, post_id):
+  if request.method == 'POST':
+    try:
+        post = Post.objects.get(id=post_id)
+
+        if request.user in post.liked_users.all():
+            post.liked_users.remove(request.user)
+        else:
+            post.liked_users.add(request.user)
+            # add/remove -> save()포함
+        
+        return redirect('posts:detail', post_id=post.id)
+    
+    except Post.DoesNotExist:
+        # return redirect('posts:index')
+        # 작성할 코드가 없을 경우는 pass
+        pass
+
+    return redirect('posts:index')
