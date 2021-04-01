@@ -19,6 +19,10 @@ class Post(models.Model):
   #날짜와 시간 저장
   # create_at = models.DateField()
   #날짜만 저장
+  liked_users = models.ManyToManyField(User, related_name='liked_posts')
+
+  # post.liked_users //해당 게시물에 좋아요 누른사람
+  # user.liked_posts //유저가 좋아요 누 게시물
 
   def __str__(self):
     if self.user:

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
-  {% block style %}
-    <link rel="stylesheet" href="{% static 'posts/style.css' %}">
-  {% endblock %}
-  {% block content %}
-  <!-- {% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'posts/style.css' %}">
+{% endblock %}
+{% block content %}
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -17,34 +17,50 @@
 </head>
 
 <body> -->
-  
-  <h1>post Detail</h1>
-  {% if post %}
-  <dl>
-    <dt>작성자</dt>
-    <dd>{{ post.user.get_username }}</dd>
-    <!-- <dd>{{ post.author }}</dd> -->
-  </dl>
-  <dl>
-    <dt>본문</dt>
-    <dd>{{ post.body }}</dd>
-  </dl>
-  <dl>
-    <dt>게시일</dt>
-    <dd>{{ post.created_at }}</dd>
-  </dl>
+
+<h1>post Detail</h1>
+{% if post %}
+<dl>
+  <dt>작성자</dt>
+  <dd>{{ post.user.get_username }}</dd>
+  <!-- <dd>{{ post.author }}</dd> -->
+</dl>
+<dl>
+  <dt>본문</dt>
+  <dd>{{ post.body }}</dd>
+</dl>
+<dl>
+  <dt>게시일</dt>
+  <dd>{{ post.created_at }}</dd>
+</dl>
+{% else %}
+<p>no post</p>
+{% endif %}
+
+<div class="mb-3 col-md-6">
+  좋아요 수: {{ post.liked_users.count }}
+</div>
+
+{% if user.is_authenticated %}
+<form action="{% url 'posts:like' post.id %}" method="post">
+  {% csrf_token %}
+
+  {% if user in post.liked_users.all %}
+  <button type="submit" class="btn btn-primary">LIKE</button>
   {% else %}
-  <p>no post</p>
+  <button type="submit" class="btn btn-secondary">LIKE</button>
   {% endif %}
+</form>
+{% endif %}
 
-  <!-- <a href="/posts">목록으로</a> -->
-  <a href="{% url 'posts:index' %}">목록으로</a>
-  {% if user == post.user %}
-    <a href="{% url 'posts:edit' post.id %}">수정하기</a>
-    <a href="{% url 'posts:delete' post.id %}">삭제하기</a>
-  {% endif %}
+<!-- <a href="/posts">목록으로</a> -->
+<a href="{% url 'posts:index' %}">목록으로</a>
+{% if user == post.user %}
+<a href="{% url 'posts:edit' post.id %}">수정하기</a>
+<a href="{% url 'posts:delete' post.id %}">삭제하기</a>
+{% endif %}
 
-  {% endblock %}
+{% endblock %}
 <!-- </body>
 
 </html> -->
