@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Post
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+import requests
 # Create your views here.
 # class Member:
 #   def __init__(self, name, age):
@@ -10,6 +11,14 @@ from django.contrib.auth.decorators import login_required
 #     self.age = age
 
 def index(request): #첫번째 파라미터: request
+  # https://dog.ceo/dog-api/
+  dog_api_response = requests.get('https://dog.ceo/api/breeds/image/random')
+  dog_api_response_dictionary = dog_api_response.json()
+  dog = None
+  if dog_api_response_dictionary.get('status') == 'success':
+    dog = dog_api_response_dictionary.get('message')
+
+
   # context = {
   #   'post': {
   #     'author': 'jexists',
@@ -35,7 +44,7 @@ def index(request): #첫번째 파라미터: request
 
   posts = Post.objects.all()
   # 포스트에 저장되있는 모든 데이터를 불러온다
-  context = { 'posts': posts }
+  context = { 'posts': posts, 'dog': dog }
   return render(request, 'posts/index.html', context)
   # return render(request, 'posts/index.html', {context 작성 가능})
   # print('로그 남기기: 디버깅')
@@ -104,7 +113,7 @@ def update(request, post_id):
   image = request.FILES.get('image')
   if image:
     post.image = image
-    
+
   post.save()
   return redirect('posts:detail', post_id=post.id)
 
@@ -142,3 +151,4 @@ def like(request, post_id):
         pass
 
     return redirect('posts:index')
+

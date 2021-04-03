@@ -51,6 +51,21 @@
 
   <a href="{% url 'posts:new' %}">글쓰기</a>
 
+  {% if dog %}
+    <div class="card mt-3">
+      <div class="row g-0">
+        <div class="col-4">
+          <img src="{{dog}}" alt="강아지" class="card-img">
+        </div>
+        <div class="col-8 card-body">
+          <h5 class="card-title">강아지를 보고싶다면</h5>
+          <p class="card-text">api 사용</p>
+          <a href="https://dog.ceo/dog-api/" class="card-link" target="_blank">DOG API</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
   {% endblock %}
   <!-- {% comment %} <img src="{% static 'posts/images/joy.jpeg' %}" alt="사진">
 
