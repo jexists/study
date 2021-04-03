@@ -121,9 +121,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-]
+    ]
 
 #Media File이 저장될 경로 (프로젝트 루트 디텍터리/media/이미지파일명)
 #Media_ROOT에 저장된 File이 제공될 base URL
