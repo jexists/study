@@ -13,6 +13,10 @@ class Post(models.Model):
   #최대 100글자 
   body = models.TextField()
   #대용량 텍스트
+  image = models.ImageField(upload_to='posts', null=True)
+  # python -m pip install Pillow 설치
+  # 어떤path로 저장하는지, 없어도 사용가능
+
   # create_at = models.DateTimeField()
   # created_at = models.DateTimeField(auto_now_add=True)
   created_at = models.DateTimeField(auto_now_add=True, null=False)

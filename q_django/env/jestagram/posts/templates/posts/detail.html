@@ -29,6 +29,13 @@
   <dt>본문</dt>
   <dd>{{ post.body }}</dd>
 </dl>
+
+{% if post.image %}
+<div>
+  <img class="img-fluid" src="{{ post.image.url }}" alt="포스트 이미지">
+</div>
+{% endif %}
+
 <dl>
   <dt>게시일</dt>
   <dd>{{ post.created_at }}</dd>

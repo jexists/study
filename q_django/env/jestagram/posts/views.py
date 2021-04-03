@@ -77,9 +77,11 @@ def create(request):
   # author = request.POST.get('author')
   user = request.user
   body = request.POST.get('body')
+  image = request.FILES.get('image')
+  #이미지가 없을 경우 None
 
   # post = Post(author=author, body=body, created_at=timezone.now())
-  post = Post(user=user, body=body, created_at=timezone.now())
+  post = Post(user=user, body=body, image=image, created_at=timezone.now())
   post.save()
 
   return redirect('posts:detail', post_id=post.id)
@@ -99,6 +101,10 @@ def update(request, post_id):
   post = Post.objects.get(id=post_id)
   # post.author = request.POST.get('author')
   post.body = request.POST.get('body')
+  image = request.FILES.get('image')
+  if image:
+    post.image = image
+    
   post.save()
   return redirect('posts:detail', post_id=post.id)
 

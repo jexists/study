@@ -30,7 +30,7 @@
     <!-- <form method="POST" action="{% url 'posts:create' %}"> -->
       <!-- CSRF 검증에 실패했습니다. 요청을 중단하였습니다. -->
       <!-- 아래 코드작성 -->
-    <form method="POST" action="{% url 'posts:create' %}">
+    <form method="POST" action="{% url 'posts:create' %}" enctype="multipart/form-data">
       {% csrf_token %}
       <!-- <div class="mb-4 col-6">
         <label class="form-label"  for="author">author</label>
@@ -38,8 +38,14 @@
        </div> -->
 
     <div class="mb-4 col-6">
-      <label class="form-label"  for="body">body</label>
+      <label class="form-label"  for="body">본문</label>
       <textarea class="form-control"  id="body" name="body" cols="30" rows="10"></textarea>
+    </div>
+
+    <div class="mb-4 col-6">
+      <label class="form-label"  for="image">이미지</label>
+      <input type="file" class="form-control" id="image" name="image">
+      <!-- 이미지 전송시 methode POST 필수 enctype="multipart/form-data" -->
     </div>
 
     <!-- <input type="submit" value="작성하기"> -->
