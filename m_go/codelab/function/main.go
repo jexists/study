@@ -33,6 +33,7 @@ func function2(a int, b int) int {
 }
 
 //여러값 리턴 ()필수 & 리턴값 컴마 구분
+// 한개의 함수에 여러개의 결과 반환 가능
 func function3(a int, b int) (int, int) {
 	return a + b, a - b
 }
@@ -55,3 +56,10 @@ func function4(a int, b int) (c int, d int) {
 func function6(f func(int, int) (int, int)) {
 	fmt.Println(f(10, 20))
 }
+
+// 같은 type일 경우 마지막 변수를 제외한 type 생략 가능
+func function7(x, y int) int {
+	return x + y
+}
+
+//

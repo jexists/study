@@ -1,6 +1,9 @@
 // 9. defer
 //끝나는 시점에서 뒤에서부터 시작(역순 실행)
 //함수호출을 지연시켜서 호출하기위한 키워드
+// defer문은 자신을 둘러싼 함수가 종료할 때까지 어떠한 함수의 실행을 연기합니다
+// 연기된 호출의 인자는 즉시 평가되지만 그 함수 호출은 자신을 둘러싼 함수가 종료할 때까지 수행되지 않습니다.
+
 package main
 
 import (
@@ -17,6 +20,13 @@ func main() {
 	function3()
 	defer function3()
 
+	fmt.Println("counting")
+
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+
+	fmt.Println("done")
 }
 
 func useDeferRead() {
