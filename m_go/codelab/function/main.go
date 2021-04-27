@@ -32,7 +32,7 @@ func function2(a int, b int) int {
 	return a + b
 }
 
-//여러값 리턴 ()필수 & 리턴값 컴마 구분
+// 여러값 리턴 ()필수 & 리턴값 컴마 구분
 // 한개의 함수에 여러개의 결과 반환 가능
 func function3(a int, b int) (int, int) {
 	return a + b, a - b
@@ -41,6 +41,7 @@ func function3(a int, b int) (int, int) {
 // func function4(a int, b int) (c int, d int) {
 // 	return
 // }
+
 // //function 4 = function 5 비슷
 // func function5(a int, b int) (int, int) {
 // 	var c, d int
@@ -61,5 +62,3 @@ func function6(f func(int, int) (int, int)) {
 func function7(x, y int) int {
 	return x + y
 }
-
-//

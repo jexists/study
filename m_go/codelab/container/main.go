@@ -15,6 +15,7 @@ func main() {
 	// fmt.Println(a)
 	// [number]Type 배열
 	var arr [5]int //Array 생성시 길이 명시
+	fmt.Println(arr)
 	fmt.Println(arr[0])
 	//값 할당X => zero value 초기화 ""/0
 
@@ -45,7 +46,10 @@ func main() {
 	}
 	//slice/////////////////////////
 
+	fmt.Println("-------slice------")
 	//slice 만드는 방법 (가변 array)
+
+	//var arr [5]int //Array 생성시 길이 명시
 	slice := arr[0:3]
 	//arr[시작인덱스(포함):끝인데스(불포함/제외)으로 슬라이싱 가능]
 	fmt.Println(slice, len(slice), cap(slice))
@@ -74,6 +78,7 @@ func main() {
 	//  동적 크기의 배열을 생성하는 방법
 	// make 함수는 0으로 이루어진 배열을 할당합니다. 그리고 해당 배열을 참조하는 슬라이스를 반환
 
+	fmt.Println("-------make------")
 	fm := make([]int, 0, 5) // len(b)=0, cap(b)=5
 	println(fm)
 	f := make([]int, 0, 2)
@@ -81,6 +86,8 @@ func main() {
 	fmt.Println(f, len(f))
 	//용량 생략가능 그럼 같은 값이라고 생각하면됨
 
+	fmt.Println("-------append------")
+	fmt.Println(f, len(f), cap(f))
 	f = append(f, 10)
 	//append 값 추가
 	fmt.Println(f, len(f), cap(f))
@@ -121,6 +128,7 @@ func main() {
 
 	//map/////////////////////////
 
+	fmt.Println("-----map-----")
 	var map1 map[string]int  //
 	fmt.Println(map1 == nil) //true
 	// 키를 값에 매핑
