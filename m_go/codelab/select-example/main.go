@@ -1,4 +1,4 @@
-// package main
+package main
 
 // import (
 // 	"fmt"
@@ -6,19 +6,19 @@
 // )
 
 // // 16
-// func main() {
-// 	// wg := sync.WaitGroup{}
-// 	in := make(chan string, 1000)
-// 	out := make(chan int)
+func main() {
+	// 	// wg := sync.WaitGroup{}
+	// 	in := make(chan string, 1000)
+	// 	out := make(chan int)
 
-// 	go Worker(in, out)
-// 	go Print(out)
+	// 	go Worker(in, out)
+	// 	go Print(out)
 
-// 	for i := 0; i < 100; i++ {
-// 		in <- "https://example.com"
-// 	}
-// 	time.Sleep(2 * time.Second)
-// }
+	// 	for i := 0; i < 100; i++ {
+	// 		in <- "https://example.com"
+	// 	}
+	// 	time.Sleep(2 * time.Second)
+}
 
 // func Worker(in chan string, out chan int) {
 // 	// defer wg.Done()
