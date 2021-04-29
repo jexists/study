@@ -9,6 +9,8 @@ import (
 )
 
 func main() {
+	//channel
+	// <- 통해 값을 주고 받을 수 있는 하나의 분리된 통로
 	// channel make함수
 	c := make(chan int)
 	//int타입을 사용하는 채널

@@ -11,6 +11,7 @@ import (
 
 func main() {
 	// goroutine: 경량 쓰레드, go run타임
+	// 같은 주소의 공간에서 실행되고, 따라서 공유된 메모리는 synchronous(동기적)
 	// 동시성
 	wg := sync.WaitGroup{}
 	for i := 0; i < 10; i++ {
