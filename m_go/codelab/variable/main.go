@@ -7,6 +7,7 @@ import (
 )
 
 //전역변수는 무조건 var 키워드 사용!
+//함수 밖에서는 모든 선언이 키워드(var, func 등) 시작해서 := 사용 불가
 
 func main() {
 	var a int = 10
@@ -30,6 +31,10 @@ func main() {
 	//CamelCase = 변수
 	//export => 대문자 시작
 	//전역변수는 var 키워드
-	//상수 const 키워드
-	//타입 생략 가능 => 타입 추론 (정적타입)
+	//타입 생략 가능 => 타입 추론 (정적타입)/
+
+	//상수 const 키워드 =>
+	//:= 사용불가
+	//character, string, boolean, number
+
 }

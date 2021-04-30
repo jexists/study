@@ -9,6 +9,9 @@ import (
 )
 
 type Num int
+
+// struct(구조체) = 필드의 집합체
+
 type User struct {
 	Name string
 	Age  int
