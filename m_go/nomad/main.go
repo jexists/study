@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	// "something"
+)
 
 func main() {
 	fmt.Println("hello world")
-	something.sayHello() //대문자 public
-	something.sayBye()   //private
+	// something.sayHello() //대문자만 Export가능
+	// something.sayBye()
 }
