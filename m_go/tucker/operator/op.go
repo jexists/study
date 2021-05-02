@@ -27,4 +27,7 @@ func main() {
 	d := a % 10                              //2.1 -> 2
 	fmt.Printf("첫번째 수 %v, 두번째 수 %v\n", c, d) //첫번째 수 1, 두번째 수 2
 
+	if 3 > 4 {
+		fmt.Println('참')
+	}
 }
