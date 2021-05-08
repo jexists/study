@@ -1,10 +1,17 @@
 package main
 
+import "fmt"
+
 func main() {
 
 	for num := 2; num < 10; num++ {
+		fmt.Printf("%d단 \n", num)
+		if num == 5 {
+			continue
+		}
+
 		for num2 := 1; num2 < 10; num2++ {
-			println(num, num2, num*num2)
+			fmt.Println(num, num2, num*num2)
 		}
 	}
 }
