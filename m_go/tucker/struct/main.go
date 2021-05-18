@@ -7,6 +7,11 @@ type Person struct {
 	age  int
 }
 
+func (p Person) PrintName() {
+	fmt.Print(p.name)
+
+}
+
 func main() {
 	var p Person                       //초깃값 { 0}
 	p1 := Person{"sadness", 17}        //{sadness 17}
@@ -20,4 +25,6 @@ func main() {
 	p.age = 27
 
 	fmt.Println(p, p1, p2, p3, p4) //{happy 27} {sadness 17} {joy 21} {anger 0} { 0}
+
+	p.PrintName() //happy%
 }
