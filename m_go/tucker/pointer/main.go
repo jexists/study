@@ -19,7 +19,7 @@ func main() {
 
 	p = &b
 
-	fmt.Println(a)  //3
+	fmt.Println(b)  //2
 	fmt.Println(p)  //0xc00000a0d0
 	fmt.Println(*p) //2
 }
