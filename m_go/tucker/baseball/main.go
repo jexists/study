@@ -6,6 +6,11 @@ import (
 	"time"
 )
 
+type ResultGame struct {
+	strikes int
+	balls   int
+}
+
 func main() {
 	//랜덤 시드값 지정 (안할경우 숫자가 계속 똑같음)
 	rand.Seed(time.Now().UnixNano())
@@ -39,6 +44,7 @@ func MakeNumbers() [3]int {
 
 	// 0~9 겹치지 않는 랜덤 숫자 3개 반환
 	var result [3]int
+
 	for i := 0; i < 3; i++ {
 		for {
 			n := rand.Intn(10)
@@ -52,6 +58,10 @@ func MakeNumbers() [3]int {
 			if !duplicated {
 				result[i] = n
 				break
+			}
+			if result[0] == 0 {
+				duplicated = true
+				continue
 			}
 		}
 	}
@@ -103,10 +113,10 @@ func InputNumbers() [3]int {
 			result[index] = n
 			index++
 		}
+
 		if success && index < 3 {
 			fmt.Println("3개의 숫자를 입력하세요.")
 			success = false
-			break
 		}
 
 		if !success {
@@ -120,17 +130,31 @@ func InputNumbers() [3]int {
 	return result
 }
 
-func CompareNumbers(numbers, inputNubers [3]int) bool {
+func CompareNumbers(numbers, inputNumbers [3]int) ResultGame {
 	//두개의 숫자 비교를 해서 결과 반환
+	strikes := 0
+	balls := 0
 
-	return true
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
+			if numbers[i] == inputNumbers[j] {
+				if i == j {
+					strikes++
+				} else {
+					balls++
+				}
+				break
+			}
+		}
+	}
+
+	return ResultGame{strikes, balls}
 }
 
-func PrintResult(result bool) {
-	fmt.Println(result)
+func PrintResult(result ResultGame) {
+	fmt.Printf("%dS %dB \n", result.strikes, result.balls)
 }
 
-func IsGameEnd(result bool) bool {
-
-	return result
+func IsGameEnd(result ResultGame) bool {
+	return result.strikes == 3
 }
