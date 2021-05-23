@@ -62,6 +62,61 @@ func MakeNumbers() [3]int {
 func InputNumbers() [3]int {
 	// 사용자 0~9 겹치지 않는 숫자 3개 입력받아 반환
 	var result [3]int
+
+	for {
+		fmt.Println("겹치지 않는 0~9 사이의 숫자 3개를 입력")
+		var num int
+		// _ -> 이름없는 변수, 사용하지않는 변수
+		_, err := fmt.Scanf("%d\n", &num)
+
+		//에러가 있는 경우
+		if err != nil {
+			fmt.Println("잘못 입력하셨습니다.")
+			continue
+		}
+		index := 0
+
+		success := true
+		for num > 0 {
+			n := num % 10
+			num = num / 10
+
+			duplicated := false
+			for j := 0; j < index; j++ {
+				if result[j] == n {
+					duplicated = true
+					break
+				}
+			}
+			if duplicated {
+				fmt.Println("숫자가 겹치지 않아야 합니다.")
+				success = false
+				break
+			}
+
+			if index >= 3 {
+				fmt.Println("3개보다 많은 숫자를 입력하였습니다.")
+				success = false
+				break
+			}
+
+			result[index] = n
+			index++
+		}
+		if success && index < 3 {
+			fmt.Println("3개의 숫자를 입력하세요.")
+			success = false
+			break
+		}
+
+		if !success {
+			continue
+		}
+		break
+	}
+
+	result[0], result[2] = result[2], result[0]
+	fmt.Println(result)
 	return result
 }
 
