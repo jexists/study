@@ -48,4 +48,22 @@ func main() {
 	fmt.Printf("len(c) = %d\n", len(c)) //1
 	fmt.Printf("cap(c) = %d\n", cap(c)) //8
 
+	d := []int{1, 2}
+	e := append(d, 3)
+
+	fmt.Printf("%p %p\n", d, e)
+	//0xc0000b4040 0xc0000b8000
+
+	for i := 0; i < len(d); i++ {
+		fmt.Printf("%d, ", e[i]) //1, 2,
+	}
+	fmt.Println()
+
+	for i := 0; i < len(e); i++ {
+		fmt.Printf("%d, ", e[i]) //1, 2, 3,
+	}
+	fmt.Println()
+
+	fmt.Println(cap(d), " ", cap(e)) //2   4
+
 }
