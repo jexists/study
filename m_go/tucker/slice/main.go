@@ -48,8 +48,17 @@ func main() {
 	fmt.Printf("len(c) = %d\n", len(c)) //1
 	fmt.Printf("cap(c) = %d\n", cap(c)) //8
 
+	// 공간이 없을 경우 새로운 메모리에 복사
 	d := []int{1, 2}
+	d[0] = 1
+	d[1] = 2
 	e := append(d, 3)
+	fmt.Println(d) //[1 2]
+	fmt.Println(e) //[1 2 3]
+	e[0] = 4
+	e[1] = 5
+	fmt.Println(d) //[1 2]
+	fmt.Println(e) //[4 5 3]
 
 	fmt.Printf("%p %p\n", d, e)
 	//0xc0000b4040 0xc0000b8000
@@ -65,5 +74,20 @@ func main() {
 	fmt.Println()
 
 	fmt.Println(cap(d), " ", cap(e)) //2   4
+
+	// 공간이 남을 경우 같은 메모리 주소
+	f := make([]int, 2, 4)
+	f[0] = 1
+	f[1] = 2
+	g := append(f, 3)
+	fmt.Println(f) //[1 2]
+	fmt.Println(g) //[1 2 3]
+	g[0] = 4
+	g[1] = 5
+	fmt.Println(f) //[4 5]
+	fmt.Println(g) //[4 5 3]
+
+	fmt.Printf("%p %p\n", f, g)
+	//0xc000016180 0xc000016180
 
 }
