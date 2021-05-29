@@ -90,4 +90,25 @@ func main() {
 	fmt.Printf("%p %p\n", f, g)
 	//0xc000016180 0xc000016180
 
+	n := []int{1, 2}
+	n[0] = 1
+	n[1] = 2
+	m := make([]int, len(n))
+
+	// 복사
+	for i := 0; i < len(n); i++ {
+		m[i] = n[i]
+	}
+	m = append(m, 3)
+
+	fmt.Printf("%p %p\n", n, m)
+	//0xc0000121b0 0xc00001a050
+	m[0] = 4
+	m[1] = 5
+	fmt.Println(n) //[1 2]
+	fmt.Println(m) //[4 5 3]
+
+	//동적배열 -> 길이 늘어남
+	//추가 -> append (여유없을때 두배 / 같은 메모리반환 또는 다른 메모리 반환할 경우 있음)
+
 }
