@@ -15,4 +15,23 @@ func main() {
 	fmt.Println(b) //[5 6 7 8]
 	fmt.Println(c) //[5 6 7 8 9 10]
 	fmt.Println(d) //[1 2 3 4]
+
+	e := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	f := e[4:8]
+	f[0] = 1
+	f[1] = 2
+	fmt.Println(e) //[1 2 3 4 1 2 7 8 9]
+	// 일부분을 가져오는 것 (같은 메모리)
+
+	for i := 0; i < 5; i++ {
+		var back int
+		a, back = RemoveBack(a)
+		fmt.Printf("%d, ", back) // 10, 9, 8, 7, 6,
+	}
+	fmt.Println()
+	fmt.Println(a) // [1 2 3 4 5]
+}
+
+func RemoveBack(a []int) ([]int, int) {
+	return a[:len(a)-1], a[len(a)-1]
 }
