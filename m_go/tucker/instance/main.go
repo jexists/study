@@ -8,6 +8,14 @@ type Student struct {
 	grade int
 }
 
+func SetName(t Student, newName string) {
+	t.name = newName
+}
+
+func SetNameFix(t *Student, newName string) {
+	t.name = newName
+}
+
 func main() {
 	a := Student{"aaa", 20, 10}
 
@@ -27,5 +35,11 @@ func main() {
 	// Pointer (reference 타입형태 - 참조)
 	fmt.Println(c) // {aaa 30 10}
 	fmt.Println(d) // &{aaa 30 10}
+
+	SetName(a, "bbb") //Value Type
+	fmt.Println(a)    //{aaa 20 10}
+
+	SetNameFix(&a, "bbb") //Reference Type
+	fmt.Println(a)        //{bbb 20 10}
 
 }
