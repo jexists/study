@@ -12,7 +12,13 @@ func SetName(t Student, newName string) {
 	t.name = newName
 }
 
+//Function 형태 - 기능 단위, procedure절차
 func SetNameFix(t *Student, newName string) {
+	t.name = newName
+}
+
+//매소드 형태의 표현 - object단위
+func (t *Student) SetNameFixM(newName string) {
 	t.name = newName
 }
 
@@ -41,5 +47,8 @@ func main() {
 
 	SetNameFix(&a, "bbb") //Reference Type
 	fmt.Println(a)        //{bbb 20 10}
+
+	a.SetName("bbb")
+	fmt.Println(a) //{bbb 20 10}
 
 }
