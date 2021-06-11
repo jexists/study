@@ -21,11 +21,23 @@ func main() {
 	PrintNodes(root)
 	// 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 
-	RemoveNode(root)
+	root, tail = RemoveNode(root.next, root, tail)
 
 	PrintNodes(root)
 	// 0 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 
+	root, tail = RemoveNode(root, root, tail)
+
+	PrintNodes(root)
+	// 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
+
+	root, tail = RemoveNode(tail, root, tail)
+
+	PrintNodes(root)
+	// 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
+
+	fmt.Printf("tail: %d\n", tail.val)
+	// tail: 8
 }
 
 func AddNode(tail *Node, val int) *Node {
@@ -35,8 +47,28 @@ func AddNode(tail *Node, val int) *Node {
 	return node
 }
 
-func RemoveNode(prev *Node) {
-	prev.next = prev.next.next
+func RemoveNode(node *Node, root *Node, tail *Node) (*Node, *Node) {
+	if node == root {
+		root = root.next
+		if root == nil {
+			tail = nil
+		}
+		return root, tail
+	}
+
+	prev := root
+	for prev.next != node {
+		prev = prev.next
+	}
+
+	if node == tail {
+		prev.next = nil
+		tail = prev
+	} else {
+		prev.next = prev.next.next
+	}
+
+	return root, tail
 }
 
 func PrintNodes(root *Node) {
