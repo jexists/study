@@ -23,6 +23,35 @@ func (l *LinkedList) AddNode(val int) {
 	l.tail = tail.next
 }
 
+func (l *LinkedList) RemoveNode(node *Node) {
+	if node == l.root {
+		l.root = l.root.next
+		node.next = null
+		return
+	}
+	prev := l.root
+	for prev.next != node {
+		prev = prev.next
+	}
+	if node == l.tail {
+		prev.next = nil
+		l.tail = prev
+	}else {
+		prev.next = prev.next.next
+	}
+	node.next = nil
+}
+
+func (l *LinkedList) PrintNodes() {
+	node := l.root
+	for node.next != nil {
+		fmt.Printf("%d -> ", node.val)
+		node = node.next
+	}
+	fmt.Printf("%d \n", node.val)
+}
+
+
 func main() {
 	var root *Node
 	var tail *Node
