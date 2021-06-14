@@ -10,23 +10,22 @@ type Node struct {
 type LinkedList struct {
 	root *Node
 	tail *Node
-
 }
 
 func (l *LinkedList) AddNode(val int) {
-	if l.root = nil {
-		l.root = *Node{val:val}
+	if l.root == nil {
+		l.root = &Node{val: val}
 		l.tail = l.root
 		return
 	}
-	l.tail.next = &Node{val:val}
-	l.tail = tail.next
+	l.tail.next = &Node{val: val}
+	l.tail = l.tail.next
 }
 
 func (l *LinkedList) RemoveNode(node *Node) {
 	if node == l.root {
 		l.root = l.root.next
-		node.next = null
+		node.next = nil
 		return
 	}
 	prev := l.root
@@ -36,7 +35,7 @@ func (l *LinkedList) RemoveNode(node *Node) {
 	if node == l.tail {
 		prev.next = nil
 		l.tail = prev
-	}else {
+	} else {
 		prev.next = prev.next.next
 	}
 	node.next = nil
@@ -51,76 +50,33 @@ func (l *LinkedList) PrintNodes() {
 	fmt.Printf("%d \n", node.val)
 }
 
-
 func main() {
-	var root *Node
-	var tail *Node
-
-	root = &Node{val: 0}
-	tail = root
+	list := &LinkedList{}
+	list.AddNode(0)
 
 	for i := 1; i < 10; i++ {
-		tail = AddNode(tail, i)
+		list.AddNode(i)
 	}
 
-	PrintNodes(root)
+	list.PrintNodes()
 	// 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 
-	root, tail = RemoveNode(root.next, root, tail)
+	list.RemoveNode(list.root.next)
 
-	PrintNodes(root)
+	list.PrintNodes()
 	// 0 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 
-	root, tail = RemoveNode(root, root, tail)
+	list.RemoveNode(list.root)
 
-	PrintNodes(root)
+	list.PrintNodes()
 	// 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 
-	root, tail = RemoveNode(tail, root, tail)
+	list.RemoveNode(list.tail)
 
-	PrintNodes(root)
+	list.PrintNodes()
 	// 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 
-	fmt.Printf("tail: %d\n", tail.val)
-	// tail: 8
-}
+	fmt.Printf("tail:%d\n", list.tail.val)
+	// tail:8
 
-func AddNode(tail *Node, val int) *Node {
-	node := &Node{val: val}
-	tail.next = node
-
-	return node
-}
-
-func RemoveNode(node *Node, root *Node, tail *Node) (*Node, *Node) {
-	if node == root {
-		root = root.next
-		if root == nil {
-			tail = nil
-		}
-		return root, tail
-	}
-
-	prev := root
-	for prev.next != node {
-		prev = prev.next
-	}
-
-	if node == tail {
-		prev.next = nil
-		tail = prev
-	} else {
-		prev.next = prev.next.next
-	}
-
-	return root, tail
-}
-
-func PrintNodes(root *Node) {
-	node := root
-	for node.next != nil {
-		fmt.Printf("%d -> ", node.val)
-		node = node.next
-	}
-	fmt.Printf("%d \n", node.val)
 }
