@@ -102,4 +102,8 @@ func main() {
 
 	list.PrintReverse()
 	// 8 -> 7 -> 6 -> 5 -> 4 -> 3 -> 2
+
+	a := []int{1, 2, 3, 4, 5}
+	a = append(a[0:2], a[3:]...)
+	fmt.Println(a) // [1 2 4 5]
 }
