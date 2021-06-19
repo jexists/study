@@ -1,8 +1,8 @@
 package main
 
 import (
-	"dataStruct"
 	"fmt"
+	"package/dataStruct"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 	list.PrintNodes()
 	// 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 
-	list.RemoveNode(list.Root.next)
+	list.RemoveNode(list.Root.Next)
 
 	list.PrintNodes()
 	// 0 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
@@ -31,7 +31,7 @@ func main() {
 	list.PrintNodes()
 	// 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 
-	fmt.Printf("Tail:%d\n", list.Tail.val)
+	fmt.Printf("Tail:%d\n", list.Tail.Val)
 	// Tail:8
 
 	list.PrintReverse()
