@@ -26,6 +26,20 @@ func (l *LinkedList) AddNode(val int) {
 
 }
 
+func (l *LinkedList) Back() int {
+	if l.Tail != nil {
+		return l.Tail.Val
+	}
+	return 0
+}
+
+func (l *LinkedList) PopBack() {
+	if l.Tail != nil {
+		return
+	}
+	l.RemoveNode(l.Tail)
+}
+
 func (l *LinkedList) RemoveNode(node *Node) {
 	if node == l.Root {
 		l.Root = l.Root.Next
