@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"package/dataStruct"
+)
 
 func main() {
 	stack := []int{}
@@ -27,5 +30,17 @@ func main() {
 		var front int
 		front, queue = queue[0], queue[1:]
 		fmt.Println(front) // 1 2 3 4 5
+	}
+
+	stack2 := dataStruct.NewStack()
+
+	for i := 1; i <= 5; i++ {
+		stack2.Push(i)
+	}
+	fmt.Println("NewStack")
+
+	for !stack2.Empty() {
+		val := stack2.Pop()
+		fmt.Printf("%d ->", val)
 	}
 }
