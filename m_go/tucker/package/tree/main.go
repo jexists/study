@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"package/dataStruct"
 )
 
@@ -23,6 +24,11 @@ func main() {
 			val++
 		}
 	}
-	tree.DFS1()
+	tree.DFS1() // 재귀호출
 	//1 =>2 =>5 =>6 =>3 =>7 =>8 =>4 =>9 =>10 =>%
+
+	fmt.Println()
+
+	tree.DFS2() // 스택
+	// 1 ->2 ->5 ->6 ->3 ->7 ->8 ->4 ->9 ->10 ->%
 }

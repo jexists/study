@@ -23,7 +23,7 @@ func (t *Tree) AddNode(val int) {
 	}
 }
 
-func (t *Tree) DFS1() {
+func (t *Tree) DFS1() { // 재귀호출
 	DFS1(t.Root)
 }
 
@@ -32,5 +32,27 @@ func DFS1(node *TreeNode) {
 
 	for i := 0; i < len(node.Childs); i++ {
 		DFS1(node.Childs[i])
+	}
+}
+
+func (t *Tree) DFS2() { // 스택
+	s := []*TreeNode{}
+	s = append(s, t.Root)
+
+	for len(s) > 0 {
+		var last *TreeNode
+		last, s = s[len(s)-1], s[:len(s)-1]
+
+		fmt.Printf("%d ->", last.Val)
+
+		// for i := 0; i < len(last.Childs); i++ {
+		// 	s = append(s, last.Childs[i])
+		// }
+		// 1->4->10->9->3->8->7->2->6->5->%
+
+		for i := len(last.Childs) - 1; i >= 0; i-- {
+			s = append(s, last.Childs[i])
+		}
+
 	}
 }
