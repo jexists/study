@@ -1,5 +1,7 @@
 package dataStruct
 
+import "fmt"
+
 type BinaryTreeNode struct {
 	Val int
 
@@ -35,7 +37,30 @@ func (n *BinaryTreeNode) AddNode(v int) *BinaryTreeNode {
 	}
 }
 
-func (t *BinaryTree) Print() {
-	q := []*BinaryTreeNode{}
+type depthNode struct {
+	depth int
+	node  *BinaryTreeNode
+}
 
+func (t *BinaryTree) Print() {
+	q := []depthNode{}
+	q = append(q, depthNode{depth: 0, node: t.Root})
+	currentDepth := 0
+
+	for len(q) > 0 {
+		var first depthNode
+		first, q = q[0], q[1:]
+
+		if first.depth != currentDepth {
+			fmt.Println()
+			currentDepth = first.depth
+		}
+		fmt.Print(first.node.Val, " ")
+		if first.node.left != nil {
+			q = append(q, depthNode{depth: currentDepth + 1, node: first.node.left})
+		}
+		if first.node.right != nil {
+			q = append(q, depthNode{depth: currentDepth + 1, node: first.node.right})
+		}
+	}
 }
