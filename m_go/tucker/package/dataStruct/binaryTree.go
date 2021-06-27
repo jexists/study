@@ -20,7 +20,7 @@ func NewBinaryTree(v int) *BinaryTree {
 }
 
 func (n *BinaryTreeNode) AddNode(v int) *BinaryTreeNode {
-	if n.Val < v {
+	if n.Val > v {
 		if n.left == nil {
 			n.left = &BinaryTreeNode{Val: v}
 			return n.left

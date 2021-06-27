@@ -16,9 +16,8 @@ func main() {
 	tree.Root.AddNode(9)
 
 	tree.Print()
-
 	// 5
-	// 8 3
-	// 10 7 4 2
-	// 9 6 %
+	// 3 8
+	// 2 4 7 10
+	// 6 9 %
 }
