@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"package/dataStruct"
 )
 
@@ -20,4 +21,11 @@ func main() {
 	// 3 8
 	// 2 4 7 10
 	// 6 9 %
+
+	if tree.Search(6) {
+		fmt.Println("found 6")
+	} else {
+		fmt.Println("not found")
+	}
+	// found 6
 }

@@ -64,3 +64,23 @@ func (t *BinaryTree) Print() {
 		}
 	}
 }
+
+func (t *BinaryTree) Search(v int) bool {
+	return t.Root.Search(v)
+}
+
+func (n *BinaryTreeNode) Search(v int) bool {
+	if n.Val == v {
+		return true
+	} else if n.Val > v {
+		if n.left != nil {
+			return n.left.Search(v)
+		}
+		return false
+	} else {
+		if n.right != nil {
+			return n.right.Search(v)
+		}
+		return false
+	}
+}
