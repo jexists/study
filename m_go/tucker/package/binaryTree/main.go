@@ -22,10 +22,11 @@ func main() {
 	// 2 4 7 10
 	// 6 9 %
 
-	if tree.Search(6) {
-		fmt.Println("found 6")
+	if found, cnt := tree.Search(11); found {
+		fmt.Println("found 6 cnt:", cnt)
 	} else {
-		fmt.Println("not found")
+		fmt.Println("not found cnt", cnt)
 	}
-	// found 6
+	// found 6 cnt: 4
+	// not found cnt 3
 }

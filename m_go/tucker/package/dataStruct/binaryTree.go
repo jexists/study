@@ -65,22 +65,22 @@ func (t *BinaryTree) Print() {
 	}
 }
 
-func (t *BinaryTree) Search(v int) bool {
-	return t.Root.Search(v)
+func (t *BinaryTree) Search(v int) (bool, int) {
+	return t.Root.Search(v, 1)
 }
 
-func (n *BinaryTreeNode) Search(v int) bool {
+func (n *BinaryTreeNode) Search(v int, cnt int) (bool, int) {
 	if n.Val == v {
-		return true
+		return true, cnt
 	} else if n.Val > v {
 		if n.left != nil {
-			return n.left.Search(v)
+			return n.left.Search(v, cnt+1)
 		}
-		return false
+		return false, cnt
 	} else {
 		if n.right != nil {
-			return n.right.Search(v)
+			return n.right.Search(v, cnt+1)
 		}
-		return false
+		return false, cnt
 	}
 }
