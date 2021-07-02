@@ -1,5 +1,7 @@
 package dataStruct
 
+import "fmt"
+
 type Heap struct {
 	list []int
 }
@@ -21,4 +23,8 @@ func (h *Heap) Push(v int) {
 		}
 	}
 
+}
+
+func (h *Heap) Print() {
+	fmt.Println(h.list)
 }
