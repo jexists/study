@@ -29,7 +29,7 @@ func (h *Heap) Print() {
 	fmt.Println(h.list)
 }
 
-func (h *Heap) Pop int {
+func (h *Heap) Pop() int {
 	if len(h.list) == 0 {
 		return 0
 	}
@@ -42,26 +42,28 @@ func (h *Heap) Pop int {
 	idx := 0
 
 	for idx < len(h.list) {
-		leftIdx := idx*2+1
-		left := h.list[leftIdx]
+		swapIdx := -1
+		leftIdx := idx*2 + 1
 		if leftIdx >= len(h.list) {
 			break
 		}
-		rightIdx := idx*2+2
-		right := h.list[rightIdx]
-		if rightIdx >= len(h.list) {
-			break
+		if h.list[leftIdx] > h.list[idx] {
+			swapIdx = leftIdx
 		}
 
-		if left > last && left>=right {
-			h.list[idx], h.list[leftIdx] = h.list[idx*2+1], h.list[idx]
-
-			idx = leftIdx
-		} else if right > last {
-			h.list[idx], h.list[rightIdx] = h.list[rightIdx], h.list[idx]
-			idx = rightIdx
-		} else {
+		rightIdx := idx*2 + 2
+		if rightIdx < len(h.list) {
+			if h.list[rightIdx] > h.list[idx] {
+				if swapIdx < 0 || h.list[swapIdx] < h.list[rightIdx] {
+					swapIdx = rightIdx
+				}
+			}
+		}
+		if swapIdx < 0 {
 			break
 		}
+		h.list[idx], h.list[swapIdx] = h.list[swapIdx], h.list[idx]
+		idx = swapIdx
 	}
+	return top
 }
