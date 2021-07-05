@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Heap struct {
 	list []int
@@ -68,7 +70,23 @@ func (h *Heap) Pop() int {
 	return top
 }
 
+func (h *Heap) Count() int {
+	return len(h.list)
+}
+
 func main() {
 	// 정수 배열(int array)과 정수 N이 주어지면, N번째로 큰 배열 원소를 찾으시오
+	h := &Heap{}
 
+	// [-1, 3, -1, 5, 4], 2번째 큰값
+
+	nums := []int{-1, 3, -1, 5, 4}
+
+	for i := 0; i < len(nums); i++ {
+		h.Push(nums[i])
+		if h.Count() > 2 {
+			h.Pop()
+		}
+	}
+	fmt.Println(h.Pop())
 }
