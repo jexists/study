@@ -40,6 +40,9 @@ func (h *Heap) Pop() int {
 	last := h.list[len(h.list)-1]
 	h.list = h.list[:len(h.list)-1]
 
+	if len(h.list) == 0 {
+		return top
+	}
 	h.list[0] = last
 	idx := 0
 
@@ -88,5 +91,29 @@ func main() {
 			h.Pop()
 		}
 	}
-	fmt.Println(h.Pop())
+	fmt.Println(h.Pop()) //4
+
+	// [2, 4, -2, -3, 8], 1번째 큰값
+	h = &Heap{}
+	nums = []int{2, 4, -2, -3, 8}
+
+	for i := 0; i < len(nums); i++ {
+		h.Push(nums[i])
+		if h.Count() > 1 {
+			h.Pop()
+		}
+	}
+	fmt.Println(h.Pop()) //8
+
+	// [-5,-3, 1], 3번째 큰값
+	h = &Heap{}
+	nums = []int{-5, -3, 1}
+
+	for i := 0; i < len(nums); i++ {
+		h.Push(nums[i])
+		if h.Count() > 3 {
+			h.Pop()
+		}
+	}
+	fmt.Println(h.Pop()) //-5
 }
