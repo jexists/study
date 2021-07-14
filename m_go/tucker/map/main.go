@@ -54,4 +54,9 @@ func main() {
 
 	fmt.Println(v, v1, v2)       // 0 4 0
 	fmt.Println(v, ok1, v2, ok2) // 0 true 0 false
+
+	// 값 삭제
+	delete(m2, 5)
+	v, ok1 = m2[5]
+	fmt.Println(v, ok1, v2, ok2) // 0 false 0 false
 }
