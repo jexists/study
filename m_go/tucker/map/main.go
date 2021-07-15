@@ -59,4 +59,15 @@ func main() {
 	delete(m2, 5)
 	v, ok1 = m2[5]
 	fmt.Println(v, ok1, v2, ok2) // 0 false 0 false
+
+	m2[2] = 98
+	m2[10] = 1245
+
+	for key, value := range m2 {
+		fmt.Println(key, " = ", value)
+		// 순서가 무작위로 나옴
+		// 10  =  1245
+		// 4  =  4
+		// 2  =  98
+	}
 }
